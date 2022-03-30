@@ -1,0 +1,31 @@
+:root {
+    /* Font Sizes */
+    --fs-400: 1rem;
+    --fs-500: calc(var(--fs-400) * 1.25);
+    --fs-600: calc(var(--fs-500) * 1.25);
+    --fs-700: calc(var(--fs-600) * 1.25);
+
+    /* Colors */
+    --clr-foreground-main: white;
+    --clr-background-main: hsl(240 14% 5%);
+
+    --clr-background-400: hsl(240 10% 12%);
+
+    --clr-neutral-200: hsl(0 0% 90%);
+    --clr-neutral-300: hsl(0 0% 50%);
+    --clr-neutral-400: hsl(0 0% 40%);
+    --clr-neutral-500: hsl(0 0% 30%);
+    --clr-neutral-700: hsl(0 0% 14%);
+
+    --clr-interactible-text: hsl(240 10% 92%);
+
+        /* Button Colors */
+        --clr-button-background: hsl(240 10% 16%);
+        --clr-button-border: hsl(240 10% 38%);
+
+        --clr-button-hover: hsl(240 10% 24%);
+
+    /* Spacings */
+    --nav-spacing: 1.45em;
+    --button-spacing: 0.75em;
+}

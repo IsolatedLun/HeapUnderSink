@@ -1,0 +1,16 @@
+[class*='flex'] {
+    display: flex;
+}
+
+.flex-between {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-items {
+    gap: var(--gap, 1em);
+}
+
+.flex-col {
+    flex-direction: column;
+}

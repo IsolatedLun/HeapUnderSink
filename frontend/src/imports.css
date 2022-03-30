@@ -1,7 +1,8 @@
-*,
-*::before,
-*::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+@import url('css/globals/root.css');
+@import url('css/globals/resets.css');
+@import url('css/globals/compositions.css');
+@import url('css/globals/utils.css');
+
+
+@import url('css/navbar/navbar.css');
+@import url('css/buttons/button.css');

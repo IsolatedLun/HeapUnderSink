@@ -1,0 +1,13 @@
+.button {
+    color: var(--clr-interactible-text);
+    font-size: var(--fs-button, --fs-400);
+    padding: 0.45em 0.75em;
+    background-color: var(--clr-button-background);
+    border: 1px solid var(--clr-button-border);
+    border-radius: var(--button-border, 6px);
+    transition: baackground-color 95ms ease-in-out;
+}
+
+.button:is(:hover, :focus) {
+    background-color: var(--clr-button-hover);
+}

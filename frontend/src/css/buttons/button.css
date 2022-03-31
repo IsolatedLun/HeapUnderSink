@@ -1,13 +1,28 @@
 .button {
-    color: var(--clr-interactible-text);
     font-size: var(--fs-button, --fs-400);
+    color: var(--clr-interactible-text);
     padding: 0.45em 0.75em;
     background-color: var(--clr-button-background);
     border: 1px solid var(--clr-button-border);
     border-radius: var(--button-border, 6px);
-    transition: baackground-color 95ms ease-in-out;
+    transition: baackground-color 195ms ease-in-out;
 }
 
-.button:is(:hover, :focus) {
+.button:not([data-variant]):is(:hover, :focus) {
     background-color: var(--clr-button-hover);
+}
+
+/* Variant => action */
+.button[data-variant='action'] {
+    background-color: var(--clr-button-action);
+    border: 0;
+}
+
+.button[data-variant='action']:is(:hover, :focus) {
+    background-color: var(--clr-button-action-hover);
+}
+
+/* Content => icon */
+.button[data-content='icon'] {
+    font-family: 'fa';
 }

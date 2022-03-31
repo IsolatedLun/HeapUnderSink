@@ -3,6 +3,7 @@
 @import url('css/globals/compositions.css');
 @import url('css/globals/utils.css');
 
+@import url('css/buttons/button.css');
+@import url('css/inputs/inputs.css');
 
 @import url('css/navbar/navbar.css');
-@import url('css/buttons/button.css');

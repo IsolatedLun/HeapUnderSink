@@ -1,0 +1,12 @@
+.input {
+    font-size: var(--fs-420);
+    padding: calc(var(--input-spacing) * 0.5) var(--input-spacing);
+    background-color: var(--background-input);
+    border: 2px solid var(--clr-input-border);
+    border-radius: var(--input-border, 7px);
+}
+
+.input:is(:hover, :focus) {
+    border-color: var(--clr-input-shadow);
+    box-shadow: 0 0 0.5px 2px var(--clr-input-shadow);
+}

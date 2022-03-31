@@ -1,6 +1,7 @@
 :root {
     /* Font Sizes */
     --fs-400: 1rem;
+    --fs-420: calc(var(--fs-400) * 1);
     --fs-500: calc(var(--fs-400) * 1.25);
     --fs-600: calc(var(--fs-500) * 1.25);
     --fs-700: calc(var(--fs-600) * 1.25);
@@ -17,15 +18,37 @@
     --clr-neutral-500: hsl(0 0% 30%);
     --clr-neutral-700: hsl(0 0% 14%);
 
+    --clr-hover: rgb(255 255 255 / 0.12);
+
     --clr-interactible-text: hsl(240 10% 92%);
 
         /* Button Colors */
         --clr-button-background: hsl(240 10% 16%);
         --clr-button-border: hsl(240 10% 38%);
-
         --clr-button-hover: hsl(240 10% 24%);
+
+        --clr-button-action: hsl(130 52% 41%);
+        --clr-button-action-hover: hsl(130 52% 45%);
+
+        /* Input Colors */
+        --background-input: hsl(240 10% 10%);
+        --clr-input-border: hsl(240 20% 28%);
+        --clr-input-shadow: hsl(220 97% 45% / 0.36);
+
+        /* Links */
+        --clr-link: hsl(187 92% 52%);
 
     /* Spacings */
     --nav-spacing: 1.45em;
+    --side-nav-spacing: 1.45em;
     --button-spacing: 0.75em;
+    --input-spacing: 0.65em;
+    --list-link-spacing: 1em;
+}
+
+.e {
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: red;
 }

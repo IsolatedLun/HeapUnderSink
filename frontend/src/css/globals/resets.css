@@ -29,3 +29,39 @@ input {
 button {
     cursor: pointer;
 }
+
+ul:not([data-default]) {
+    list-style: none;
+}
+
+a {
+    color: var(--clr-neutral-200);
+    text-decoration: none;
+}
+
+a[data-default] {
+    color: var(--clr-link);
+    border-bottom: 1px solid currentColor;
+}
+
+[data-mobile] {
+    display: none !important;
+}
+
+[data-state='off'] {
+    display: none;
+}
+
+[data-state='on'] {
+    display: var(--element-display, block) !important;;
+}
+
+@media screen and (max-width: 768px) {
+    [data-mobile] {
+        display: var(--element-display, block) !important;
+    }
+
+    [data-desktop] {
+        display: none !important;
+    }
+}

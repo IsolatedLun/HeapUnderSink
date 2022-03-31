@@ -6,3 +6,26 @@
 .fw-light {
     font-weight: lighter;
 }
+
+/* Margins & Paddings */
+.margin-l-auto {
+    margin-left: auto;
+}
+
+.margin-r-auto {
+    margin-right: auto;
+}
+
+.margin-inline-auto {
+    margin-inline: auto;
+}
+
+/* Flex & Grid */
+.flex-grow {
+    flex-grow: 1;
+}
+
+/* Texts */
+.text-center {
+    text-align: center;
+}

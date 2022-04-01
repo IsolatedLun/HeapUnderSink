@@ -1,10 +1,20 @@
-/* Fonts */
+/* Fonts Weights */
 .fw-normal {
     font-weight: normal;
 }
 
 .fw-light {
     font-weight: lighter;
+}
+
+/* Font Sizes */
+.fs-question-stat {
+    font-size: var(--fs-question-stat);
+}
+
+/* Headers */
+.header-500 {
+    font-size: var(--fs-500);
 }
 
 /* Margins & Paddings */
@@ -20,12 +30,20 @@
     margin-inline: auto;
 }
 
-/* Flex & Grid */
-.flex-grow {
-    flex-grow: 1;
+.margin-top-1 {
+    margin-top: 1em;
+}
+
+.margin-bottom-1 {
+    margin-bottom: 1em;
 }
 
 /* Texts */
 .text-center {
     text-align: center;
+}
+
+/* Development */
+.dev-bg {
+    background-color: red;
 }

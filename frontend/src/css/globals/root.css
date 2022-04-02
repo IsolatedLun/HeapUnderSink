@@ -1,5 +1,6 @@
 :root {
     /* Font Sizes */
+    --fs-300: calc(var(--fs-400) * 0.9);
     --fs-400: 1rem;
     --fs-420: calc(var(--fs-400) * 1);
     --fs-500: calc(var(--fs-400) * 1.25);
@@ -35,28 +36,44 @@
         --clr-button-action: hsl(130 52% 41%);
         --clr-button-action-hover: hsl(130 52% 45%);
 
+        --clr-button-full-blue: hsl(220 92% 42%);
+        --clr-button-full-blue-hover: hsl(220 92% 46%);
+
         /* Input Colors */
         --background-input: hsl(240 10% 10%);
         --clr-input-border: hsl(240 20% 28%);
         --clr-input-shadow: hsl(220 97% 45% / 0.36);
 
-        /* Links */
+        /* Card Colors */
+        --clr-card-border: hsl(240 20% 28%);
+        --clr-card-background: hsl(240 20% 28% / 0.24);
+        --clr-card-yellow-border: hsl(48 80% 43%);
+        --clr-card-yellow-background: hsl(48 80% 43% / 0.24);
+
+        /* Link Colors */
         --clr-link: hsl(187 92% 52%);
+        --clr-link-dark: hsl(187 92% 42%);
+
+        /* Tag Colors */
+        --clr-tag: hsl(220 92% 69%);
+        --clr-tag-background: hsl(220 70% 36% / 0.24);
 
     /* Spacings */
+    --main-content-spacing: 0.25em;
     --nav-spacing: 1.45em;
     --side-nav-spacing: 1.45em;
     --button-spacing: 0.75em;
     --input-spacing: 0.65em;
     --list-link-spacing: 1em;
+    --card-spacing: 0.9em;
+    --tag-spacing: 0.45em;
         /* Question Spacings */
         --question-spacing: 0.5em;
         --question-stat-spacing: 0.65em;
 }
 
-.e {
-    display: block;
-    width: 2px;
-    height: 100%;
-    background-color: red;
+@media screen and (max-width: 768px) {
+    :root {
+        --main-content-spacing: 1em;
+    }
 }

@@ -22,7 +22,13 @@
     background-color: var(--clr-button-action-hover);
 }
 
-/* Content => icon */
-.button[data-content='icon'] {
-    font-family: 'fa';
+.button[data-variant='full-blue'] {
+    background-color: var(--clr-button-full-blue);
+    border: 0;
 }
+
+.button[data-variant='full-blue']:is(:hover, :focus) {
+    background-color: var(--clr-button-full-blue-hover);
+}
+
+/* Content => icon */

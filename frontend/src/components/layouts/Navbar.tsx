@@ -1,14 +1,6 @@
-import { TIMES_ICON } from '../../consts';
-
-function toggleElement(id: string) {
-  const el = document.getElementById('side-nav') as HTMLElement;
-
-  if(el.getAttribute('data-state') === 'off') 
-    el.setAttribute('data-state', 'on')
-
-  else
-    el.setAttribute('data-state', 'off')
-}
+import { Link } from 'react-router-dom';
+import { BAR_ICON, TIMES_ICON } from '../../consts';
+import { toggleElement } from '../../utilFuncs/utils';
 
 const Navbar = () => {
   return (
@@ -20,34 +12,34 @@ const Navbar = () => {
               placeholder='Search...' data-desktop />
 
             <ul className="[ list ] [  ]" data-list-type='link' data-desktop>
-              <li className="list__item"><a href="">Home</a></li>
-              <li className="list__item"><a href="">News</a></li>
+              <li className="list__item"><Link to="/">Home</Link></li>
+              <li className="list__item"><Link to="/news">News</Link></li>
             </ul>
 
             <div aria-hidden data-desktop className="line-break"></div>
 
             <div className='[ flex-items ]'>
-                <button className='[ button ]' data-desktop>Log in</button>
-                <button className='[ button ]' data-variant='action' data-desktop>Sign up</button>
+                <Link to='/auth/login' className='[ button ]' data-desktop>Log in</Link>
+                <Link to='/auth/signup' className='[ button ]' data-variant='action' data-desktop>Sign up</Link>
             </div>
 
-            <button className='[ button ]' onClick={() => toggleElement('side-nav')}
-              data-mobile data-content='icon'>{ TIMES_ICON }</button>
+            <button className='[ button fa ]' onClick={() => toggleElement('side-nav')}
+              data-mobile data-content='icon' aria-label='Toggle sidenav button' aria-hidden>{ BAR_ICON }</button>
         </nav>
 
-        <nav role='Side mobile navigation' id='side-nav' className="[ side-nav ] [ flex-items flex-col text-center ]" 
+        <nav role='Side mobile navigation' id='side-nav' className="[ side-nav ] [ flex-items flex-col flex-align-center ]" 
           data-state='off'>
           
-          <button className='[ button ]' onClick={() => toggleElement('side-nav')}
-            data-mobile data-content='icon'>{ TIMES_ICON }</button>
+          <button className='[ button fa ]' onClick={() => toggleElement('side-nav')}
+            data-mobile data-content='icon' aria-label='Toggle sidenav button' aria-hidden>{ TIMES_ICON }</button>
           
           <ul className="[ list ] [ flex-col ]" data-list-type='link'>
-            <li className="list__item"><a href="">Home</a></li>
-            <li className="list__item"><a href="">News</a></li>
+            <li className="list__item"><Link to="/">Home</Link></li>
+            <li className="list__item"><Link to="/news">News</Link></li>
           </ul>
 
-          <button className='[ button ]'>Log in</button>
-          <button className='[ button ]' data-variant='action'>Sign up</button>
+          <Link to='/auth/login' className='[ button ]'>Log in</Link>
+          <Link to='/auth/signup' className='[ button ]' data-variant='action'>Sign up</Link>
         </nav>
     </>
   )

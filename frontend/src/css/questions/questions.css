@@ -1,3 +1,11 @@
+.question__section {
+    grid-area: question__section;
+}
+
+.miscellaneous {
+    grid-area: miscellaneous;
+}
+
 .question {
     padding: var(--question-spacing);
 }

@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { API_URL } from "../../consts";
+import Tag from "./Tag";
 import { INF_Question } from "./types";
 
 function decorateStat(statNum: number, statName: 'views' | 'votes' | 'answers'): string {
@@ -14,7 +16,7 @@ function decorateStat(statNum: number, statName: 'views' | 'votes' | 'answers'):
 
 export const Question = ({ props } : { props: INF_Question }) => {
     return (
-        <div className="[ question ] [ flex flex-items flex-grow item-hoverable ]" data-hover-variant='light'>
+        <div className="[ question ] [ flex flex-items flex-grow item-hoverable width-1fr ]" data-hover-variant='light'>
             <div className="[ question__stats ] [ text-center ]"> 
                 <div className="[ question__stat ]" data-stat-variant={decorateStat(props.votes, 'votes')}>
                     <p className="[ stat__num ]">{ props.votes }</p>
@@ -34,11 +36,11 @@ export const Question = ({ props } : { props: INF_Question }) => {
                 <a href={`/questions/${props.id}/${props.title}`}
                     className="[ question__title ] [ header-500 multi-ellipsis ]">{ props.title }</a>
 
-                <div className="[ question__details ] [ flex flex-between ]">
-                    <div className="[ question__tags ]">
+                <div className="[ question__details ] [ flex flex-between margin-top-1 ]">
+                    <div className="[ question__tags ] [ flex-items flex-wrap ]">
                         {
                             (props.tags && props.tags.map(
-                                tag => ( <p className="[ question__tag ] [ tag ]">{ tag.name }</p> )))
+                                tag => <Tag tag={tag} /> ))
                         }
                     </div>
                     <div className="[ question__user ] [ flex flex-items flex-align-center ]">

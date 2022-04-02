@@ -17,6 +17,11 @@
     font-size: var(--fs-500);
 }
 
+/* Positions */
+.pos-fixed {
+    position: fixed;
+}
+
 /* Margins & Paddings */
 .margin-l-auto {
     margin-left: auto;
@@ -38,9 +43,35 @@
     margin-bottom: 1em;
 }
 
+.padding-block-1 {
+    padding-block: 1em;
+}
+
+/* Widths & Heights */
+.width-25ch {
+    width: 25ch;
+    max-width: 25ch;
+}
+
+.width-8rem {
+    width: 8rem;
+}
+
+.width-1fr {
+    width: 1fr;
+}
+
+.height-max {
+    height: max-content;
+}
+
 /* Texts */
 .text-center {
     text-align: center;
+}
+
+.innertext-small > * {
+    font-size: var(--fs-300);
 }
 
 /* Development */

@@ -15,7 +15,7 @@ export type INF_Question = {
     created_at: Date;
 }
 
-interface INF_Tag {
+export interface INF_Tag {
     name: string;
     icon?: string;
 }

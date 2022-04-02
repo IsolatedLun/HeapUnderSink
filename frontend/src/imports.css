@@ -2,6 +2,7 @@
 @import url('css/globals/resets.css');
 @import url('css/globals/compositions.css');
 @import url('css/globals/utils.css');
+@import url('css/globals//blocks.css');
 
 @import url('css/buttons/button.css');
 @import url('css/inputs/inputs.css');

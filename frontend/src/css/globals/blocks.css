@@ -1,0 +1,14 @@
+/* Containers */
+.main-container {
+    display: grid;
+    max-width: 1250px;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "questions__section  miscellaneous";
+    padding: var(--main-content-spacing);
+    margin: auto;
+}
+
+/* Elements */
+.question .question__tags {
+    --gap: 0.5em;
+}

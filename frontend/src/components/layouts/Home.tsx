@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <main className="[ main-container ] [ grid-2fr-1fr ]" id="main-container" 
       data-reset-grid-colums-mobile>
-        <Questions />
+        <Questions questions={[]} />
         <section data-desktop
           className='[ miscellaneous ] [ flex flex-justify-center padding-block-1 flex-items height-max ]'>
             <div className="[ card innertext-small flex-items flex-col ]" data-card-variant='yellow'>

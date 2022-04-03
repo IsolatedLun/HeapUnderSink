@@ -8,7 +8,7 @@
     transition: baackground-color 195ms ease-in-out;
 }
 
-.button:not([data-variant]):is(:hover, :focus) {
+.button[data-variant='default']:is(:hover, :focus) {
     background-color: var(--clr-button-hover);
 }
 

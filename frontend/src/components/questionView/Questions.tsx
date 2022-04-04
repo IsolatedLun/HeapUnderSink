@@ -1,6 +1,3 @@
-import { Link } from "react-router-dom";
-import { FILTER_ICON } from "../../consts";
-import IconButton from "../modules/buttons/IconButton";
 import { Question } from "./Question";
 import QuestionHeader from "./QuestionHeader";
 import { INF_Question } from "./types";
@@ -14,11 +11,11 @@ const Questions = ({ questions } : { questions: INF_Question[] }) => {
         {
           questions.length !== 0
           ? questions.map(question => <Question props={{ ...question }} />)
-          : <p>No questions found.</p>
+          : <p><code>No questions found.</code></p>
         }
       </div>
     </section>
   )
 }
 
-export default Questions
+export default Questions;

@@ -22,10 +22,14 @@ export const Question = ({ props } : { props: INF_Question }) => {
                     <p className="[ stat__num ]">{ props.votes }</p>
                     <p>votes</p>
                 </div>
-                <div className="[ question__stat ]" data-stat-variant={decorateStat(props.answers, 'answers')}>
+
+                <div className="[ question__stat ]" data-stat-variant={props.isAnswered 
+                        ? 'answered' 
+                        : decorateStat(props.answers, 'answers')}>
                     <p className="[ stat__num ]">{ props.answers }</p>
                     <p>answers</p>
                 </div>
+
                 <div className="[ question__stat ]" data-stat-variant={decorateStat(props.views, 'views')}>
                     <p className="[ stat__num ]">{ props.views }</p>
                     <p>views</p>
@@ -43,6 +47,7 @@ export const Question = ({ props } : { props: INF_Question }) => {
                                 tag => <Tag tag={tag} /> ))
                         }
                     </div>
+                    
                     <div className="[ question__user ] [ flex flex-items flex-align-center ]">
                         <img className="[ question__user-profile ] [ profile ]" 
                             src="https://image.api.playstation.com/vulcan/img/cfn/11307x4B5WLoVoIUtdewG4uJ_YuDRTwBxQy0qP8ylgazLLc01PBxbsFG1pGOWmqhZsxnNkrU3GXbdXIowBAstzlrhtQ4LCI4.png" data-profile-variant='beveled'
@@ -52,6 +57,7 @@ export const Question = ({ props } : { props: INF_Question }) => {
                             data-default>{ props.user.username }</a>
                     </div>
                 </div>
+
             </div>
         </div>
     )

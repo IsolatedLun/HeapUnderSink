@@ -1,6 +1,7 @@
 from django.db import models
 
 from users.models import cUser
+from users.serializers import cUserSerializer, cUserSerializerPreview
 
 class Question(models.Model):
     user = models.ForeignKey(cUser, on_delete=models.CASCADE)
@@ -18,6 +19,12 @@ class Question(models.Model):
 
     def get_tags(self):
         return Tag.objects.filter(question_id=self.id)
+
+    def get_user(self):
+        return cUserSerializer(self.user).data
+
+    def get_user_preview(self):
+        return cUserSerializerPreview(self.user).data
 
 class Tag(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)

@@ -15,7 +15,7 @@ test('Display questions with data', () => {
         answers: 0,
         views: 0,
         votes: 1000,
-        isAnswered: false,
+        answered: false,
         created_at: new Date(),
         title: 'A question',
         user: {

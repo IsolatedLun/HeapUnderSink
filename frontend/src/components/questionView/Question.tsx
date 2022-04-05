@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { API_URL } from "../../consts";
+import { humanizeNumber } from "../../utilFuncs/utils";
 import Tag from "./Tag";
 import { INF_Question } from "./types";
 
@@ -15,23 +15,24 @@ function decorateStat(statNum: number, statName: 'views' | 'votes' | 'answers'):
 }
 
 export const Question = ({ props } : { props: INF_Question }) => {
+
     return (
         <div className="[ question ] [ flex flex-items flex-grow item-hoverable width-1fr ]" data-hover-variant='light'>
             <div className="[ question__stats ] [ text-center ]"> 
                 <div className="[ question__stat ]" data-stat-variant={decorateStat(props.votes, 'votes')}>
-                    <p className="[ stat__num ]">{ props.votes }</p>
+                    <p className="[ stat__num ]">{ humanizeNumber(props.votes) }</p>
                     <p>votes</p>
                 </div>
 
-                <div className="[ question__stat ]" data-stat-variant={props.isAnswered 
+                <div className="[ question__stat ]" data-stat-variant={props.answered 
                         ? 'answered' 
                         : decorateStat(props.answers, 'answers')}>
-                    <p className="[ stat__num ]">{ props.answers }</p>
+                    <p className="[ stat__num ]">{ humanizeNumber(props.answers) }</p>
                     <p>answers</p>
                 </div>
 
                 <div className="[ question__stat ]" data-stat-variant={decorateStat(props.views, 'views')}>
-                    <p className="[ stat__num ]">{ props.views }</p>
+                    <p className="[ stat__num ]">{ humanizeNumber(props.views) }</p>
                     <p>views</p>
                 </div>
             </div>
@@ -50,7 +51,7 @@ export const Question = ({ props } : { props: INF_Question }) => {
                     
                     <div className="[ question__user ] [ flex flex-items flex-align-center ]">
                         <img className="[ question__user-profile ] [ profile ]" 
-                            src="https://image.api.playstation.com/vulcan/img/cfn/11307x4B5WLoVoIUtdewG4uJ_YuDRTwBxQy0qP8ylgazLLc01PBxbsFG1pGOWmqhZsxnNkrU3GXbdXIowBAstzlrhtQ4LCI4.png" data-profile-variant='beveled'
+                            src={API_URL + props.user.profile} data-profile-variant='beveled'
                             alt={props.user.username + "'s profile"} />
 
                         <a className="[ question__username ]" href={`/users/${props.user.id}/${props.user.username}`}

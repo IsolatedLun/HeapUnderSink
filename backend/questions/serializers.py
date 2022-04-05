@@ -4,6 +4,7 @@ from . import models
 
 class QuestionSerializer(serializers.ModelSerializer):
     tags = serializers.ReadOnlyField(source='get_tags')
+    user = serializers.ReadOnlyField(source='get_user')
 
     class Meta:
         model = models.Question
@@ -11,6 +12,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 class QuestionPreviewSerializer(serializers.ModelSerializer):
     tags = serializers.ReadOnlyField(source='get_tags')
+    user = serializers.ReadOnlyField(source='get_user_preview')
 
     class Meta:
         model = models.Question

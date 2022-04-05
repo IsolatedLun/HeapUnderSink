@@ -10,7 +10,7 @@ export type INF_Question = {
     answers: number;
     views: number;
 
-    isAnswered: boolean;
+    answered: boolean;
 
     created_at: Date;
 }

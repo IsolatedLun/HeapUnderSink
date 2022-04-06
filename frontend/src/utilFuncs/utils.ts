@@ -26,7 +26,7 @@ export function humanizeNumber(num: number): string {
     num = doubleDeci(num);
 
   if(key)
-    return `${num} ${kNumDict[key]}`;
+    return `${num}${kNumDict[key]}`;
   return num.toString();
 }
 

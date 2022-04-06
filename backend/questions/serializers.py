@@ -5,6 +5,8 @@ from . import models
 class QuestionSerializer(serializers.ModelSerializer):
     tags = serializers.ReadOnlyField(source='get_tags')
     user = serializers.ReadOnlyField(source='get_user')
+    modified_at = serializers.DateTimeField(format="%b %d, %Y")
+    created_at = serializers.DateTimeField(format="%b %d, %Y")
 
     class Meta:
         model = models.Question

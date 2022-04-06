@@ -47,6 +47,15 @@
     padding-block: 1em;
 }
 
+/* Gaps */
+.gap-025 {
+    gap: 0.25em;
+}
+
+.gap-05 {
+    gap: 0.5em;
+}
+
 /* Widths & Heights */
 .width-25ch {
     width: 25ch;
@@ -68,6 +77,10 @@
 /* Texts */
 .text-center {
     text-align: center;
+}
+
+.text-muted {
+    color: var(--clr-neutral-280);
 }
 
 .innertext-small > * {

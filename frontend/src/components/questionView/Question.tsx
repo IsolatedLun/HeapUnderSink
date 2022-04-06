@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { API_URL } from "../../consts";
 import { humanizeNumber } from "../../utilFuncs/utils";
 import Tag from "./Tag";
@@ -38,8 +39,8 @@ export const Question = ({ props } : { props: INF_Question }) => {
             </div>
 
             <div className="[ question__info ] [ flex flex-col flex-justify-between flex-grow ]">
-                <a href={`/questions/${props.id}/${props.title}`}
-                    className="[ question__title ] [ header-500 multi-ellipsis ]">{ props.title }</a>
+                <Link to={`/questions/${props.id}/${props.title}`}
+                    className="[ question__title ] [ header-500 multi-ellipsis ]">{ props.title }</Link>
 
                 <div className="[ question__details ] [ flex flex-between margin-top-1 ]">
                     <div className="[ question__tags ] [ flex-items flex-wrap ]">
@@ -56,6 +57,7 @@ export const Question = ({ props } : { props: INF_Question }) => {
 
                         <a className="[ question__username ]" href={`/users/${props.user.id}/${props.user.username}`}
                             data-default>{ props.user.username }</a>
+                        <p className="[ text-muted ]">{ humanizeNumber(props.user.reputation) }</p>
                     </div>
                 </div>
 

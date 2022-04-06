@@ -33,9 +33,13 @@
     flex-wrap: wrap;
 }
 
-.grid-2fr-1fr {
-    grid-template-columns: 2fr 1fr;
+.grid-3fr-1fr {
+    grid-template-columns: 3fr 1fr;
     gap: var(--grid-gap, 1em);
+}
+
+.flow * > * {
+    margin-top: 0.5em;
 }
 
 .flex-justify-between {
@@ -75,6 +79,12 @@ a[data-link-variant='dotted'] {
     color: var(--clr-tag);
     background-color: var(--clr-tag-background);
     border-radius: var(--tag-border, 5px);
+}
+
+/* Borders */
+.bottom-border {
+    padding-bottom: 0.85em;
+    border-bottom: 1px solid var(--clr-neutral-500);
 }
 
 /* Lists */

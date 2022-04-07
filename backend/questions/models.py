@@ -18,7 +18,7 @@ class Question(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     def get_tags(self):
-        return Tag.objects.filter(question_id=self.id)
+        return QuestionTag.objects.filter(question_id=self.id)
 
     def get_user(self):
         return cUserSerializer(self.user).data
@@ -27,8 +27,12 @@ class Question(models.Model):
         return cUserSerializerPreview(self.user).data
 
 class Tag(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=32, unique=True)
 
     views = models.BigIntegerField(default=0)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class QuestionTag(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)

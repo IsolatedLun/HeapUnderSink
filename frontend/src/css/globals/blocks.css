@@ -2,10 +2,13 @@
 .main-container {
     display: grid;
     max-width: 1250px;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: "questions__section  miscellaneous";
     padding: var(--main-content-spacing);
     margin: auto;
+}
+
+.main-container[data-contains-misc] {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "questions__section  miscellaneous";
 }
 
 /* Elements */

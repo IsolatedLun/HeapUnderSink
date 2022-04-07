@@ -12,6 +12,10 @@
     font-size: var(--fs-question-stat);
 }
 
+.fs-500 {
+    font-size: var(--fs-450);
+}
+
 /* Headers */
 .header-500 {
     font-size: var(--fs-500);
@@ -33,6 +37,10 @@
 
 .margin-inline-auto {
     margin-inline: auto;
+}
+
+.margin-block-auto {
+    margin-block: auto;
 }
 
 .margin-top-1 {

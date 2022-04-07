@@ -6,6 +6,8 @@ import Navbar from "./components/layouts/navbar/Navbar";
 import { store } from '../store';
 import ViewQuestion from "./components/questionView/ViewQuestion";
 import MainContainer from "./components/misc/MainContainer";
+import LogIn from "./components/layouts/forms/LogIn";
+import Footer from "./components/layouts/Footer";
 
 function App() {
 
@@ -13,23 +15,34 @@ function App() {
     <Provider store={store}>
       <Router>
 
-        <Navbar />
+        <div>
+          <Navbar />
 
-        <Routes>
+          <Routes>
 
-          <Route path="/" element={
-            <MainContainer>
-              <Home />
+            <Route path="/" element={
+              <MainContainer containMisc={true}>
+                <Home />
+              </MainContainer>
+            } />
+            
+            <Route path="/questions/:id/:title" element={
+              <MainContainer containMisc={true}>
+                <ViewQuestion />
+              </MainContainer>
+            } />
+
+            /* Auth Routes */
+            <Route path='/auth/login' element={
+            <MainContainer containMisc={false}>
+              <LogIn />
             </MainContainer>
           } />
-          
-          <Route path="/questions/:id/:title" element={
-            <MainContainer>
-              <ViewQuestion />
-            </MainContainer>
-          } />
 
-        </Routes>
+          </Routes>
+        </div>
+
+        <Footer />
 
       </Router>
     </Provider>

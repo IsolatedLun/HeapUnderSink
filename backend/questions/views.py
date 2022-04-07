@@ -12,4 +12,7 @@ class QuestionView(APIView):
     def get(self, req, question_id):
         question = models.Question.objects.get(id=question_id)
         question_serializer = serializers.QuestionSerializer(question).data
+
+        
+
         return Response(data=question_serializer, status=OK)

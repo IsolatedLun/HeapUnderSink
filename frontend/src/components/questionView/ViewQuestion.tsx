@@ -4,6 +4,7 @@ import { CARET_DOWN_ICON, CARET_UP_ICON } from '../../consts';
 import { useGetQuestionQuery } from '../../services/questionsService';
 import { humanizeNumber } from '../../utilFuncs/utils';
 import IconButton from '../modules/buttons/IconButton';
+import { decorateStat } from './Question';
 import { INF_Question } from './types'
 
 const ViewQuestion = () => {
@@ -29,11 +30,13 @@ const ViewQuestion = () => {
             </header>
 
             <div className='[ view__question ] [ flex flex-items text-center bottom-border ]'>
-                <div className="[ question__controls ] [ flex-items flex-col ]">
+                <div className="[ question__controls ] [ flex-items flex-col fs-500 ]">
                     <IconButton props={{ ariaLabel: 'Upvote question', onClick: () => null }}>
                         { CARET_UP_ICON }
                     </IconButton>
-                    <p>{ humanizeNumber(question.votes) }</p>
+                    <p className='[ stat ]' data-stat-variant={decorateStat(question.votes, 'votes')}>
+                        { humanizeNumber(question.votes) }
+                    </p>
                     <IconButton props={{ ariaLabel: 'Downvote question', onClick: () => null }}>
                         { CARET_DOWN_ICON }
                     </IconButton>

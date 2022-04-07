@@ -24,12 +24,14 @@
 }
 
 /* Question Stat Variants */
-.question .question__stat {
+.question .question__stat,
+.stat {
     border: 1px solid transparent;
     border-radius: var(--border-question-stat, 8px);
 }
 
-.question .question__stat[data-stat-variant='popular'] {
+.question .question__stat[data-stat-variant='popular'],
+.stat[data-stat-variant='popular'] {
     color: hsl(32 100% 55%);
 }
 
@@ -37,6 +39,7 @@
     border: 1px solid var(--clr-green-primary);
 }
 
-.question .question__stat[data-stat-variant='answered'] {
+.question .question__stat[data-stat-variant='answered'],
+.stat[data-stat-variant='answered'] {
     background-color: var(--clr-green-primary);
 }

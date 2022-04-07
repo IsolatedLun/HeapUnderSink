@@ -2,7 +2,8 @@
     /* Font Sizes */
     --fs-300: calc(var(--fs-400) * 0.9);
     --fs-400: 1rem;
-    --fs-420: calc(var(--fs-400) * 1);
+    --fs-420: calc(var(--fs-400) * 1.1);
+    --fs-450: calc(var(--fs-400) * 1.15);
     --fs-500: calc(var(--fs-400) * 1.25);
     --fs-600: calc(var(--fs-500) * 1.25);
     --fs-700: calc(var(--fs-600) * 1.25);
@@ -34,8 +35,8 @@
         --clr-button-border: hsl(240 10% 38%);
         --clr-button-hover: hsl(240 10% 24%);
 
-        --clr-button-action: hsl(130 52% 41%);
-        --clr-button-action-hover: hsl(130 52% 45%);
+        --clr-button-action: hsl(122 58% 37%);
+        --clr-button-action-hover: hsl(122 58% 42%);
 
         --clr-button-full-blue: hsl(220 92% 42%);
         --clr-button-full-blue-hover: hsl(220 92% 46%);
@@ -58,6 +59,7 @@
         /* Tag Colors */
         --clr-tag: hsl(220 92% 69%);
         --clr-tag-background: hsl(220 70% 36% / 0.24);
+        --clr-tag-faded-background: hsl(220 70% 36% / 0.14);
 
     /* Spacings */
     --main-content-spacing: 0.25em;

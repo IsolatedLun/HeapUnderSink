@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { API_URL } from "../../consts";
 import { humanizeNumber } from "../../utilFuncs/utils";
-import Tag from "./Tag";
+import QuestionTags from "./QuestionTags";
 import { INF_Question } from "./types";
 
-function decorateStat(statNum: number, statName: 'views' | 'votes' | 'answers'): string {
+export function decorateStat(statNum: number | string, statName: 'views' | 'votes' | 'answers'): string {
+    statNum = Number(statNum);
+   
     if(statName === 'views' && statNum >= 1000)
         return 'popular';
     else if(statName === 'answers' && statNum > 0)
@@ -43,12 +45,7 @@ export const Question = ({ props } : { props: INF_Question }) => {
                     className="[ question__title ] [ header-500 multi-ellipsis ]">{ props.title }</Link>
 
                 <div className="[ question__details ] [ flex flex-between margin-top-1 ]">
-                    <div className="[ question__tags ] [ flex-items flex-wrap ]">
-                        {
-                            (props.tags && props.tags.map(
-                                tag => <Tag tag={tag} /> ))
-                        }
-                    </div>
+                    <QuestionTags tags={props.tags} />
                     
                     <div className="[ question__user ] [ flex flex-items flex-align-center ]">
                         <img className="[ question__user-profile ] [ profile ]" 

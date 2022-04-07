@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
         <nav role='Primary navigation' className='[ primary-nav ] [ flex-between ]'>
-            <h1 className='[ fw-normal ]'>HeapUndersink</h1>
+            <Link to='/'><h1 className='[ fw-normal ]'>HeapUndersink</h1></Link>
 
             <input className='[ input margin-r-auto flex-grow ]' type="text" 
               placeholder='Search...' data-desktop />

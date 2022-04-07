@@ -18,6 +18,15 @@ body {
     color: var(--clr-foreground-main);
     background-color: var(--clr-background-main);
     overflow-x: hidden;
+    min-height: 100vh;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    width: 100%;
 }
 
 button, 
@@ -68,6 +77,12 @@ p {
 
 [data-state='on'] {
     display: var(--element-display, block) !important;;
+}
+
+:focus {
+    outline: 2px solid var(--clr-neutral-200);
+    outline-offset: 4px;
+    border-radius: inherit;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,0 +1,13 @@
+/* Tags */
+.tag {
+    padding: calc(var(--tag-spacing) * 0.5) var(--tag-spacing);
+    color: var(--clr-tag);
+    background-color: var(--clr-tag-background);
+    border-radius: var(--tag-border, 5px);
+}
+
+/* Tag Variants */
+.tag[tag-variant='dead'] {
+    pointer-events: none;
+    opacity: 0.5;
+}

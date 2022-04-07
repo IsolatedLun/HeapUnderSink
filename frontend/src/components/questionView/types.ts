@@ -5,7 +5,7 @@ export type INF_Question = {
     user: INF_UserPreview;
     title: string;
     body: string;
-    tags?: INF_Tag[];
+    tags: INF_Tag[];
 
     votes: number;
     answers: number;
@@ -19,5 +19,6 @@ export type INF_Question = {
 
 export interface INF_Tag {
     name: string;
-    icon?: string;
+    views: number;
+    isDead: boolean;
 }

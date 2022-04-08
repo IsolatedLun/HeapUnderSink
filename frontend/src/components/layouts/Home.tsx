@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useGetQuestionsQuery } from '../../services/questionsService'
-import DisplayOrLoad from '../misc/DisplayOrLoad'
-import Questions from '../questionView/Questions'
-import { INF_Question } from '../questionView/types'
+import { useEffect, useState } from 'react';
+import { useGetQuestionsQuery } from '../../services/questionsService';
+import Questions from '../Questions/Questions';
+import { INF_Question } from '../Questions/types';
 
 const Home = () => {
   const { data } = useGetQuestionsQuery();

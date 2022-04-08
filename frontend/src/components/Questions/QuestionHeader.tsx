@@ -1,7 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { FILTER_ICON } from '../../consts'
-import IconButton from '../modules/buttons/IconButton'
+import { Link } from 'react-router-dom';
+import { FILTER_ICON } from '../../consts';
+import IconButton from '../Modules/Buttons/IconButton';
 
 const QuestionHeader = () => {
   return (
@@ -30,4 +29,4 @@ const QuestionHeader = () => {
   )
 }
 
-export default QuestionHeader
+export default QuestionHeader;

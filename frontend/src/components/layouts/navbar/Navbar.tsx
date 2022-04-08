@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { BAR_ICON, TIMES_ICON } from '../../../consts';
 import { toggleElement } from '../../../utilFuncs/utils';
-import IconButton from '../../modules/buttons/IconButton';
-import LinkButton from '../../modules/buttons/LinkButton';
+import IconButton from '../../Modules/Buttons/IconButton';
+import LinkButton from '../../Modules/Buttons/LinkButton';
 import SideNavbar from './SideNavbar';
 
 const Navbar = () => {

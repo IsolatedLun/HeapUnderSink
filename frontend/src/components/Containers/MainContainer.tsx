@@ -1,5 +1,5 @@
 import React from 'react'
-import Miscellaneuos from '../layouts/Miscellaneuos'
+import Miscellaneuos from '../Layouts/Miscellaneuos'
 
 const MainContainer = ({ children, containMisc=true } : { children: any, containMisc: boolean }) => {
   if(containMisc)

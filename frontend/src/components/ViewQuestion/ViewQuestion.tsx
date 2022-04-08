@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import { CARET_DOWN_ICON, CARET_UP_ICON } from '../../consts';
 import { useGetQuestionQuery } from '../../services/questionsService';
 import { humanizeNumber } from '../../utilFuncs/utils';
-import IconButton from '../modules/buttons/IconButton';
-import { decorateStat } from './Question';
-import { INF_Question } from './types'
+import IconButton from '../Modules/Buttons/IconButton';
+import { decorateStat } from '../Questions/Stat';
+import { INF_Question } from '../Questions/types';
 
 const ViewQuestion = () => {
     const { id } = useParams();

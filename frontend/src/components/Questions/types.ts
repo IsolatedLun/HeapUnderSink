@@ -22,3 +22,8 @@ export interface INF_Tag {
     views: number;
     isDead: boolean;
 }
+
+export interface INF_Stat {
+    name: string;
+    num: number;
+}

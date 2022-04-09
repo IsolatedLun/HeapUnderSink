@@ -8,7 +8,8 @@ const Profile = ({ profile } : { profile: INF_Profile }) => {
 
   return (
     <img className="[ profile ]" 
-        src={API_URL + profile.url} data-profile-variant={profile.variant}
+        src={API_URL + profile.url} 
+        data-profile-variant={profile.variant}
         alt={profile.alt} />
   )
 }

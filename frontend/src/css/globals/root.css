@@ -24,6 +24,8 @@
     --clr-neutral-500: hsl(0 0% 30%);
     --clr-neutral-700: hsl(0 0% 14%);
 
+    --clr-error-400: hsl(4 87% 57%);
+
     --clr-hover: rgb(255 255 255 / 0.12);
     --clr-hover-light: rgb(255 255 255 / 0.06);
 
@@ -35,8 +37,8 @@
         --clr-button-border: hsl(240 10% 38%);
         --clr-button-hover: hsl(240 10% 24%);
 
-        --clr-button-action: hsl(122 58% 37%);
-        --clr-button-action-hover: hsl(122 58% 42%);
+        --clr-button-action: hsl(122 48% 37%);
+        --clr-button-action-hover: hsl(122 48% 42%);
 
         --clr-button-full-blue: hsl(220 92% 42%);
         --clr-button-full-blue-hover: hsl(220 92% 46%);

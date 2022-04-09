@@ -1,5 +1,9 @@
 import { kNums } from "../consts";
 
+/**
+ * @param id
+ * @summary Toggles the [data-state] of an element (on, off)
+*/
 export function toggleElement(id: string) {
   const el = document.getElementById('side-nav') as HTMLElement;
 
@@ -10,6 +14,11 @@ export function toggleElement(id: string) {
     el.setAttribute('data-state', 'off')
 }
 
+/**
+ * @param num
+ * @summary Humanizes a number
+ * @example humanizeNumber(89456) => "89.4k"
+*/
 export function humanizeNumber(num: number): string {
   const kNumDict = kNums as any;
   let index = 0;
@@ -30,6 +39,11 @@ export function humanizeNumber(num: number): string {
   return num.toString();
 }
 
+/**
+ * @param num
+ * @summary Puts the 1st integer as the whole and 2nd integer as the float
+ * @example humanizeNumber(89456) => "89.4"
+*/
 export function doubleDeci(num: number): number {
   return Number(String(num)[0]) + (Number(String(num)[1]) / 10);
 }

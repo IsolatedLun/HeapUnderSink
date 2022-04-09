@@ -1,6 +1,13 @@
 import { humanizeNumber } from "../../utilFuncs/utils"
 import { INF_Stat } from "./types";
 
+/**
+ * @param statName -> Name of the stat.
+ * @param statNum -> Aggregate of the stat.
+ * @returns A specific string depending on the 2 parameters.
+ * @example decorateStat(1001, "views") => "popular"
+ * decorateStat(999, "views") => "default"
+*/
 export function decorateStat(statNum: number | string, statName: string): string {
     statNum = Number(statNum);
    

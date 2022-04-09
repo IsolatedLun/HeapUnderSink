@@ -107,6 +107,13 @@ a[data-link-variant='dotted'] {
     background-color: var(--clr-hover);
 }
 
+.list[data-list-variant='error'] {
+    color: var(--clr-error-400);
+    list-style: disc;
+    margin-inline: var(--list-spacing, 1.55em);
+    margin-bottom: 0.25em;
+}
+
 /* Bordered List */
 .bordered-list li {
     --border-radius: 8px;
@@ -149,6 +156,12 @@ a[data-link-variant='dotted'] {
 .card[data-card-variant='yellow'] {
     border: 1px solid var(--clr-card-yellow-border);
     background-color: var(--clr-card-yellow-background);
+}
+
+/* Elements */
+[data-dead='true'] {
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 /* Text */

@@ -1,4 +1,3 @@
-import React from 'react'
 import Miscellaneuos from '../Layouts/Miscellaneuos'
 
 const MainContainer = ({ children, containMisc=true } : { children: any, containMisc: boolean }) => {

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { API_URL } from "../../consts";
 import { humanizeNumber } from "../../utilFuncs/utils";
 import Profile from "../Modules/Profiles/Profile";
 import QuestionTags from "./QuestionTags";

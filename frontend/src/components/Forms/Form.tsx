@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Form = () => {
+const Form = ({ children, onSubmit } : { children: any, onSubmit: Function }) => {
   return (
-    <div>Form</div>
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onSubmit();
+    }}
+      className='[ form flex flex-col gap-05 ]'>
+      { children }
+    </form>
   )
 }
 

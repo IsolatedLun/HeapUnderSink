@@ -12,6 +12,11 @@
     background-color: var(--clr-button-hover);
 }
 
+.button[data-variant='empty'] {
+    background-color: transparent;
+    border: 0;
+}
+
 /* Variant => action */
 .button[data-variant='action'] {
     background-color: var(--clr-button-action);

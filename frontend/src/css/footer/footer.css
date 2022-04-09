@@ -1,0 +1,8 @@
+.footer {
+    padding: calc(var(--footer-spacing) * 0.45) var(--footer-spacing);
+    background-color: var(--clr-background-400);
+}
+
+.footer .list {
+    font-size: var(--fs-300);
+}

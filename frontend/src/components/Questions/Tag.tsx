@@ -5,7 +5,7 @@ const Tag = ({ tag } : { tag: INF_Tag }) => {
   return (
     <Link to={`/tags/${tag.name}`} 
       className="[ question__tag ] [ tag flex gap-025 ]" 
-      tag-variant={tag.isDead ? 'dead': 'default'}>
+      data-dead={tag.isDead}>
 
       <p>{ tag.name }</p>
     </Link>

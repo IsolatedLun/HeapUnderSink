@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "postcss-run": "postcss ./src/imports.css --dir public --watch",
-    "test": "jest"
+    "test": "jest --env=jsdom"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",

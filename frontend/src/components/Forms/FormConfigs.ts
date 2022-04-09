@@ -1,5 +1,5 @@
 import { INF_Config, INF_Input } from "./types";
-import { requiredRule } from "./validatorRules";
+import { minLengthRule, requiredRule, specialCharactersRule } from "./validatorRules";
 
 export const loginConfig: INF_Config = {
     inputs: {
@@ -21,6 +21,8 @@ export const loginConfig: INF_Config = {
             type: 'password',
             validators: [
                 requiredRule,
+                () => minLengthRule(12),
+                () => specialCharactersRule(['#', '$', '&'])
             ],
             onInput: () => null
         }

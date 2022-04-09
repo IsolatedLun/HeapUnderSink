@@ -42,7 +42,8 @@ function createFormField(input: INF_Input, setter: Function): [JSX.Element, stri
             <FormPart>
                 <label htmlFor={input.name}>{ cleanUnderscores(input.name) }</label>
                 <TextInput input={{ ...input, onInput: setter }} />
-                <ul className="[ list flex-col ]" data-list-variant='error' id={input.name + '-input-list'} ></ul>
+                <ul className="[ list flex-col ]" data-list-variant='error' 
+                    id={input.name + '-input-list'} ></ul>
             </FormPart>
         )
 
@@ -82,10 +83,9 @@ function validateForm(validatorNodes: INF_ValidatorNode[]): boolean {
 function displayErrors(inputId: string, errors: string[]): void {
     const list = document.getElementById(inputId + '-list')!;
     list.innerHTML = '';
-    
-    let li = document.createElement('li');
 
     errors.forEach(error => {
+        let li = document.createElement('li');
         li.textContent = error;
         list.appendChild(li);
     })

@@ -1,12 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import 'jest';
+import { BrowserRouter } from 'react-router-dom';
 import Questions from '../Questions';
 import { INF_Question } from '../types';
 
 test('Display questions with no data', () => {
-    render(<Questions questions={[]} />);
+    render(
+        <BrowserRouter>
+            <Questions questions={[]} sortBy='' />
+        </BrowserRouter>
+    );
 
-    screen.getByText(/'no questions found.'/i);
+    screen.getByText('No questions found.');
 });
 
 test('Display questions with data', () => {
@@ -29,10 +34,14 @@ test('Display questions with data', () => {
         }
     }
 
-    render(<Questions questions={[question]} />);
+    render(
+        <BrowserRouter>
+            <Questions questions={[question]} sortBy='' />
+        </BrowserRouter>
+    );
 
-    screen.getByText(/'A question'/i);
+    screen.getByText('A question');
     
-    const votes = screen.getByText(/'votes'/i).parentElement;
+    const votes = screen.getByText('votes').parentElement;
     expect(votes?.getAttribute('data-stat-variant')).toBe('popular');
 });

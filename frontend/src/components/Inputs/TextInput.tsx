@@ -9,6 +9,7 @@ const TextInput = ({ input } : { input: INF_Input }) => {
         type={input.type} 
         className='[ input ]'
         data-input-variant='text'
+        value={input.value}
         onInput={(e) => {
           const target = e.target as HTMLInputElement;
           input.onInput((prevState: object) => ({ ...prevState, [target.name]: target.value }))

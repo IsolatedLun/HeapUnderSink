@@ -16,6 +16,10 @@
     font-size: var(--fs-450);
 }
 
+.fs-200 {
+    font-size: var(--fs-200);
+}
+
 /* Headers */
 .header-500 {
     font-size: var(--fs-500);

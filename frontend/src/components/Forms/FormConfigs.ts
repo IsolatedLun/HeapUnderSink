@@ -3,11 +3,12 @@ import { minLengthRule, requiredRule, specialCharactersRule } from "./validatorR
 
 export const loginConfig: INF_Config = {
     inputs: {
-        email: <INF_Input>{
+        email_address: <INF_Input>{
             id: 1,
             name: 'email_address',
             generalType: 'text',
             type: 'email',
+            value: '',
             validators: [
                 requiredRule,
             ],
@@ -19,9 +20,10 @@ export const loginConfig: INF_Config = {
             name: 'password',
             generalType: 'text',
             type: 'password',
+            value: '',
             validators: [
                 requiredRule,
-                () => minLengthRule(12),
+                () => minLengthRule(7),
                 () => specialCharactersRule(['#', '$', '&'])
             ],
             onInput: () => null

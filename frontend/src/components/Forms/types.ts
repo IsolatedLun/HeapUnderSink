@@ -4,6 +4,7 @@ export interface INF_Input {
     type: string;
     generalType: string;
     onInput: Function;
+    value: any;
     validators: [ () => INF_Rule ] | any;
 }
 

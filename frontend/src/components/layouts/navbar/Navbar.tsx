@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
-import { BAR_ICON, TIMES_ICON } from '../../../consts';
+import { BAR_ICON, CARET_DOWN_ICON, TIMES_ICON } from '../../../consts';
 import { toggleElement } from '../../../utilFuncs/utils';
 import IconButton from '../../Modules/Buttons/IconButton';
 import LinkButton from '../../Modules/Buttons/LinkButton';
+import ContextMenu from '../../Modules/ContextMenu';
+import Profile from '../../Modules/Profiles/Profile';
+import AuthNavButtons from './AuthNavButtons';
+import NavContextItems from './NavContextItems';
 import SideNavbar from './SideNavbar';
 
 const Navbar = () => {
+  const isLogged = true;
+
   return (
     <>
         <nav role='Primary navigation' className='[ primary-nav ] [ flex-between ]'>
@@ -21,21 +27,27 @@ const Navbar = () => {
 
             <div aria-hidden data-desktop className="line-break"></div>
 
-            <div className='[ flex-items ]'>
-                <LinkButton props={{ to: '/auth/login', rest: {'data-desktop': true} }}>
-                  Log in
-                </LinkButton>
-                <LinkButton props={{ to: '/auth/signup', variant: 'action', rest: {'data-desktop': true} }}>
-                  Sign up
-                </LinkButton>
-            </div>
+            <div className='[ flex flex-items ]'>
+              {
+                isLogged
+                ? (
+                    <ContextMenu listItems={<NavContextItems />}>
+                      <div className='[ flex flex-align-center flex-items ]'>
+                        <Profile profile={{ url: '/media/profiles/def.png', alt: '' }} />
+                        <i className='fa'>{ CARET_DOWN_ICON }</i>
+                      </div>
+                    </ContextMenu>
+                  )
+                : <AuthNavButtons isDesktop={true} />
+              }
 
-            <IconButton props={{ 
-              ariaLabel: 'Toggle sidenav button', rest: { 'data-mobile': true },
-              onClick: () => toggleElement('side-nav')}}
-              >
-              { BAR_ICON }
-            </IconButton>
+              <IconButton props={{ 
+                ariaLabel: 'Toggle sidenav button', rest: { 'data-mobile': true },
+                onClick: () => toggleElement('side-nav')}}
+                >
+                { BAR_ICON }
+              </IconButton>
+            </div>
         </nav>
 
         <SideNavbar />

@@ -3,6 +3,7 @@ import { TIMES_ICON } from '../../../consts'
 import { toggleElement } from '../../../utilFuncs/utils'
 import IconButton from '../../Modules/Buttons/IconButton'
 import LinkButton from '../../Modules/Buttons/LinkButton'
+import AuthNavButtons from './AuthNavButtons'
 
 const SideNavbar = () => {
   return (
@@ -22,8 +23,7 @@ const SideNavbar = () => {
             <li className="list__item"><Link to="/news">News</Link></li>
         </ul>
 
-        <LinkButton props={{ to: '/auth/login' }}>Log in</LinkButton>
-        <LinkButton props={{ to: '/auth/signup', variant: 'action' }}>Sign up</LinkButton>
+        <AuthNavButtons isDesktop={false} />
     </nav>
   )
 }

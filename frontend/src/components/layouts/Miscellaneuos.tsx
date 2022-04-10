@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Miscellaneuos = () => {
   return (
@@ -8,7 +9,7 @@ const Miscellaneuos = () => {
             <p className='[ width-25ch text-center ]'>
                 HeapUndersink is a place where you can ask any question and get any answer.
             </p> 
-            <a href="" data-default='dark' data-link-variant='dotted'>Ask question</a>
+            <Link to="/ask" data-default='dark' data-link-variant='dotted'>Ask question</Link>
         </div>
     </section>
   )

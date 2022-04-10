@@ -18,7 +18,7 @@ export function useForm(configuration: any, setter: Function, form: any): [JSX.E
     for(let field in configuration) {
         const inputObj = configuration[field] as INF_Input;
 
-        const [input, id] = createFormField(configuration[field], setter); 
+        const [input, id] = createFormField(configuration[field], form[field], setter); 
         renderedFields.push(input);
         nodes.push({ id, validators: inputObj.validators })
     }
@@ -36,12 +36,12 @@ export function useForm(configuration: any, setter: Function, form: any): [JSX.E
  * @param setter - Sets the state of the form
  * @returns [<FormPart />, id]
 */
-function createFormField(input: INF_Input, setter: Function): [JSX.Element, string] {
+function createFormField(input: INF_Input, value: any, setter: Function): [JSX.Element, string] {
     if(input.generalType === 'text') {
         const el = (
             <FormPart>
                 <label htmlFor={input.name}>{ cleanUnderscores(input.name) }</label>
-                <TextInput input={{ ...input, onInput: setter }} />
+                <TextInput input={{ ...input, onInput: setter, value }} />
                 <ul className="[ list flex-col ]" data-list-variant='error' 
                     id={input.name + '-input-list'} ></ul>
             </FormPart>

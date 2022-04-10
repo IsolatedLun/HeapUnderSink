@@ -11,7 +11,7 @@ const QuestionHeader = ({ setSort } : { setSort: Function }) => {
 
         <div className="[ flex-items ]">
           <h2>Questions</h2>
-          <Link to='/add-question' className="[ button ]" data-variant='full-blue'>Ask question</Link>
+          <Link to='/ask' className="[ button ]" data-variant='full-blue'>Ask question</Link>
         </div>
         <div className="[ flex-items ]" data-flex-column-mobile>
           <ul aria-label="Questions filter buttons" className="[ bordered-list flex ]">

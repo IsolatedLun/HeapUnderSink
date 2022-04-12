@@ -47,10 +47,10 @@ function createFormField(input: INF_Input, value: any, setter: Function): [JSX.E
             </FormPart>
         )
 
-        return [el, input.name + '-input']
+        return [el, input.name + '-input'];
     }
 
-    return [(<></>), '']
+    return [(<></>), ''];
 }
 
 /**
@@ -74,7 +74,7 @@ function validateForm(validatorNodes: INF_ValidatorNode[]): boolean {
         })
         
         validInputs.push(!(errors.length > 0));
-        displayErrors(node.id, errors)
+        displayErrors(node.id, errors);
     })
 
     return validInputs.every(Boolean);

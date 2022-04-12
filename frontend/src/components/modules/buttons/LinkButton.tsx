@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { LinkButtonProps } from './types'
 
-const LinkButton = ({ children, props} : { props: LinkButtonProps, children: any }) => {
+const LinkButton = (props: LinkButtonProps) => {
     const { variant, rest, to } = props;
 
   return (
@@ -10,7 +10,7 @@ const LinkButton = ({ children, props} : { props: LinkButtonProps, children: any
         data-variant={variant ? variant : 'default'}
         { ...rest }
         >
-        { children }
+        { props.children }
     </Link>
   )
 }

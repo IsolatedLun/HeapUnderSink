@@ -3,6 +3,7 @@ import React from "react";
 export interface ButtonProps {
     variant?: string;
     rest?: React.ButtonHTMLAttributes<any> | any;
+    children: any;
 }
 
 export interface ActionButtonProps extends ButtonProps {

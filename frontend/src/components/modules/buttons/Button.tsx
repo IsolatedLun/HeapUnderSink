@@ -3,7 +3,7 @@ import { ActionButtonProps } from "./types"
 
 
 
-const Button = ({ children, props } : { props: ActionButtonProps, children: any }) => {
+const Button = (props: ActionButtonProps) => {
     const { variant, onClick, rest } = props;
 
     return (
@@ -13,7 +13,7 @@ const Button = ({ children, props } : { props: ActionButtonProps, children: any 
         onClick={(e) => onClick()}
         { ...rest }
         >
-        { children }
+        { props.children }
     </button>
     )
 }

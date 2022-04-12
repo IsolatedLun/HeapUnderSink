@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
-import { BAR_ICON, CARET_DOWN_ICON, TIMES_ICON } from '../../../consts';
+import { BAR_ICON, CARET_DOWN_ICON, PROFILE_ICON } from '../../../consts';
 import { toggleElement } from '../../../utilFuncs/utils';
 import IconButton from '../../Modules/Buttons/IconButton';
 import LinkButton from '../../Modules/Buttons/LinkButton';
-import ContextMenu from '../../Modules/ContextMenu';
+import DropDown from '../../Modules/Dropdowns/DropDown';
+import DropDownItem from '../../Modules/Dropdowns/DropDownItem';
 import Profile from '../../Modules/Profiles/Profile';
 import AuthNavButtons from './AuthNavButtons';
-import NavContextItems from './NavContextItems';
+import NavItem from './NavItem';
+import NavUser from './NavUser';
 import SideNavbar from './SideNavbar';
 
 const Navbar = () => {
@@ -31,20 +33,19 @@ const Navbar = () => {
               {
                 isLogged
                 ? (
-                    <ContextMenu listItems={<NavContextItems />}>
-                      <div className='[ flex flex-align-center flex-items ]'>
-                        <Profile profile={{ url: '/media/profiles/def.png', alt: '' }} />
-                        <i className='fa'>{ CARET_DOWN_ICON }</i>
-                      </div>
-                    </ContextMenu>
+                    <NavItem item={<NavUser />}>
+                      <DropDownItem leftIcon={PROFILE_ICON}>
+                        Your profile
+                      </DropDownItem>
+                    </NavItem>
                   )
                 : <AuthNavButtons isDesktop={true} />
               }
 
-              <IconButton props={{ 
-                ariaLabel: 'Toggle sidenav button', rest: { 'data-mobile': true },
-                onClick: () => toggleElement('side-nav')}}
-                >
+              <IconButton
+                ariaLabel='Toggle sidenav button' rest={{ 'data-mobile': true }}
+                onClick={() => toggleElement('side-nav')}>
+                
                 { BAR_ICON }
               </IconButton>
             </div>

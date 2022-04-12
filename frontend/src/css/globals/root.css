@@ -78,9 +78,10 @@
         --question-spacing: 0.5em;
         --question-stat-spacing: 0.65em;
 
-        /* Context Menu Spacings */
-        --context-menu-spacing: 0.55em;
-        --context-menu-item-spacing: 0.85em;
+        /* Navbar Spacings */
+        --dropdown-spacing: 0.35em;
+        --dropdown-item-spacing: 0.85em;
+        --nav-item-spacing: 0.55em;
 }
 
 @media screen and (max-width: 768px) {

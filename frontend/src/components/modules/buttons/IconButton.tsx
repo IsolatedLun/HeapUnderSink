@@ -3,7 +3,7 @@ import { ActionButtonProps, IconButtonProps } from "./types"
 
 
 
-const IconButton = ({ children, props } : { props: IconButtonProps, children: any }) => {
+const IconButton = (props: IconButtonProps) => {
     const { variant, onClick, rest, ariaLabel } = props;
 
     return (
@@ -15,7 +15,7 @@ const IconButton = ({ children, props } : { props: IconButtonProps, children: an
         onClick={(e) => onClick()}
         { ...rest }
         >
-        { children }
+        { props.children }
     </button>
     )
 }

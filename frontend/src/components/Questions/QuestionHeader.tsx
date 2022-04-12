@@ -16,17 +16,17 @@ const QuestionHeader = ({ setSort } : { setSort: Function }) => {
         <div className="[ flex-items ]" data-flex-column-mobile>
           <ul aria-label="Questions filter buttons" className="[ bordered-list flex ]">
             <li className="[ item-hoverable ]" data-hover='light'>
-              <Button props={{ onClick: () => setSort('popular'), variant: 'empty' }}>
+              <Button onClick={() => setSort('popular')} variant='empty'>
                 Most popular
               </Button>
             </li>
             <li className="[ item-hoverable ]" data-hover='light'>
-              <Button props={{ onClick: () => setSort('bountied'), variant: 'empty' }}>
+              <Button onClick={() => setSort('bountied')} variant='empty'>
                 Bountied
               </Button>
             </li>
             <li className="[ item-hoverable ]" data-hover='light'>
-              <Button props={{ onClick: () => setSort('new'), variant: 'empty' }}>
+              <Button onClick={() => setSort('new')} variant='empty'>
                 New
               </Button>
             </li>
@@ -34,7 +34,7 @@ const QuestionHeader = ({ setSort } : { setSort: Function }) => {
 
           <div className="[ flex-items margin-inline-auto ]">
             <input type="text" className="[ input ] [ width-8rem ]" placeholder="Sort by tag..." />
-            <IconButton props={{ ariaLabel: 'Filter button', onClick: () => null }}>
+            <IconButton ariaLabel='Filter button'onClick={() => null }>
               { FILTER_ICON }
             </IconButton>
           </div>

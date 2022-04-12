@@ -5,6 +5,7 @@ export const TIMES_ICON = '\uf00d';
 export const FILTER_ICON = '\uf0b0';
 export const CARET_UP_ICON = '\uf0d8';
 export const CARET_DOWN_ICON = '\uf0d7';
+export const PROFILE_ICON = '\uf007';
 
 export const kNums = {
     '1000': 'k',

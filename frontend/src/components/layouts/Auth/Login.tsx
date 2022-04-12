@@ -12,7 +12,7 @@ const Login = () => {
         <div className='[ grid-split margin-block-auto padding-block-1 ]'>
             <Form onSubmit={() => null}>
                 { (fields) }  
-                <SubmitButton props={{ rest: {'data-dead': !isValidForm} }}>Log in</SubmitButton>
+                <SubmitButton rest={{ 'data-dead': !isValidForm }}>Log in</SubmitButton>
             </Form>
 
             <div className="[ welcome ] [ flex-center flex-col text-center margin-block-auto ]">

@@ -11,9 +11,9 @@ const SideNavbar = () => {
         className="[ side-nav ] [ flex-items flex-col flex-align-center ]" 
         data-state='off'>
 
-        <IconButton props={{ 
-            ariaLabel: 'Toggle sidenav button', 
-            onClick: () => toggleElement('side-nav')}}
+        <IconButton 
+            ariaLabel= 'Toggle sidenav button'
+            onClick={() => toggleElement('side-nav')}
         >
         { TIMES_ICON }
         </IconButton>

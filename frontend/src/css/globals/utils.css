@@ -34,6 +34,10 @@
     position: fixed;
 }
 
+.pos-relative {
+    position: relative;
+}
+
 /* Margins & Paddings */
 .margin-l-auto {
     margin-left: auto;
@@ -105,6 +109,11 @@
 
 .innertext-small > * {
     font-size: var(--fs-300);
+}
+
+/* Cursors */
+.cursor-pointer {
+    cursor: pointer;
 }
 
 /* Development */

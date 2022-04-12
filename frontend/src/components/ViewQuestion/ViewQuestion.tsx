@@ -31,13 +31,13 @@ const ViewQuestion = () => {
 
             <div className='[ view__question ] [ flex flex-items text-center bottom-border ]'>
                 <div className="[ question__controls ] [ flex-items flex-col fs-500 ]">
-                    <IconButton props={{ ariaLabel: 'Upvote question', onClick: () => null }}>
+                    <IconButton ariaLabel='Upvote question' onClick={() => null}>
                         { CARET_UP_ICON }
                     </IconButton>
                     <p className='[ stat ]' data-stat-variant={decorateStat(question.votes, 'votes')}>
                         { humanizeNumber(question.votes) }
                     </p>
-                    <IconButton props={{ ariaLabel: 'Downvote question', onClick: () => null }}>
+                    <IconButton ariaLabel='Downvote question' onClick={() => null}>
                         { CARET_DOWN_ICON }
                     </IconButton>
                 </div>

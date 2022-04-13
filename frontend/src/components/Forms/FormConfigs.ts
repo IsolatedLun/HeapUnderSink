@@ -1,4 +1,4 @@
-import { INF_Config, INF_Input } from "./types";
+import { INF_Config, INF_Input, INF_Login } from "./types";
 import { minLengthRule, requiredRule, specialCharactersRule } from "./validatorRules";
 
 export const loginConfig: INF_Config = {
@@ -18,7 +18,7 @@ export const loginConfig: INF_Config = {
         password: <INF_Input>{
             id: 1,
             name: 'password',
-            generalType: 'text',
+            generalType: 'password',
             type: 'password',
             value: '',
             validators: [
@@ -30,7 +30,7 @@ export const loginConfig: INF_Config = {
         }
     },
 
-    formObj: {
+    formObj: <INF_Login>{
         email_address: '',
         password: ''
     }

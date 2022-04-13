@@ -1,18 +1,16 @@
 import { Link } from 'react-router-dom';
-import { BAR_ICON, CARET_DOWN_ICON, PROFILE_ICON } from '../../../consts';
+import { BAR_ICON, PROFILE_ICON } from '../../../consts';
 import { toggleElement } from '../../../utilFuncs/utils';
 import IconButton from '../../Modules/Buttons/IconButton';
-import LinkButton from '../../Modules/Buttons/LinkButton';
-import DropDown from '../../Modules/Dropdowns/DropDown';
 import DropDownItem from '../../Modules/Dropdowns/DropDownItem';
-import Profile from '../../Modules/Profiles/Profile';
 import AuthNavButtons from './AuthNavButtons';
 import NavItem from './NavItem';
 import NavUser from './NavUser';
 import SideNavbar from './SideNavbar';
+import { useAppSelector } from '../../../../hooks';
 
 const Navbar = () => {
-  const isLogged = true;
+  const { isLogged } = useAppSelector(state => state.auth);
 
   return (
     <>

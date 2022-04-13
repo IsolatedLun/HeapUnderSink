@@ -116,6 +116,10 @@
     cursor: pointer;
 }
 
+.select-none {
+    user-select: none;
+}
+
 /* Development */
 .dev-bg {
     background-color: red;

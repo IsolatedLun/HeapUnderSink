@@ -5,7 +5,8 @@ const AuthNavButtons = ({ isDesktop } : { isDesktop: boolean }) => {
     const rest = isDesktop ? { 'data-desktop': true } : { 'data-mobile': true };
 
     return (
-    <div className={isDesktop ? '[ flex-items ]' : '[ flex-items flex-col flex-align-center ]'}>
+    <div { ...rest } 
+        className={isDesktop ? '[ flex-items ]' : '[ flex-items flex-col flex-align-center ]'}>
         <LinkButton  to='/auth/login'>
             Log in
         </LinkButton>

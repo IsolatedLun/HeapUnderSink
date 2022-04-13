@@ -6,3 +6,10 @@
 .footer .list {
     font-size: var(--fs-300);
 }
+
+@media screen and (max-width: 768px) {
+    .footer > div {
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -25,5 +25,16 @@ export interface INF_Rule {
 
 export interface INF_Config {
     inputs: object;
-    formObj: object;
+    formObj: any;
+}
+
+// Forms
+export interface INF_Login {
+    email_address: string;
+    password: string;
+}
+
+export interface INF_TokenResponse {
+    refresh: string;
+    access: string;
 }

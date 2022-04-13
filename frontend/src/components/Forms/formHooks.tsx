@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PasswordInput from "../Inputs/PasswordInput";
 import TextInput from "../Inputs/TextInput";
 import FormPart from "./FormPart";
 import { INF_ValidatorNode, INF_Input } from "./types";
@@ -37,11 +38,18 @@ export function useForm(configuration: any, setter: Function, form: any): [JSX.E
  * @returns [<FormPart />, id]
 */
 function createFormField(input: INF_Input, value: any, setter: Function): [JSX.Element, string] {
-    if(input.generalType === 'text') {
+    let inputEl: JSX.Element = <></>;
+
+    if(input.generalType === 'text')
+        inputEl = <TextInput { ...input } onInput={setter} value={value} />;
+    else if(input.generalType === 'password')
+        inputEl = <PasswordInput { ...input } onInput={setter} value={value} />
+
+    if(['text', 'password'].includes(input.generalType)) {
         const el = (
             <FormPart>
                 <label htmlFor={input.name}>{ cleanUnderscores(input.name) }</label>
-                <TextInput input={{ ...input, onInput: setter, value }} />
+                { inputEl  }
                 <ul className="[ list flex-col ]" data-list-variant='error' 
                     id={input.name + '-input-list'} ></ul>
             </FormPart>

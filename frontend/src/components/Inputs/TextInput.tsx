@@ -1,21 +1,21 @@
 import { INF_Input } from '../Forms/types';
 
-const TextInput = ({ input } : { input: INF_Input }) => {
+const TextInput = (props: INF_Input) => {
     return (
     <input 
-        key={input.id}
-        id={input.name + '-input'}
-        name={input.name}
-        type={input.type} 
+        key={props.id}
+        id={props.name + '-input'}
+        name={props.name}
+        type={props.type} 
         className='[ input ]'
         data-input-variant='text'
-        value={input.value}
+        value={props.value}
         onInput={(e) => {
           const target = e.target as HTMLInputElement;
-          input.onInput((prevState: object) => ({ ...prevState, [target.name]: target.value }))
+          props.onInput((prevState: object) => ({ ...prevState, [target.name]: target.value }))
         }}
     />
   )
 }
 
-export default TextInput
+export default TextInput;

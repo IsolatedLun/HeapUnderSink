@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { INF_Question } from '../components/questionView/types';
+import { INF_Question } from '../components/Questions/types';
 import { API_URL } from '../consts';
 
-// Define a service using a base URL and expected endpoints
 export const questionsApi = createApi({
   reducerPath: 'questionsApi',
   baseQuery: fetchBaseQuery({ 

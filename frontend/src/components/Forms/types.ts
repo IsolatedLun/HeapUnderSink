@@ -35,3 +35,7 @@ export interface INF_Login {
     email_address: string;
     password: string;
 }
+
+export interface INF_SignUp extends INF_Login {
+    profile: File | null;
+}

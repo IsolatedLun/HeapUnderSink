@@ -20,13 +20,11 @@ export const authApi = createApi({
       })
     }),
 
-    getUserByToken: builder.mutation<INF_User, void>({
-      query: () => ({
-        url: 'get-user',
+    register: builder.mutation<INF_User, FormData>({
+      query: (signUpData) => ({
+        url: 'register',
         method: 'POST',
-        headers: {
-          'authorization': `Bearer ${getTokens().access}`
-        }
+        body: signUpData
       })
     })
 
@@ -34,4 +32,4 @@ export const authApi = createApi({
 })
 
 
-export const { useLoginMutation, useGetUserByTokenMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation } = authApi;

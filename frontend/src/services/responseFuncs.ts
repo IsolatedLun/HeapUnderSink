@@ -12,6 +12,11 @@ export function handleResponse(res: INF_Response, options: INF_ResponseActions) 
         popup(options.popup.text, options.popup.type);
 }
 
+/* Common responses */
+export function errorResponse(text: string) {
+    handleResponse({ status: 400 }, { popup: { text, type: 'red' } });
+}
+
 export function setTokens(tokens: INF_Tokens) {
     localStorage.setItem('refresh', tokens.refresh);
     localStorage.setItem('refresh', tokens.access);

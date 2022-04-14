@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     path('token', TokenObtainPairView.as_view(), name='get-token'),
     path('token/refresh', TokenRefreshView.as_view(), name='refresh-token'),
-    path('login', views.JWTLoginView.as_view(), name='post-login')
+    path('login', views.JWTLoginView.as_view(), name='post-login'),
+    path('register', views.RegisterView.as_view(), name='post-register')
 ]

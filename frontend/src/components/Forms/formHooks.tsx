@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ImageInput from "../Inputs/ImageInput";
 import PasswordInput from "../Inputs/PasswordInput";
 import TextInput from "../Inputs/TextInput";
 import FormPart from "./FormPart";
@@ -44,21 +45,19 @@ function createFormField(input: INF_Input, value: any, setter: Function): [JSX.E
         inputEl = <TextInput { ...input } onInput={setter} value={value} />;
     else if(input.generalType === 'password')
         inputEl = <PasswordInput { ...input } onInput={setter} value={value} />
+    else if(input.generalType === 'image')
+        inputEl = <ImageInput { ...input } onInput={setter} value={value} />
 
-    if(['text', 'password'].includes(input.generalType)) {
-        const el = (
-            <FormPart>
-                <label htmlFor={input.name}>{ cleanUnderscores(input.name) }</label>
-                { inputEl  }
-                <ul className="[ list flex-col ]" data-list-variant='error' 
-                    id={input.name + '-input-list'} ></ul>
-            </FormPart>
-        )
+    const el = (
+        <FormPart>
+            <label htmlFor={input.name}>{ cleanUnderscores(input.name) }</label>
+            { inputEl  }
+            <ul className="[ list flex-col ]" data-list-variant='error' 
+                id={input.name + '-input-list'} ></ul>
+        </FormPart>
+    )
 
-        return [el, input.name + '-input'];
-    }
-
-    return [(<></>), ''];
+    return [el, input.name + '-input'];
 }
 
 /**

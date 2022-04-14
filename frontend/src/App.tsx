@@ -9,6 +9,7 @@ import MainContainer from "./components/Containers/MainContainer";
 import Footer from "./components/Layouts/Footer";
 import Login from "./components/Layouts/Auth/Login";
 import Popup from "./components/Layouts/Popup/Popup";
+import SignUp from "./components/Layouts/Auth/SignUp";
 
 function App() {
   const isLogged = false;
@@ -48,6 +49,12 @@ function App() {
         <Route path="/auth/login" element={
           <MainContainer containMisc={false}>
             <Login />
+          </MainContainer>
+        } />
+
+        <Route path="/auth/signup" element={
+          <MainContainer containMisc={false}>
+            <SignUp />
           </MainContainer>
         } />
       </>

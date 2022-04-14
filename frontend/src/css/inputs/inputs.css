@@ -11,9 +11,31 @@
     box-shadow: 0 0 0.5px 2px var(--clr-input-shadow);
 }
 
-/* Input types */
+/* Input variants */
 .input.password-input {
     padding-right: 2.25em;
+}
+
+label.input[data-input-variant='image'] {
+    display: grid;
+    position: relative;
+    place-items: center;
+    width: 3.5em;
+    font-size: var(--fs-700);
+    color: var(--clr-neutral-400);
+    border-style: dashed;
+    aspect-ratio: 1 / 1;
+    z-index: 999;
+}
+
+label.input[data-input-variant='image'] .preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+label.input[data-input-variant='image']:is(:hover, :focus) {
+    color: var(--clr-neutral-200);
 }
 
 /* Input Container */

@@ -8,11 +8,18 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 class RegisterView(APIView):
     def post(self, req):
-        serializer = serializers.cUserSerializer(data=req.data)
+        try:
+            models.cUser.objects.create(
+                email_address=req.data['email_address'],
+                password=make_password(req.data['password']),
+                profile=req.data['profile'],
+                username=req.data['username']
+            )
 
-        if serializer.is_valid():
             return Response(data='Created user', status=OK)
-        return Response(data='Something went wrong', status=ERR)
+
+        except:
+            return Response(data='Something went wrong.', status=ERR)
 
 class JWTLoginView(APIView):
     permission_classes = [AllowAny]

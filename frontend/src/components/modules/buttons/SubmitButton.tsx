@@ -1,12 +1,12 @@
 import React from 'react'
-import { ButtonProps } from './types'
+import { SubmitButtonProps } from './types'
 
-const SubmitButton = (props: ButtonProps) => {
-    const { variant, rest } = props;
+const SubmitButton = (props: SubmitButtonProps) => {
+    const { variant, rest, isDead } = props;
 
     return (
     <button 
-        className='[ button ]' type='submit'
+        className='[ button ]' type='submit' data-dead={isDead}
         data-variant={variant ? variant : 'action'} { ...rest }>
         { props.children }
     </button>

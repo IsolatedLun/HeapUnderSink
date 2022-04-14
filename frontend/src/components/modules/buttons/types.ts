@@ -17,3 +17,7 @@ export interface LinkButtonProps extends ButtonProps {
 export interface IconButtonProps extends ActionButtonProps {
     ariaLabel: string;
 }
+
+export interface SubmitButtonProps extends ButtonProps {
+    isDead: boolean;
+}

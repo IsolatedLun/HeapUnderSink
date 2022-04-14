@@ -38,6 +38,10 @@
     position: relative;
 }
 
+.pos-absolute {
+    position: absolute;
+}
+
 /* Margins & Paddings */
 .margin-l-auto {
     margin-left: auto;

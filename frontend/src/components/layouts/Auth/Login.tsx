@@ -1,5 +1,9 @@
 import { useState } from 'react';
+import { useAppDispatch } from '../../../../hooks';
+import { loginAction } from '../../../features/user-slice';
+import { useAuth } from '../../../hooks/useAuth';
 import { useLoginMutation } from '../../../services/authService';
+import { handleResponse } from '../../../services/responseFuncs';
 import Form from '../../Forms/Form';
 import { loginConfig } from '../../Forms/FormConfigs';
 import { useForm } from '../../Forms/formHooks';
@@ -7,6 +11,7 @@ import { INF_Login } from '../../Forms/types';
 import SubmitButton from '../../Modules/Buttons/SubmitButton';
 
 const Login = () => {
+    const dispatch = useAppDispatch();
     const [newUser, setNewUser] = useState<INF_Login>(loginConfig.formObj)
     const [fields, isValidForm] = useForm(loginConfig.inputs, setNewUser, newUser);
     const [login] = useLoginMutation();
@@ -14,15 +19,18 @@ const Login = () => {
     function handleLogin() {
         login(newUser).unwrap()
             .then(res => {
-                console.log(res)
+                dispatch(loginAction(res));
             })
+            .catch(res => 
+                handleResponse({ status: 400 }, 
+                    { popup: { text: 'Invalid email or password', type: 'red' } }));
     }
 
     return (
         <div className='[ grid-split margin-block-auto padding-block-1 ]' data-reset-grid-colums-mobile>
             <Form onSubmit={() => handleLogin()}>
                 { (fields) }  
-                <SubmitButton rest={{ 'data-dead': isValidForm }}>Log in</SubmitButton>
+                <SubmitButton rest={{ 'data-dead': !isValidForm }}>Log in</SubmitButton>
             </Form>
 
             <div className="[ welcome ] [ flex-center flex-col text-center margin-block-auto ]" data-desktop>

@@ -8,6 +8,7 @@ import ViewQuestion from "./components/ViewQuestion/ViewQuestion";
 import MainContainer from "./components/Containers/MainContainer";
 import Footer from "./components/Layouts/Footer";
 import Login from "./components/Layouts/Auth/Login";
+import Popup from "./components/Layouts/Popup/Popup";
 
 function App() {
   const isLogged = false;
@@ -68,7 +69,8 @@ function App() {
           <Route path='*' element={<p>Page not found.</p>} />
           </Routes>
         </div>
-
+        
+        <Popup />
         <Footer />
 
       </Router>

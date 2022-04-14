@@ -6,7 +6,7 @@ const PasswordInput = (props: INF_Input) => {
     const [showPass, setShowPass] = useState(false);
 
     return (
-        <div className='[ input-container ] [ pos-relative flex-grow ]'>
+        <div className='[ input-container ] [ flex pos-relative ]'>
             <input 
                 key={props.id}
                 id={props.name + '-input'}

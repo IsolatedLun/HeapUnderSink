@@ -1,0 +1,15 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: max-content;
+    text-align: center;
+    transform-origin: left center;
+    transform: translate(-50%, 460px);
+    transition: transform 545ms ease;
+    z-index: 9999999;
+}
+
+.popup[data-visibility='visible'] {
+    transform: translate(-50%, 240px);
+}

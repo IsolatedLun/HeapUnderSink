@@ -16,12 +16,20 @@
     padding-right: 2.25em;
 }
 
+/* Input Container */
+.input-container {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.input-container input {
+    flex-grow: 1;
+}
+
 .input-container .input-icon {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(276px, -50%);
     color: var(--clr-neutral-400);
+    right: 16px;
 }
 
 .input-container .input-icon[data-active='true'] {

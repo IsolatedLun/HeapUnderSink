@@ -8,9 +8,10 @@ import NavItem from './NavItem';
 import NavUser from './NavUser';
 import SideNavbar from './SideNavbar';
 import { useAppSelector } from '../../../../hooks';
+import { useAuth } from '../../../hooks/useAuth';
 
 const Navbar = () => {
-  const { isLogged } = useAppSelector(state => state.auth);
+  const [user, isLogged] = useAuth();
 
   return (
     <>

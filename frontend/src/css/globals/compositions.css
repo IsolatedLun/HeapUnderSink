@@ -112,6 +112,11 @@ a[data-link-variant='dotted'] {
     background-color: var(--clr-card-yellow-background);
 }
 
+.card[data-card-variant='red'] {
+    border: 1px solid var(--clr-card-red-border);
+    background-color: var(--clr-card-red-background);
+}
+
 /* Elements */
 [data-dead='true'] {
     pointer-events: none;

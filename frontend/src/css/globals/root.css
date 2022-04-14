@@ -52,8 +52,12 @@
         /* Card Colors */
         --clr-card-border: hsl(240 20% 28%);
         --clr-card-background: hsl(240 20% 28% / 0.24);
+
         --clr-card-yellow-border: hsl(48 80% 43%);
         --clr-card-yellow-background: hsl(48 80% 43% / 0.24);
+
+        --clr-card-red-border: hsl(4 87% 57%);
+        --clr-card-red-background: hsl(4 87% 57% / 0.26);
 
         /* Link Colors */
         --clr-link: hsl(187 92% 52%);

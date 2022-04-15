@@ -1,5 +1,6 @@
 .popup {
     position: fixed;
+    padding: calc(var(--popup-spacing) * 0.5) var(--popup-spacing);
     top: 50%;
     left: 50%;
     width: max-content;

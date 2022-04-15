@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BAR_ICON, PROFILE_ICON } from '../../../consts';
+import { BAR_ICON, LOGOUT_ICON, PROFILE_ICON } from '../../../consts';
 import { toggleElement } from '../../../utilFuncs/utils';
 import IconButton from '../../Modules/Buttons/IconButton';
 import DropDownItem from '../../Modules/Dropdowns/DropDownItem';
@@ -7,11 +7,13 @@ import AuthNavButtons from './AuthNavButtons';
 import NavItem from './NavItem';
 import NavUser from './NavUser';
 import SideNavbar from './SideNavbar';
-import { useAppSelector } from '../../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { useAuth } from '../../../hooks/useAuth';
+import { loggedOutAction } from '../../../features/user-slice';
 
 const Navbar = () => {
   const [user, isLogged] = useAuth();
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -33,8 +35,12 @@ const Navbar = () => {
                 isLogged
                 ? (
                     <NavItem item={<NavUser />}>
-                      <DropDownItem leftIcon={PROFILE_ICON}>
+                      <DropDownItem leftIcon={PROFILE_ICON} to='/me'>
                         Your profile
+                      </DropDownItem>
+                      <DropDownItem leftIcon={LOGOUT_ICON} variant='red' 
+                        onClick={() => dispatch(loggedOutAction())}>
+                        Log out
                       </DropDownItem>
                     </NavItem>
                   )

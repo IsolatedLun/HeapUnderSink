@@ -18,13 +18,15 @@ const ImageInput = (props: INF_Input) => {
   }
 
   return (
-    <label htmlFor={props.name + '-input'} className='[ fa input pos-relative ]' data-input-variant='image'>
+    <label 
+      htmlFor={props.name + '-input'} 
+      className='[ fa input pos-relative ]' 
+      data-input-variant='image'>
         <input  
             key={props.id}
             id={props.name + '-input'}
             name={props.name}
             type='file'
-            hidden
             onInput={(e) => handleInput(e)} />
 
         <img 

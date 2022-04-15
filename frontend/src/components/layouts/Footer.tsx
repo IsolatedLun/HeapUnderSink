@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 
 const Footer = () => {
+  const [user, isLogged] = useAuth();
+
   return (
-    <footer className='[ footer ]'>
+    <footer className='[ footer ] [ fs-200 ]'>
         <div className='[ flex-between ]'>
           <div className="[ footer__part ] [ text-center ]">
             <h2 className='[ footer__header ]'>Main</h2>
@@ -26,8 +29,14 @@ const Footer = () => {
             <h2 className='[ footer__header ]'>Actions</h2>
             <ul className="[ list flex-col ]" data-list-type='link' data-list-muted data-list-vertical>
               <li className='list__item'><Link to='/ask'>Ask question</Link></li>
-              <li className='list__item'><Link to='/auth/login'>Log in</Link></li>
-              <li className='list__item'><Link to='/auth/signup'>Sign up</Link></li>
+              { !isLogged && 
+                (
+                  <>
+                     <li className='list__item'><Link to='/auth/login'>Log in</Link></li>
+                    <li className='list__item'><Link to='/auth/signup'>Sign up</Link></li>
+                  </>
+                ) 
+              }
             </ul>
           </div>
 

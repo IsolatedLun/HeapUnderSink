@@ -6,7 +6,7 @@ const Form = ({ children, onSubmit } : { children: any, onSubmit: Function }) =>
       e.preventDefault();
       onSubmit();
     }}
-      className='[ form flex flex-col gap-05 padding-block-1 ]'>
+      className='[ form flex flex-col gap-05 padding-block-1 margin-top-1 ]'>
       { children }
     </form>
   )

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../../hooks';
 import { loginAction } from '../../../features/user-slice';
 import { useLoginMutation } from '../../../services/authService';
@@ -8,30 +9,32 @@ import { loginConfig } from '../../Forms/FormConfigs';
 import { useForm } from '../../Forms/formHooks';
 import { INF_Login } from '../../Forms/types';
 import SubmitButton from '../../Modules/Buttons/SubmitButton';
+import Welcome from './Welcome';
 
 const Login = () => {
     const dispatch = useAppDispatch();
-    const [newUser, setNewUser] = useState<INF_Login>(loginConfig.formObj)
-    const [fields, isValidForm] = useForm(loginConfig.inputs, setNewUser, newUser);
+    const navigate = useNavigate();
+    const [loggedUser, setLoggedUser] = useState<INF_Login>(loginConfig.formObj)
+    const [fields, isValidForm] = useForm(loginConfig.inputs, setLoggedUser, loggedUser);
     const [login] = useLoginMutation();
 
     function handleLogin() {
-        login(newUser).unwrap()
-            .then(res => { dispatch(loginAction(res)) })
+        login(loggedUser).unwrap()
+            .then(res => { 
+                dispatch(loginAction(res)); 
+                navigate('/');
+            })
             .catch(res => errorResponse('Invalid email or password.'));
     }
 
     return (
-        <div className='[ grid-split margin-block-auto padding-block-1 ]' data-reset-grid-colums-mobile>
+        <div className='[ flex flex-col margin-block-auto padding-block-1 ]'>
+            <Welcome title='Login to HeapUndersink' />
+
             <Form onSubmit={() => handleLogin()}>
                 { (fields) }  
                 <SubmitButton isDead={!isValidForm}>Log in</SubmitButton>
             </Form>
-
-            <div className="[ welcome ] [ flex-center flex-col text-center margin-block-auto ]" data-desktop>
-                <h1 className='header-700'>Welcome to HeapUndersink</h1>
-                <p className='text-muted'>A place where you can ask any question</p>
-            </div>
         </div>
     )
 }

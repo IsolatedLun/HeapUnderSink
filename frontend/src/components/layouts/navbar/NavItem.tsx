@@ -9,7 +9,10 @@ const NavItem = (props: INF_NavItem) => {
 
   return (
     <div className='[ nav__item ] [ cursor-pointer ]'>
-        <Link to={props.to ? props.to : '#'} onClick={() => setIsOpen(!isOpen)}>{ props.item }</Link>
+        <Link className='[ nav__link ]' to={props.to ? props.to : '#'} onClick={() => setIsOpen(!isOpen)}>
+          { props.item }
+        </Link>
+        
         {
             isOpen && !props.to
             ?(

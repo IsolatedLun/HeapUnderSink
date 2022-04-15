@@ -19,7 +19,12 @@ export function errorResponse(text: string) {
 
 export function setTokens(tokens: INF_Tokens) {
     localStorage.setItem('refresh', tokens.refresh);
-    localStorage.setItem('refresh', tokens.access);
+    localStorage.setItem('access', tokens.access);
+}
+
+export function clearTokens() {
+    localStorage.removeItem('refresh');
+    localStorage.removeItem('access');
 }
 
 export function getTokens(): INF_Tokens {

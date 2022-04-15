@@ -98,11 +98,19 @@ a[data-link-variant='dotted'] {
 
 /* Cards */
 .card {
-    padding: calc(var(--card-spacing) * 0.5) var(--card-spacing);
     border-radius: var(--card-border, 6px);
 }
 
-.card:not([data-card-variant]) {
+.card .card__content {
+    padding: calc(var(--card-spacing) * 0.5) var(--card-spacing);
+}
+
+.card .card__header {
+    background-color: var(--clr-card-border);
+    padding: calc(var(--card-spacing) * 0.5) var(--card-spacing);
+}
+
+.card {
     border: 1px solid var(--clr-card-border);
     background-color: var(--clr-card-background);
 }

@@ -28,13 +28,20 @@ label.input[data-input-variant='image'] {
     z-index: 999;
 }
 
+label.input[data-input-variant='image'] input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    opacity: 0;
+}
+
 label.input[data-input-variant='image'] .preview {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-label.input[data-input-variant='image']:is(:hover, :focus) {
+label.input[data-input-variant='image']:is(:hover, :focus, :focus-within) {
     color: var(--clr-neutral-200);
 }
 

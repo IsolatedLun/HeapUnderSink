@@ -4,7 +4,7 @@
     font-size: var(--fs-420);
     flex-direction: column;
     left: -100px;
-    bottom: -60px;
+    bottom: -120px;
     padding: var(--dropdown-spacing);
     background-color: var(--clr-background-400);
     border: 1px solid var(--clr-neutral-400);
@@ -20,6 +20,10 @@
     transition: background-color 95ms ease-in-out;
 }
 
-.dropdown .dropdown__item:is(:hover, :focus) {
+.dropdown .dropdown__item[data-variant='red'] {
+    background-color: var(--clr-card-red-border);
+}
+
+.dropdown .dropdown__item[data-variant='']:is(:hover, :focus) {
     background-color: var(--clr-hover-light);
 }

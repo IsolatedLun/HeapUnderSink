@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { setTokens } from "../services/responseFuncs";
+import { clearTokens, setTokens } from "../services/responseFuncs";
 import { INF_UserState } from "./types";
 
 const initialState: INF_UserState = {
@@ -20,9 +20,15 @@ export const userSlice = createSlice({
             state.isLogged = true;
             state.user = action.payload.user;
             setTokens(action.payload.tokens);
+        },
+
+        loggedOutAction: (state) => {
+            state.isLogged = false;
+            state.user = initialState.user;
+            clearTokens();
         }
     }
 })
 
-export const { loginAction } = userSlice.actions;
+export const { loginAction, loggedOutAction } = userSlice.actions;
 export default userSlice.reducer;

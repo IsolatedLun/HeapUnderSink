@@ -1,5 +1,9 @@
 export interface INF_DropDownItem {
     leftIcon?: string;
     rightIcon?: string;
-    children: string;
+    variant?: string;
+    children: any;
+
+    to?: string;
+    onClick?: Function;
 }

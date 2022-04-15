@@ -1,20 +1,29 @@
-import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Home from "./components/Layouts/Home";
 import Navbar from "./components/Layouts/Navbar/Navbar";
-import { store } from '../store';
 import ViewQuestion from "./components/ViewQuestion/ViewQuestion";
 import MainContainer from "./components/Containers/MainContainer";
 import Footer from "./components/Layouts/Footer";
 import Login from "./components/Layouts/Auth/Login";
 import Popup from "./components/Layouts/Popup/Popup";
 import SignUp from "./components/Layouts/Auth/SignUp";
+import { useAuthenticateMutation } from "./services/authService";
+import { useAuth } from "./hooks/useAuth";
+import { useEffect } from "react";
+import { useAppDispatch } from '../hooks';
 
 function App() {
-  const isLogged = false;
+  const dispatch = useAppDispatch();
+  const isLogged = useAuth()[1];
+  const [authenticate] = useAuthenticateMutation();
+
   let routes;
   
+  useEffect(() => {
+    if(!isLogged)
+      authenticate()
+  }, [])
+
   if(isLogged)
     routes = (
       <>
@@ -61,7 +70,6 @@ function App() {
     )
 
   return (
-    <Provider store={store}>
       <Router>
 
         <div>
@@ -81,7 +89,6 @@ function App() {
         <Footer />
 
       </Router>
-    </Provider>
   )
 }
 

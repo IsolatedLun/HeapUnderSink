@@ -8,6 +8,8 @@ export interface INF_Input {
     onInput: Function;
     value: any;
     validators: [ () => INF_Rule ] | any;
+
+    descritpion?: string;
 }
 
 export interface INF_FormPart {

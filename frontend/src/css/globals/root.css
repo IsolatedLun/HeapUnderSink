@@ -87,6 +87,9 @@
         --dropdown-spacing: 0.35em;
         --dropdown-item-spacing: 0.85em;
         --nav-item-spacing: 0.55em;
+
+    /* Misc */
+    --main-container-width: 1250px;
 }
 
 @media screen and (max-width: 768px) {

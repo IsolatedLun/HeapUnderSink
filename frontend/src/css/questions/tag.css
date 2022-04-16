@@ -5,3 +5,9 @@
     background-color: var(--clr-tag-background);
     border-radius: var(--tag-border, 5px);
 }
+
+.tag .tag__cancel {
+    font-size: var(--fs-200);
+    padding: 0.25em;
+    border-radius: 100vw;
+}

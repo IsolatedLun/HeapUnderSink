@@ -11,6 +11,7 @@ import { useAuthenticateMutation } from "./services/authService";
 import { useAuth } from "./hooks/useAuth";
 import { useEffect } from "react";
 import { useAppDispatch } from '../hooks';
+import Ask from "./components/Layouts/Ask/Ask";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -27,6 +28,7 @@ function App() {
   if(isLogged)
     routes = (
       <>
+
         <Route path="/" element={
           <MainContainer containMisc={true}>
             <Home />
@@ -38,11 +40,19 @@ function App() {
             <ViewQuestion />
           </MainContainer>
         } />
+
+        <Route path="/ask" element={
+          <MainContainer containMisc={false}>
+            <Ask />
+          </MainContainer>
+        } />
+
       </>
     )
   else
     routes = (
       <>
+
         <Route path="/" element={
           <MainContainer containMisc={true}>
             <Home />
@@ -66,6 +76,7 @@ function App() {
             <SignUp />
           </MainContainer>
         } />
+
       </>
     )
 

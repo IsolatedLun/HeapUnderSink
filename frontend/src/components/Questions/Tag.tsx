@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { INF_Tag } from './types'
 
-const Tag = ({ tag } : { tag: INF_Tag }) => {
+const Tag = (props: INF_Tag) => {
   return (
-    <Link to={`/tags/${tag.name}`} 
+    <Link to={`/tags/${props.name}`} 
       className="[ question__tag ] [ tag flex gap-025 ]" 
-      data-dead={tag.isDead}>
+      data-dead={props.isDead}>
 
-      <p>{ tag.name }</p>
+      <p>{ props.name }</p>
     </Link>
   )
 }

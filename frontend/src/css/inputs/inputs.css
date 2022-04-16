@@ -45,6 +45,14 @@ label.input[data-input-variant='image']:is(:hover, :focus, :focus-within) {
     color: var(--clr-neutral-200);
 }
 
+/* Textarea */
+.input[data-input-variant='textarea'] {
+    font-family: sans-serif;
+    max-width: calc(var(--main-container-width) - 4rem);
+    max-height: 16em;
+    white-space: normal;
+}
+
 /* Input Container */
 .input-container {
     align-items: center;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import ImageInput from "../Inputs/ImageInput";
 import PasswordInput from "../Inputs/PasswordInput";
+import TextArea from "../Inputs/TextArea";
+import TextArrayInput from "../Inputs/TextArrayInput";
 import TextInput from "../Inputs/TextInput";
 import FormPart from "./FormPart";
 import { INF_ValidatorNode, INF_Input } from "./types";
@@ -47,10 +49,18 @@ function createFormField(input: INF_Input, value: any, setter: Function): [JSX.E
         inputEl = <PasswordInput { ...input } onInput={setter} value={value} />
     else if(input.generalType === 'image')
         inputEl = <ImageInput { ...input } onInput={setter} value={value} />
+    else if(input.generalType === 'textarea')
+        inputEl = <TextArea { ...input } onInput={setter} value={value} />
+    else if(input.generalType === 'textArray')
+        inputEl = <TextArrayInput { ...input } onInput={setter} value={value} />
 
     const el = (
         <FormPart>
-            <label htmlFor={input.name}>{ cleanUnderscores(input.name) }</label>
+            <div className="[ flex flex-col gap-025 ]">
+                <label htmlFor={input.name}>{ cleanUnderscores(input.name) }</label>
+                { input.descritpion && <p className="[ fs-200 text-muted indent-1 ]">{ input.descritpion }</p> }
+            </div>
+
             { inputEl  }
             <ul className="[ list flex-col ]" data-list-variant='error' 
                 id={input.name + '-input-list'} ></ul>

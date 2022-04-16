@@ -30,7 +30,8 @@ body {
 }
 
 button, 
-input {
+input,
+textarea {
     font-size: var(--fs-400);
     padding: 0;
     color: var(--clr-foreground-main);

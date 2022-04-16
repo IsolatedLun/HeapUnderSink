@@ -124,6 +124,11 @@
     user-select: none;
 }
 
+/* Overflows */
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
 /* Development */
 .dev-bg {
     background-color: red;

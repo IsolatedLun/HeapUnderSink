@@ -1,3 +1,4 @@
+from ctypes.wintypes import tagSIZE
 from users.views import decode_user_id
 from responses import OK
 from . import models
@@ -7,8 +8,15 @@ from rest_framework.permissions import IsAuthenticated
 
 class QuestionsView(APIView):
     def get(self, req):
-        questions = serializers.QuestionPreviewSerializer(models.Question.objects.all(), many=True).data
+        questions = serializers.QuestionPreviewSerializer(
+            models.Question.objects.all().order_by('-created_at'), many=True).data
         return Response(data=questions, status=OK)
+
+class TagsView(APIView):
+    def get(self, req):
+        tags = serializers.TagSerializer(
+            models.Tag.objects.all().order_by('-views'), many=True).data
+        return Response(data=tags, status=OK)
 
 class QuestionView(APIView):
     def get(self, req, question_id):

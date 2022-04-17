@@ -12,3 +12,14 @@
     padding: 0.25em;
     border-radius: 100vw;
 }
+
+/* Tag Detail */
+.tags-grid {
+    grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+}
+
+.tag-detail {
+    padding: var(--tag-detail-spacing);
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: var(--tag-detail-border, 6px);
+}

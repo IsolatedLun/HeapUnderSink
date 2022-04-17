@@ -33,7 +33,7 @@ class QuestionPreviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Question
-        fields = ['id', 'user', 'votes', 'views', 'answers', 'answered', 'title', 'tags']
+        fields = ['id', 'user', 'votes', 'views', 'answers', 'answered', 'title', 'tags', 'created_at']
 
 # ===========================
 # Tag Serializers

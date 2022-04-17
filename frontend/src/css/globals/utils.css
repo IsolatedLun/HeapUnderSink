@@ -90,6 +90,10 @@
     max-width: 25ch;
 }
 
+.width-max-content {
+    width: max-content;
+}
+
 .width-8rem {
     width: 8rem;
 }
@@ -131,6 +135,11 @@
 /* Overflows */
 .overflow-x-auto {
     overflow-x: auto;
+}
+
+/* Displays */
+.inline-block {
+    display: inline-block;
 }
 
 /* Misc */

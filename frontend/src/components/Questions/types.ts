@@ -14,8 +14,8 @@ export type INF_Question = {
 
     answered: boolean;
 
-    created_at: Date;
-    modified_at: Date;
+    created_at: string;
+    modified_at: string;
 }
 
 export interface INF_Stat {

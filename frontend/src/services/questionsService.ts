@@ -37,7 +37,14 @@ export const questionsApi = createApi({
 
     getTopTags: builder.query<INF_Tag[], void>({
       query: () => ({
-          url: 'top-tags',
+          url: 'tags/top',
+          method: 'GET',
+      }),
+    }),
+
+    getTags: builder.query<INF_Tag[], void>({
+      query: () => ({
+          url: 'tags',
           method: 'GET',
       }),
     }),
@@ -47,4 +54,4 @@ export const questionsApi = createApi({
 
 
 export const { useGetQuestionsQuery, useGetQuestionQuery, usePostAskQuestionMutation,
-  useGetTopTagsQuery } = questionsApi;
+  useGetTopTagsQuery, useGetTagsQuery } = questionsApi;

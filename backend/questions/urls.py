@@ -6,5 +6,6 @@ urlpatterns = [
     path('<int:question_id>', views.QuestionView.as_view(), name='get-question'),
     path('ask', views.AskQuestionView.as_view(), name='post-ask-question'),
 
-    path('top-tags', views.TopTagsView.as_view(), name='get-top-tags')
+    path('tags', views.TagsView.as_view(), name='get-tags'),
+    path('tags/top', views.TopTagsView.as_view(), name='get-top-tags')
 ]

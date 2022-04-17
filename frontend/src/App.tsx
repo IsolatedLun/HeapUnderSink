@@ -12,6 +12,7 @@ import { useAuth } from "./hooks/useAuth";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from '../hooks';
 import Ask from "./components/Layouts/Ask/Ask";
+import TagsView from "./components/Layouts/TagsView";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -42,6 +43,12 @@ function App() {
           </MainContainer>
         } />
 
+        <Route path="/tags" element={
+          <MainContainer containMisc={false}>
+            <TagsView />
+          </MainContainer>
+        } />
+
         <Route path="/ask" element={
           <MainContainer containMisc={false}>
             <Ask />
@@ -62,6 +69,12 @@ function App() {
         <Route path="/questions/:id/:title" element={
           <MainContainer containMisc={true}>
             <ViewQuestion />
+          </MainContainer>
+        } />
+
+        <Route path="/tags" element={
+          <MainContainer containMisc={false}>
+            <TagsView />
           </MainContainer>
         } />
 

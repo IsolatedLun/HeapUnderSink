@@ -3,11 +3,15 @@ import { API_URL } from '../consts';
 import { renewTokens } from '../features/funcs';
 
 
-const baseQuery = fetchBaseQuery({ baseUrl: API_URL + '/users/' });
-export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = 
-    async (args, api, extraOptions) => {
-        await renewTokens();
+export function createBaseQuery(baseUrl: string) {
+    const baseQuery = fetchBaseQuery({ baseUrl: API_URL + baseUrl });
+    const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = 
+        async (args, api, extraOptions) => {
+            await renewTokens();
 
-        let result = await baseQuery(args, api, extraOptions);
-        return result;
+            let result = await baseQuery(args, api, extraOptions);
+            return result;
+    }
+
+    return baseQueryWithReauth;
 }

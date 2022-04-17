@@ -8,6 +8,7 @@
 
 .tag .tag__cancel {
     font-size: var(--fs-200);
+    color: var(--clr-tag);
     padding: 0.25em;
     border-radius: 100vw;
 }

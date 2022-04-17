@@ -6,7 +6,7 @@ const TextArea = (props: INF_Input) => {
         key={props.id}
         id={props.name + '-input'}
         name={props.name}
-        className='[ textarea-input input ]'
+        className='[ textarea-input input width-min-100 resize-vertical ]'
         data-input-variant='textarea'
         value={props.value}
         spellCheck='false'

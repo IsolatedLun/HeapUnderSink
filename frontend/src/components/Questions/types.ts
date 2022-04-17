@@ -1,4 +1,5 @@
 import { INF_UserPreview } from "../../interfaces";
+import { INF_Tag } from "../Modules/Tags/types";
 
 export type INF_Question = {
     id: number;
@@ -15,12 +16,6 @@ export type INF_Question = {
 
     created_at: Date;
     modified_at: Date;
-}
-
-export interface INF_Tag {
-    name: string;
-    views: number;
-    isDead: boolean;
 }
 
 export interface INF_Stat {

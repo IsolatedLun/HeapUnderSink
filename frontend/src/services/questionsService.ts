@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { INF_Ask } from '../components/Layouts/Ask/types';
+import { INF_Tag } from '../components/Modules/Tags/types';
 import { INF_Question } from '../components/Questions/types';
 import { API_URL } from '../consts';
+import { createBaseQuery } from './baseQueryReAuth';
+import { getTokens } from './responseFuncs';
 
 export const questionsApi = createApi({
   reducerPath: 'questionsApi',
-  baseQuery: fetchBaseQuery({ 
-      baseUrl: API_URL + '/questions/' 
-    }),
-
+  baseQuery: createBaseQuery('/questions/'),
   endpoints: (builder) => ({
     getQuestions: builder.query<INF_Question[], void>({
       query: () => ({
@@ -22,8 +23,28 @@ export const questionsApi = createApi({
           method: 'GET',
       }),
     }),
+
+    postAskQuestion: builder.mutation<INF_Question, INF_Ask>({
+      query: (questionData) => ({
+          url: 'ask',
+          method: 'POST',
+          body: questionData,
+          headers: {
+            'authorization': `Bearer ${getTokens().access}`
+          }
+      }),
+    }),
+
+    getTopTags: builder.query<INF_Tag[], void>({
+      query: () => ({
+          url: 'top-tags',
+          method: 'GET',
+      }),
+    }),
+
   }),
 })
 
 
-export const { useGetQuestionsQuery, useGetQuestionQuery } = questionsApi;
+export const { useGetQuestionsQuery, useGetQuestionQuery, usePostAskQuestionMutation,
+  useGetTopTagsQuery } = questionsApi;

@@ -13,9 +13,9 @@ const TextTag = (props: INF_TextTag) => {
 
     return (
         <p  onClick={() => deleteTextTag()}
-            className="[ tag ] [ flex-align-center cursor-pointer ]">
+            className="[ tag ] [ flex-align-center gap-025 cursor-pointer ]">
             { props.name }
-            <span className='[ tag__cancel ] [ fa ]'>{ TIMES_ICON }</span>
+            <button className='[ tag__cancel ] [ fa ]'>{ TIMES_ICON }</button>
         </p>
     )
 }

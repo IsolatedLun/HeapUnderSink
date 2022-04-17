@@ -9,7 +9,7 @@ import Popup from "./components/Layouts/Popup/Popup";
 import SignUp from "./components/Layouts/Auth/SignUp";
 import { useAuthenticateMutation } from "./services/authService";
 import { useAuth } from "./hooks/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from '../hooks';
 import Ask from "./components/Layouts/Ask/Ask";
 
@@ -18,15 +18,16 @@ function App() {
   const isLogged = useAuth()[1];
   const [authenticate] = useAuthenticateMutation();
 
-  let routes;
+  const [routes, setRoutes] = useState<any>();
   
   useEffect(() => {
     if(!isLogged)
       authenticate()
   }, [])
 
-  if(isLogged)
-    routes = (
+  useEffect(() => {
+    if(isLogged)
+    setRoutes(
       <>
 
         <Route path="/" element={
@@ -50,9 +51,8 @@ function App() {
       </>
     )
   else
-    routes = (
+    setRoutes(
       <>
-
         <Route path="/" element={
           <MainContainer containMisc={true}>
             <Home />
@@ -76,9 +76,9 @@ function App() {
             <SignUp />
           </MainContainer>
         } />
-
       </>
     )
+  }, [isLogged])
 
   return (
       <Router>

@@ -1,4 +1,4 @@
-import Miscellaneuos from '../Layouts/Miscellaneuos'
+import Miscellaneuos from '../Layouts/Miscellaneuos/Miscellaneuos'
 
 const MainContainer = ({ children, containMisc=true } : { children: any, containMisc: boolean }) => {
   if(containMisc)

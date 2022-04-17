@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import Card from './Cards/Card';
+import Card from '../Cards/Card';
+import TopTags from './TopTags';
 
 const Miscellaneuos = () => {
   return (
@@ -12,9 +13,7 @@ const Miscellaneuos = () => {
             <Link to="/ask" data-default='dark' data-link-variant='dotted'>Ask question</Link>
         </Card>
 
-        <Card title='Meow'>
-          <p>bruh</p>
-        </Card>
+        <TopTags />
     </section>
   )
 }

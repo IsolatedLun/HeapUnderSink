@@ -102,6 +102,10 @@
     height: max-content;
 }
 
+.width-min-100 {
+    min-width: 100%;
+}
+
 /* Texts */
 .text-center {
     text-align: center;
@@ -127,6 +131,15 @@
 /* Overflows */
 .overflow-x-auto {
     overflow-x: auto;
+}
+
+/* Misc */
+.resize-none {
+    resize: none;
+}
+
+.resize-vertical {
+    resize: vertical;
 }
 
 /* Development */

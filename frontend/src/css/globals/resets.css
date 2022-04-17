@@ -40,6 +40,10 @@ textarea {
     white-space: nowrap;
 }
 
+textarea {
+    min-height: 2em;
+}
+
 button {
     cursor: pointer;
 }

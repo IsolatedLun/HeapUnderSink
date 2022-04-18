@@ -20,6 +20,7 @@
 
 .tag-detail {
     padding: var(--tag-detail-spacing);
+    height: max-content;
     border: 1px solid var(--clr-neutral-300);
     border-radius: var(--tag-detail-border, 6px);
 }

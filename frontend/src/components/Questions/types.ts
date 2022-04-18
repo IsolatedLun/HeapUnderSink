@@ -1,5 +1,6 @@
 import { INF_UserPreview } from "../../interfaces";
 import { INF_Tag } from "../Modules/Tags/types";
+import { INF_Answer } from "../ViewQuestion/types";
 
 export type INF_Question = {
     id: number;
@@ -7,9 +8,9 @@ export type INF_Question = {
     title: string;
     body: string;
     tags: INF_Tag[];
+    answers: INF_Answer[] | number;
 
     votes: number;
-    answers: number;
     views: number;
 
     answered: boolean;
@@ -21,4 +22,8 @@ export type INF_Question = {
 export interface INF_Stat {
     name: string;
     num: number;
+}
+
+export interface INF_QuestionUserPreview extends INF_UserPreview {
+    isVertical?: boolean;
 }

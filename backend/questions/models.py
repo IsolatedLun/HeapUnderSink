@@ -15,6 +15,17 @@ class Question(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
+class Answer(models.Model):
+    user = models.ForeignKey(cUser, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    body = models.TextField()
+
+    votes = models.BigIntegerField(default=0)
+    is_answer = models.BooleanField(default=False);
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
 class Tag(models.Model):
     name = models.CharField(max_length=32, unique=True)
     description = models.CharField(max_length=256, default='')

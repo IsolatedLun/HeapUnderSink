@@ -36,4 +36,17 @@
     background-color: var(--clr-button-full-blue-hover);
 }
 
+/* Variant => red */
+.button[data-variant='red'] {
+    background-color: var(--clr-card-red-border);
+    border-color: var(--clr-card-red-border);
+}
+
 /* Content => icon */
+
+/* Compositions */
+.button-group {
+    display: flex;
+    gap: var(--button-group-gap, 0.65em);
+    flex-wrap: wrap;
+}

@@ -6,6 +6,8 @@ from . import serializers
 from rest_framework.views import APIView, Response
 from rest_framework.permissions import IsAuthenticated
 
+# ================
+# Question Views
 class QuestionsView(APIView):
     def get(self, req):
         questions = serializers.QuestionPreviewSerializer(
@@ -49,6 +51,17 @@ class AskQuestionView(APIView):
 
         return Response(data=serializers.QuestionSerializer(new_question).data, status=OK)
 
+# ================
+# Answer Views
+class PostAnswerView(APIView):
+    def post(self, req):
+        user_id = decode_user_id(req.headers)
+        answer = models.Answer.objects.create(**req.data, user_id=user_id)
+
+        return Response(data='Created answer.', status=OK)
+
+# ================
+# Tag Views
 class TopTagsView(APIView):
     def get(self, req):
         tags = models.Tag.objects.order_by('-views')

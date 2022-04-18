@@ -132,6 +132,14 @@ a[data-link-variant='dotted'] {
 }
 
 /* Text */
+.single-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+    word-break: break-all;
+    overflow: hidden;
+}
+
 .multi-ellipsis {
     display: -webkit-box;
     -webkit-line-clamp: 2;

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { humanizeNumber } from "../../utilFuncs/utils";
 import Profile from "../Modules/Profiles/Profile";
 import QuestionTags from "./QuestionTags";
+import QuestionUserPreview from "./QuestionUserPreview";
 import { Stat } from "./Stat";
 import { INF_Question } from "./types";
 
@@ -11,7 +12,7 @@ export const Question = ({ props } : { props: INF_Question }) => {
         <div className="[ question ] [ flex flex-items flex-grow item-hoverable width-1fr ]" data-hover-variant='light'>
             <div className="[ question__stats ] [ text-center ]"> 
                 <Stat stat={{ name: 'votes', num: props.votes }} />
-                <Stat stat={{ name: 'answers', num: props.answers }} />
+                <Stat stat={{ name: 'answers', num: props.answers as number }} />
                 <Stat stat={{ name: 'views', num: props.views }} />
             </div>
 
@@ -22,13 +23,7 @@ export const Question = ({ props } : { props: INF_Question }) => {
                 <div className="[ question__details ] [ flex flex-between margin-top-1 ]">
                     <QuestionTags tags={props.tags} />
                     
-                    <div className="[ question__user ] [ flex flex-items flex-align-center ]">
-                        <Profile profile={{ url: props.user.profile, alt: props.user.username + '\'s profile' }} />
-
-                        <a className="[ question__username ]" href={`/users/${props.user.id}/${props.user.username}`}
-                            data-default>{ props.user.username }</a>
-                        <p className="[ text-muted ]">{ humanizeNumber(props.user.reputation) }</p>
-                    </div>
+                    <QuestionUserPreview { ...props.user } />
                 </div>
 
             </div>

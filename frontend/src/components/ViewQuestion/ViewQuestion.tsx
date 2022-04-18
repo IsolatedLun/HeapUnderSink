@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { CARET_DOWN_ICON, CARET_UP_ICON } from '../../consts';
+import { useLoggedAction } from '../../hooks/useLoggedAction';
 import { useGetQuestionQuery } from '../../services/questionsService';
 import { humanizeNumber } from '../../utilFuncs/utils';
-import IconButton from '../Modules/Buttons/IconButton';
-import { decorateStat } from '../Questions/Stat';
+import Button from '../Modules/Buttons/Button';
+import QuestionUserPreview from '../Questions/QuestionUserPreview';
 import { INF_Question } from '../Questions/types';
+import Answer from './Answer/Answer';
+import AnswerForm from './AnswerForm';
+import RatingController from './RatingController';
+import { INF_Answer } from './types';
 
 const ViewQuestion = () => {
     const { id } = useParams();
     const [question, setQuestion] = useState<INF_Question | undefined>(undefined);
+    const [showForm, setShowForm] = useState(false);
     const { data, isSuccess } = useGetQuestionQuery(Number(id));
 
     useEffect(() => {
@@ -31,21 +36,34 @@ const ViewQuestion = () => {
 
             <div className='[ view__question ] [ flex flex-items text-center bottom-border ]'>
                 <div className="[ question__controls ] [ flex-items flex-col fs-500 ]">
-                    <IconButton ariaLabel='Upvote question' onClick={() => null}>
-                        { CARET_UP_ICON }
-                    </IconButton>
-                    <p className='[ stat ]' data-stat-variant={decorateStat(question.votes, 'votes')}>
-                        { humanizeNumber(question.votes) }
-                    </p>
-                    <IconButton ariaLabel='Downvote question' onClick={() => null}>
-                        { CARET_DOWN_ICON }
-                    </IconButton>
+                    <RatingController model={question} modelType='question' 
+                        setRateType={() => null} setModel={() => null} />
+
+                    <QuestionUserPreview { ...question.user } isVertical={true} />
                 </div>
+
                 <div className="question__body">
                     { question.body }
                 </div>
-            </div>
 
+            </div>
+            
+            <ul className="[ button-group ] [ margin-top-1 ]">
+                <li>
+                    <Button onClick={() => setShowForm(!showForm)}>Answer</Button>
+                </li>
+                <li>
+                    <Button onClick={() => null} variant='red'>Report</Button>
+                </li>
+            </ul>
+            
+            { showForm && <AnswerForm /> }
+
+            <div className="[ answers ] [ margin-top-2 ]">
+                {
+                    (question.answers as INF_Answer[]).map(answer => <Answer { ...answer } />)
+                }
+            </div>
         </div>
         )
     else

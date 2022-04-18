@@ -3,9 +3,12 @@ export interface INF_User {
     username: string;
     reputation: number;
     profile: string;
+
+    is_superuser: boolean;
+    is_staff: boolean;
 }
 
 export interface INF_UserState {
     isLogged: boolean;
-    user: INF_User
+    user: INF_User;
 }

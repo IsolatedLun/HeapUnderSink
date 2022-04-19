@@ -12,6 +12,7 @@ export const answerConfig: INF_Config = {
             ],
             type: 'textarea',
             generalType: 'textarea',
+            descritpion: '(You cannot edit an answer once posted).'
         },
     },
 

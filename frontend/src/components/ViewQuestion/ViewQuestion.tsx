@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useLoggedAction } from '../../hooks/useLoggedAction';
+import { useRate } from '../../hooks/useRate';
 import { useGetQuestionQuery } from '../../services/questionsService';
 import { humanizeNumber } from '../../utilFuncs/utils';
 import Button from '../Modules/Buttons/Button';
@@ -15,12 +16,17 @@ const ViewQuestion = () => {
     const { id } = useParams();
     const [question, setQuestion] = useState<INF_Question | undefined>(undefined);
     const [showForm, setShowForm] = useState(false);
+    const [controllerProps] = useRate(question!, setQuestion, 'question')
     const { data, isSuccess } = useGetQuestionQuery(Number(id));
 
     useEffect(() => {
         if(isSuccess)
             setQuestion(data);
     }, [data])
+
+    useEffect(() => {
+        setShowForm(!showForm)
+    }, [question?.answers])
 
     if(question)
         return (
@@ -36,8 +42,7 @@ const ViewQuestion = () => {
 
             <div className='[ view__question ] [ flex flex-items text-center bottom-border ]'>
                 <div className="[ question__controls ] [ flex-items flex-col fs-500 ]">
-                    <RatingController model={question} modelType='question' 
-                        setRateType={() => null} setModel={() => null} />
+                    <RatingController { ...controllerProps } />
 
                     <QuestionUserPreview { ...question.user } isVertical={true} />
                 </div>
@@ -57,7 +62,7 @@ const ViewQuestion = () => {
                 </li>
             </ul>
             
-            { showForm && <AnswerForm /> }
+            { showForm && <AnswerForm questionId={question.id} setQuestion={setQuestion} /> }
 
             <div className="[ answers ] [ margin-top-2 ]">
                 {
@@ -70,4 +75,4 @@ const ViewQuestion = () => {
         return <>Loading...</>
 }
 
-export default ViewQuestion
+export default ViewQuestion;

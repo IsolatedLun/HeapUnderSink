@@ -54,9 +54,11 @@ class AskQuestionView(APIView):
 # ================
 # Answer Views
 class PostAnswerView(APIView):
-    def post(self, req):
+    def post(self, req, question_id):
         user_id = decode_user_id(req.headers)
-        answer = models.Answer.objects.create(**req.data, user_id=user_id)
+        print(req.data)
+        answer = models.Answer.objects.create(body=req.data['answer'], user_id=user_id,
+            question_id=question_id)
 
         return Response(data='Created answer.', status=OK)
 

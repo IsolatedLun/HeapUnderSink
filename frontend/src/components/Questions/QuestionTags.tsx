@@ -6,15 +6,15 @@ const QuestionTags = ({ tags } : { tags: INF_Tag[] }) => {
         return (
             <div className="[ question__tags ] [ flex-items flex-wrap ]">
                 {
-                    ( tags && tags.map( tag => 
-                        <Tag name={tag.name} views={tag.views} isDead={false} /> 
+                    ( tags && tags.map((tag, idx) => 
+                        <Tag key={idx} name={tag.name} views={tag.views} isDead={false} /> 
                     ))
                 }
             </div>
         )
     else
         return (
-            <Tag  name='No tags' views={0} isDead={true} />
+            <Tag key={0}  name='No tags' views={0} isDead={true} />
         )
 
 }

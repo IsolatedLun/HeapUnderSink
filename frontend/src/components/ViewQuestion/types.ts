@@ -3,11 +3,22 @@ import { INF_Question } from '../Questions/types';
 
 export interface INF_Answer {
     id: number;
-    user: INF_User;
-    body: string;
+    questionUserId: number;
     votes: number;
-    is_answer: boolean;
+
+    user: INF_User;
+
+    body: string;
     rate_type: string;
+    
+
+    is_answer: boolean;
+    showControls: boolean;
+}
+
+export interface INF_Answers {
+    user: INF_User;
+    question: INF_Question;
 }
 
 export interface INF_RatingController extends INF_RateType {
@@ -26,7 +37,7 @@ export interface INF_AnswerForm {
 
 export interface INF_AnswerFormProps {
     setQuestion: Function;
-    questionId: number;
+    question: INF_Question;
 }
 
 export interface INF_RateObject extends INF_RateType {

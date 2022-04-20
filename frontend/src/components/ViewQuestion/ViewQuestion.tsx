@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { useLoggedAction } from '../../hooks/useLoggedAction';
+import { useAuth } from '../../hooks/useAuth';
+import { useLoggedActions } from '../../hooks/useLoggedActions';
 import { useRate } from '../../hooks/useRate';
 import { useGetQuestionQuery, usePostRateObjectMutation } from '../../services/questionsService';
 import { humanizeNumber } from '../../utilFuncs/utils';
@@ -8,18 +9,24 @@ import Button from '../Modules/Buttons/Button';
 import QuestionUserPreview from '../Questions/QuestionUserPreview';
 import { INF_Question } from '../Questions/types';
 import Answer from './Answer/Answer';
+import Answers from './Answer/Answers';
 import AnswerForm from './AnswerForm';
 import RatingController from './RatingController';
-import { INF_Answer } from './types';
 
 const ViewQuestion = () => {
     const { id } = useParams();
+    const [user] = useAuth();
     const [question, setQuestion] = useState<INF_Question | undefined>(undefined);
     const [showForm, setShowForm] = useState(false);
     const [controllerProps, object, type, hasVoted] = useRate(question!, setQuestion, 'question');
+    const [ratingCb] = useLoggedActions(handleRating);
 
     const { data, isSuccess } = useGetQuestionQuery(Number(id));
     const [rateObject] = usePostRateObjectMutation();
+
+    function handleRating() {
+        rateObject(object)
+    }
 
     useEffect(() => {
         if(isSuccess)
@@ -32,9 +39,7 @@ const ViewQuestion = () => {
 
     useEffect(() => {
         if(type === 'neutral' && hasVoted)
-            rateObject(object)
-                .unwrap()
-                .then(res => console.log(res))
+            ratingCb();
     }, [type])
 
     if(question)
@@ -71,14 +76,9 @@ const ViewQuestion = () => {
                 </li>
             </ul>
             
-            { showForm && <AnswerForm questionId={question.id} setQuestion={setQuestion} /> }
+            { showForm && <AnswerForm question={question} setQuestion={setQuestion} /> }
 
-            <div className="[ answers ] [ margin-top-2 ]">
-                {
-                    (question.answers as INF_Answer[])
-                        .map(answer => <Answer key={answer.id} { ...answer } />)
-                }
-            </div>
+            <Answers question={question} user={user} />
         </div>
         )
     else

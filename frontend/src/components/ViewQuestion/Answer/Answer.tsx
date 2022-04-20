@@ -21,7 +21,12 @@ const Answer = (props: INF_Answer) => {
     <div className="[ answer ] [ flex flex-items fs-200 bottom-border padding-block-1 ]">
         <div className='[ flex flex-col gap-075 ]'>
             <RatingController { ...controllerProps } />
-            <QuestionUserPreview { ...props.user } isVertical={true}  />
+
+            <QuestionUserPreview 
+              { ...props.user } isVertical={true} 
+                />
+
+              <p>{ props.showControls ? 'ACCEPT AS ANSWER' : '' }</p>
         </div>
 
         <p>{ props.body }</p>

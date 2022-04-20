@@ -28,4 +28,5 @@ export interface INF_Stat {
 
 export interface INF_QuestionUserPreview extends INF_UserPreview {
     isVertical?: boolean;
+    isQuestioner?: boolean;
 }

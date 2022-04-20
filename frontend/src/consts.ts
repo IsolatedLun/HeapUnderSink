@@ -9,7 +9,8 @@ export const PROFILE_ICON = '\uf007';
 export const PASSWORD_SHOW_ICON = '\uf06e';
 export const PASSWORD_HIDE_ICON = '\uf070';
 export const CAMERA_ICON = '\uf030';
-export const LOGOUT_ICON = '\uf2f5'
+export const LOGOUT_ICON = '\uf2f5';
+export const CHECK_ICON = `\uf00c`;
 
 export const kNums = {
     '1000': 'k',

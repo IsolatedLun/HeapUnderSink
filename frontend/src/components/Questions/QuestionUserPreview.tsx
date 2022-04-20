@@ -1,8 +1,6 @@
-import React from 'react'
-import { INF_User } from '../../features/types'
-import { humanizeNumber } from '../../utilFuncs/utils'
-import Profile from '../Modules/Profiles/Profile'
-import { INF_QuestionUserPreview } from './types'
+import { humanizeNumber } from '../../utilFuncs/utils';
+import Profile from '../Modules/Profiles/Profile';
+import { INF_QuestionUserPreview } from './types';
 
 const QuestionUserPreview = (props: INF_QuestionUserPreview) => {
   return (
@@ -18,4 +16,4 @@ const QuestionUserPreview = (props: INF_QuestionUserPreview) => {
   )
 }
 
-export default QuestionUserPreview
+export default QuestionUserPreview;

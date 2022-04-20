@@ -11,7 +11,7 @@ const TopTags = () => {
         <Card title='Top 10 tags'>
             <ul className="[ tag-list ] [ flex-col gap-05 ]">
                 {
-                    tags?.map(tag => <TagDetail { ...tag } />)
+                    tags?.map((tag, idx) => <TagDetail key={idx}  { ...tag } />)
                 }
             </ul>
         </Card>

@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { INF_Ask } from '../components/Layouts/Ask/types';
 import { INF_Tag } from '../components/Modules/Tags/types';
 import { INF_Question } from '../components/Questions/types';
-import { INF_AnswerForm } from '../components/ViewQuestion/types';
+import { INF_AnswerForm, INF_RateObject } from '../components/ViewQuestion/types';
 import { API_URL } from '../consts';
 import { createBaseQuery } from './baseQueryReAuth';
 import { getTokens } from './responseFuncs';
@@ -30,9 +30,6 @@ export const questionsApi = createApi({
           url: 'ask',
           method: 'POST',
           body: questionData,
-          headers: {
-            'authorization': `Bearer ${getTokens().access}`
-          }
       }),
     }),
 
@@ -41,9 +38,18 @@ export const questionsApi = createApi({
           url: `answer/${questionId}`,
           method: 'POST',
           body: answerData,
-          headers: {
-            'authorization': `Bearer ${getTokens().access}`
-          }
+      }),
+    }),
+
+    postRateObject: builder.mutation<void, INF_RateObject>({
+      query: (data) => ({
+          url: `rate/${data.id}`,
+          method: 'POST',
+          body: {
+            model: data.model,
+            votes: data.votes,
+            rateType: data.rateType
+          },
       }),
     }),
 
@@ -66,4 +72,4 @@ export const questionsApi = createApi({
 
 
 export const { useGetQuestionsQuery, useGetQuestionQuery, usePostAskQuestionMutation,
-  useGetTopTagsQuery, useGetTagsQuery, usePostAnswerMutation } = questionsApi;
+  useGetTopTagsQuery, useGetTagsQuery, usePostAnswerMutation, usePostRateObjectMutation } = questionsApi;

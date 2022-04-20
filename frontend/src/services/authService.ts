@@ -31,9 +31,6 @@ export const authApi = createApi({
       query: () => ({
         url: 'authenticate',
         method: 'POST',
-        headers: {
-          'authorization': `Bearer ${getTokens().access}`
-        }
       })
     })
 

@@ -1,4 +1,3 @@
-from ctypes.wintypes import tagSIZE
 from users.views import decode_user_id
 from responses import OK
 from . import models
@@ -22,11 +21,18 @@ class TagsView(APIView):
 
 class QuestionView(APIView):
     def get(self, req, question_id):
+        user_id = decode_user_id(req.headers)
         question = models.Question.objects.get(id=question_id)
+
         question.views += 1
         question.save()
 
         question_serializer = serializers.QuestionSerializer(question).data
+        if user_id:
+            question_serializer['rate_type'] = models.Question.get_rate_type(question, user_id)
+            for x in question_serializer['answers']:
+                x['rate_type'] = models.Answer.get_rate_type(x, user_id)
+            
         
         return Response(data=question_serializer, status=OK)
 
@@ -51,12 +57,35 @@ class AskQuestionView(APIView):
 
         return Response(data=serializers.QuestionSerializer(new_question).data, status=OK)
 
+class RateObject(APIView):
+    def post(self, req, object_id):
+        obj = None
+        user_id = decode_user_id(req.headers)
+
+        if req.data['model'] == 'question':
+            obj = models.Question.objects.get(id=object_id)
+        elif req.data['model'] == 'answer':
+            obj = models.Answer.objects.get(id=object_id)
+        
+        obj.votes = req.data['votes']
+        obj.save()
+
+        rated_object, created = models.RatedObject.objects.get_or_create(
+            object_id=object_id,
+            user_id=user_id
+        )
+
+        rated_object.rate_type = req.data['rateType']
+        rated_object.save() 
+
+        return Response(data='Rated object', status=OK)
+
 # ================
 # Answer Views
 class PostAnswerView(APIView):
     def post(self, req, question_id):
         user_id = decode_user_id(req.headers)
-        print(req.data)
+
         answer = models.Answer.objects.create(body=req.data['answer'], user_id=user_id,
             question_id=question_id)
 

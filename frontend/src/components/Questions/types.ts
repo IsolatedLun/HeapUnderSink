@@ -10,7 +10,7 @@ export type INF_Question = {
     tags: INF_Tag[];
     answers: INF_Answer[] | number;
 
-    rateType: string;
+    rate_type: string;
 
     votes: number;
     views: number;

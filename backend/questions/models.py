@@ -1,6 +1,8 @@
 from django.db import models
 from users.models import cUser
 
+# ================
+# Question Models
 class Question(models.Model):
     user = models.ForeignKey(cUser, on_delete=models.CASCADE)
 
@@ -15,6 +17,14 @@ class Question(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
+    def get_rate_type(self, user_id):
+        rated_object = RatedObject.objects.filter(user_id=user_id, object_id=self.id)
+        if rated_object.exists():
+            return rated_object[0].rate_type
+        return 'none'
+
+# ================
+# Answer Models
 class Answer(models.Model):
     user = models.ForeignKey(cUser, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -26,6 +36,27 @@ class Answer(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def get_rate_type(self, user_id):
+        rated_object = RatedObject.objects.filter(user_id=user_id, object_id=self['id'])
+        if rated_object.exists():
+            return rated_object[0].rate_type
+        return 'none'
+
+# ================
+# Rated Models
+RATE_CHOICES = (
+    ('upvote', 'upvote'),
+    ('downvote', 'downvote'),
+    ('neutral', 'neutral')
+)
+
+class RatedObject(models.Model):
+    user = models.ForeignKey(cUser, on_delete=models.CASCADE)
+    object_id = models.PositiveBigIntegerField(null=False)
+    rate_type = models.CharField(max_length=16, choices=RATE_CHOICES, default='neutral')
+
+# ================
+# Tag Models
 class Tag(models.Model):
     name = models.CharField(max_length=32, unique=True)
     description = models.CharField(max_length=256, default='')

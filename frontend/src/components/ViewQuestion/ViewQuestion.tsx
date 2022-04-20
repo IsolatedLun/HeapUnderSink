@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useLoggedAction } from '../../hooks/useLoggedAction';
 import { useRate } from '../../hooks/useRate';
-import { useGetQuestionQuery } from '../../services/questionsService';
+import { useGetQuestionQuery, usePostRateObjectMutation } from '../../services/questionsService';
 import { humanizeNumber } from '../../utilFuncs/utils';
 import Button from '../Modules/Buttons/Button';
 import QuestionUserPreview from '../Questions/QuestionUserPreview';
@@ -16,8 +16,10 @@ const ViewQuestion = () => {
     const { id } = useParams();
     const [question, setQuestion] = useState<INF_Question | undefined>(undefined);
     const [showForm, setShowForm] = useState(false);
-    const [controllerProps] = useRate(question!, setQuestion, 'question')
+    const [controllerProps, object, type, hasVoted] = useRate(question!, setQuestion, 'question');
+
     const { data, isSuccess } = useGetQuestionQuery(Number(id));
+    const [rateObject] = usePostRateObjectMutation();
 
     useEffect(() => {
         if(isSuccess)
@@ -25,8 +27,15 @@ const ViewQuestion = () => {
     }, [data])
 
     useEffect(() => {
-        setShowForm(!showForm)
+        setShowForm(false);
     }, [question?.answers])
+
+    useEffect(() => {
+        if(type === 'neutral' && hasVoted)
+            rateObject(object)
+                .unwrap()
+                .then(res => console.log(res))
+    }, [type])
 
     if(question)
         return (
@@ -66,7 +75,8 @@ const ViewQuestion = () => {
 
             <div className="[ answers ] [ margin-top-2 ]">
                 {
-                    (question.answers as INF_Answer[]).map(answer => <Answer { ...answer } />)
+                    (question.answers as INF_Answer[])
+                        .map(answer => <Answer key={answer.id} { ...answer } />)
                 }
             </div>
         </div>

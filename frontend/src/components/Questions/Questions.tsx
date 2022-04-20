@@ -25,7 +25,7 @@ const Questions = ({ questions, sortBy } : { questions: INF_Question[], sortBy: 
       <div className="[ questions ]">
         {
           currQuestions.length !== 0
-          ? currQuestions.map((question, idx) => <Question key={idx} props={{ ...question }} />)
+          ? currQuestions.map((question, idx) => <Question key={question.id} props={{ ...question }} />)
           : <p><code>No questions found.</code></p>
         }
       </div>

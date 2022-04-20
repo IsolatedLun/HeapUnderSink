@@ -1,11 +1,13 @@
 import { INF_User } from "../../features/types";
 import { INF_Question } from '../Questions/types';
 
-export interface INF_Answer extends INF_RateType {
+export interface INF_Answer {
+    id: number;
     user: INF_User;
     body: string;
     votes: number;
     is_answer: boolean;
+    rate_type: string;
 }
 
 export interface INF_RatingController extends INF_RateType {
@@ -25,4 +27,10 @@ export interface INF_AnswerForm {
 export interface INF_AnswerFormProps {
     setQuestion: Function;
     questionId: number;
+}
+
+export interface INF_RateObject extends INF_RateType {
+    id: number;
+    votes: number;
+    model: string;
 }

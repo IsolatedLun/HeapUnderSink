@@ -1,0 +1,23 @@
+.tooltip-parent {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: calc(var(--tooltip-spacing) * 0.5) var(--tooltip-spacing);
+    border-radius: 3px;
+    background-color: var(--clr-tooltip-background);
+    border: 1px solid var(--clr-tooltip-border);
+    transition: transform 95ms ease-in-out, opacity 45ms ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 999;
+}
+
+.tooltip-parent:hover .tooltip {
+    opacity: 1;
+    transform: translate(-50%, -80%);
+} 

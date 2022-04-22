@@ -1,4 +1,8 @@
 /* Fonts Weights */
+.fw-bold {
+    font-weight: bold;
+}
+
 .fw-normal {
     font-weight: normal;
 }
@@ -10,6 +14,10 @@
 /* Font Sizes */
 .fs-question-stat {
     font-size: var(--fs-question-stat);
+}
+
+.fs-600 {
+    font-size: var(--fs-600);
 }
 
 .fs-500 {
@@ -71,6 +79,11 @@
     margin-bottom: 1em;
 }
 
+.margin-block-1 {
+    margin-block: 1em;
+}
+
+/* Paddings */
 .padding-block-1 {
     padding-block: 1em;
 }
@@ -98,6 +111,10 @@
     max-width: 25ch;
 }
 
+.max-width-15ch {
+    max-width: 55ch;
+}
+
 .width-max-content {
     width: max-content;
 }
@@ -118,6 +135,10 @@
     min-width: 100%;
 }
 
+.width-100 {
+    width: 100%;
+}
+
 /* Texts */
 .text-center {
     text-align: center;
@@ -129,6 +150,10 @@
 
 .innertext-small > * {
     font-size: var(--fs-300);
+}
+
+.white-space-nowrap {
+    white-space: nowrap;
 }
 
 /* Cursors */

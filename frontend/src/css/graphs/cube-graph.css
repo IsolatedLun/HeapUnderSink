@@ -1,0 +1,25 @@
+.cube-graph {
+    max-width: 220px;
+
+}
+
+.cube-graph .cubes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 0.25em;
+    place-items: center;
+    gap: 0.25em;
+}
+
+.cube-graph .cube {
+    width: 1.25em;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    background-color: var(--clr-cube-background);
+}
+
+.cube-graph .cube.overlay::after {
+    --_background: var(--clr-cube-overlay);
+    opacity: var(--opacity);
+    border-radius: inherit;
+}

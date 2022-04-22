@@ -2,10 +2,19 @@ from rest_framework import serializers
 from . import models
 
 class cUserSerializer(serializers.ModelSerializer):
+    questions = serializers.SerializerMethodField()
+
+    def get_questions(self, obj):
+        from questions.models import Question
+        from questions.serializers import QuestionBaseSerializer
+
+        questions = Question.objects.filter(user_id=obj.id)
+        return QuestionBaseSerializer(questions, many=True).data
 
     class Meta:
         model = models.cUser
-        fields = ['id', 'profile', 'username', 'reputation', 'is_staff', 'is_superuser']
+        fields = ['id', 'profile', 'username', 'reputation', 'questions',
+        'is_staff', 'is_superuser']
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
@@ -16,9 +25,14 @@ class cUserSerializer(serializers.ModelSerializer):
         instance.save()
         
         return instance
+    
+    class Meta:
+        model = models.cUser
+        fields = ['id', 'profile', 'username', 'reputation', 'questions',
+        'is_staff', 'is_superuser']
+        
 
 class cUserSerializerPreview(serializers.ModelSerializer):
-
     class Meta:
         model = models.cUser
         fields = ['id', 'profile', 'username', 'reputation']

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../../hooks';
 import { loginAction } from '../../../features/user-slice';
+import { useNextUrl } from '../../../hooks/useNextUrl';
 import { useLoginMutation } from '../../../services/authService';
 import { errorResponse } from '../../../services/responseFuncs';
 import Form from '../../Forms/Form';
@@ -17,12 +18,13 @@ const Login = () => {
     const [loggedUser, setLoggedUser] = useState<INF_Login>(loginConfig.formObj)
     const [fields, isValidForm] = useForm(loginConfig.inputs, setLoggedUser, loggedUser);
     const [login] = useLoginMutation();
+    const redirect = useNextUrl('/');
 
     function handleLogin() {
         login(loggedUser).unwrap()
             .then(res => { 
                 dispatch(loginAction(res)); 
-                navigate('/');
+                navigate(redirect); // ... navigate to next url if there is one else default
             })
             .catch(res => errorResponse('Invalid email or password.'));
     }
@@ -31,7 +33,7 @@ const Login = () => {
         <div className='[ flex flex-col margin-block-auto padding-block-1 ]'>
             <Welcome title='Login to HeapUndersink' />
 
-            <Form onSubmit={() => handleLogin()}>
+            <Form onSubmit={() => handleLogin()} variant='difference'>
                 { (fields) }  
                 <SubmitButton isDead={!isValidForm}>Log in</SubmitButton>
             </Form>

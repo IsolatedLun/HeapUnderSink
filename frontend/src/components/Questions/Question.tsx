@@ -9,7 +9,7 @@ import { INF_Question } from "./types";
 export const Question = ({ props } : { props: INF_Question }) => {
 
     return (
-        <div className="[ question ] [ flex flex-items flex-grow item-hoverable width-1fr ]" data-hover-variant='light'>
+        <div className="[ question ] [ flex flex-items flex-grow item-hoverable width-1fr bottom-border ]" data-hover-variant='light'>
             <div className="[ question__stats ] [ text-center ]"> 
                 <Stat stat={{ name: 'votes', num: props.votes }} />
                 <Stat stat={{ name: 'answers', num: props.answers as number }} />
@@ -23,7 +23,7 @@ export const Question = ({ props } : { props: INF_Question }) => {
                 <div className="[ question__details ] [ flex flex-between margin-top-1 ]">
                     <QuestionTags tags={props.tags} />
                     
-                    <QuestionUserPreview { ...props.user } />
+                    { props.user && <QuestionUserPreview { ...props.user } /> }
                 </div>
 
             </div>

@@ -16,7 +16,7 @@ const NavItem = (props: INF_NavItem) => {
         {
             isOpen && !props.to
             ?(
-                <div className='[ pos-relative ]'>
+                <div className='[ pos-relative ]' onClick={() => setIsOpen(!isOpen)}>
                   <DropDown>
                       { props.children }
                   </DropDown>

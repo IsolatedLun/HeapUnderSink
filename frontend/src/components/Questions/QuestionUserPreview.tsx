@@ -7,10 +7,14 @@ const QuestionUserPreview = (props: INF_QuestionUserPreview) => {
     <div className={`[ question__user ] [ flex flex-items flex-align-center 
         ${props.isVertical && 'flex-col gap-05 fs-200'} ]`}>
 
-        <Profile profile={{ url: props.profile, alt: props.username + '\'s profile' }} />
+        <Profile url={props.profile} data-size='large' alt={`${props.username}'s profile`} />
 
-        <a className="[ question__username single-ellipsis ]" href={`/users/${props.id}/${props.username}`}
-            data-default>{ props.username }</a>
+        <a 
+          className="[ question__username single-ellipsis max-width-15ch ]" 
+          href={`/users/${props.id}/${props.username}`}
+          data-default>
+              { props.username }
+        </a>
         <p className="[ text-muted ]">{ humanizeNumber(props.reputation) }</p>
     </div>
   )

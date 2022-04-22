@@ -28,7 +28,7 @@ const SignUp = () => {
                 <p className="[ text-muted ]">The place where you can ask any questions.</p>
             </Welcome>
 
-            <Form onSubmit={() => handleSignUp()}>
+            <Form onSubmit={() => handleSignUp()} variant='difference'>
                 { (fields) }  
                 <SubmitButton isDead={!isValidForm}>Sign up</SubmitButton>
             </Form>

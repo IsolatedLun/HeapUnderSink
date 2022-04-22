@@ -12,6 +12,7 @@ export interface ActionButtonProps extends ButtonProps {
 
 export interface LinkButtonProps extends ButtonProps {
     to: string;
+    next?: string;
 }
 
 export interface IconButtonProps extends ActionButtonProps {

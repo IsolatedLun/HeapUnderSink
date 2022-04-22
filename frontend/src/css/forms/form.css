@@ -1,0 +1,5 @@
+.form[data-variant='difference'] {
+    padding: var(--form-spacing);
+    background-color: var(--clr-background-300);
+    border-radius: var(--form-border, 8px);
+}

@@ -7,7 +7,7 @@ const AuthNavButtons = ({ isDesktop } : { isDesktop: boolean }) => {
     return (
     <div { ...rest } 
         className={isDesktop ? '[ flex-items ]' : '[ flex-items flex-col flex-align-center ]'}>
-        <LinkButton  to='/auth/login'>
+        <LinkButton  to='/auth/login' next={window.history.state.prevUrl}>
             Log in
         </LinkButton>
         <LinkButton to='/auth/signup' variant='action'>

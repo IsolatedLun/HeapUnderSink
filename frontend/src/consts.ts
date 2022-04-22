@@ -12,6 +12,10 @@ export const CAMERA_ICON = '\uf030';
 export const LOGOUT_ICON = '\uf2f5';
 export const CHECK_ICON = `\uf00c`;
 
+export const monthNames = [
+    'Jan.', 'Feb.', 'Mar.', 'Apr.', 'Jun.', 'Jul.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'
+]
+
 export const kNums = {
     '1000': 'k',
     '1000000': 'M',

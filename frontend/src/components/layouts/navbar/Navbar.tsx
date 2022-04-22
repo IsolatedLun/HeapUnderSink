@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BAR_ICON, LOGOUT_ICON, PROFILE_ICON } from '../../../consts';
 import { toggleElement } from '../../../utilFuncs/utils';
 import IconButton from '../../Modules/Buttons/IconButton';
@@ -7,13 +7,28 @@ import AuthNavButtons from './AuthNavButtons';
 import NavItem from './NavItem';
 import NavUser from './NavUser';
 import SideNavbar from './SideNavbar';
-import { useAppDispatch, useAppSelector } from '../../../../hooks';
+import { useAppDispatch } from '../../../../hooks';
 import { useAuth } from '../../../hooks/useAuth';
 import { loggedOutAction } from '../../../features/user-slice';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const [user, isLogged] = useAuth();
   const dispatch = useAppDispatch();
+  const [urlIndex, setUrlIndex] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    if(urlIndex === 0) {
+      window.history.pushState({ prevUrl: location.pathname }, '');
+      setUrlIndex(1);
+    }
+
+    else {
+      setUrlIndex(0);
+    }
+      
+  }, [location])
 
   return (
     <>

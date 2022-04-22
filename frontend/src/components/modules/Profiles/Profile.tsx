@@ -2,15 +2,15 @@ import React from 'react'
 import { API_URL } from '../../../consts'
 import { INF_Profile } from './types'
 
-const Profile = ({ profile } : { profile: INF_Profile }) => {
-    if(!profile.variant)
-        profile.variant = 'beveled';
+const Profile = (props: INF_Profile) => {
 
   return (
     <img className="[ profile ]" 
-        src={API_URL + profile.url} 
-        data-profile-variant={profile.variant}
-        alt={profile.alt} />
+        src={API_URL + props.url} 
+        data-profile-variant={props.variant}
+        data-variant={props.variant}
+        data-size={props.size}
+        alt={props.alt} />
   )
 }
 

@@ -16,9 +16,13 @@ export function popup(text: string, type: string) {
     popup.setAttribute('data-card-variant', type);
     popupText.textContent = text;
 
-    popupTimer = setTimeout(() => {
+    if(popup.getAttribute('data-visibility') !== 'visible') {
+        popupTimer = setTimeout(() => {
+            togglePopup('popup');
+        }, 3600)
+    
+        
         togglePopup('popup');
-    }, 3600)
-
-    togglePopup('popup');
+    }
+    
 }

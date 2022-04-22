@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./components/Layouts/Home";
 import Navbar from "./components/Layouts/Navbar/Navbar";
 import ViewQuestion from "./components/ViewQuestion/ViewQuestion";
@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from '../hooks';
 import Ask from "./components/Layouts/Ask/Ask";
 import TagsView from "./components/Layouts/TagsView";
+import Me from "./components/Me/Me";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -52,6 +53,12 @@ function App() {
         <Route path="/ask" element={
           <MainContainer containMisc={false}>
             <Ask />
+          </MainContainer>
+        } />
+
+        <Route path="/me" element={
+          <MainContainer containMisc={false}>
+            <Me />
           </MainContainer>
         } />
 

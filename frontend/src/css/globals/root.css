@@ -16,6 +16,7 @@
     --clr-foreground-main: white;
     --clr-background-main: hsl(240 14% 5%);
 
+    --clr-background-300: hsl(240 10% 14%);
     --clr-background-400: hsl(240 10% 12%);
 
     --clr-neutral-200: hsl(0 0% 90%);
@@ -68,11 +69,20 @@
         --clr-tag-background: hsl(220 70% 36% / 0.24);
         --clr-tag-faded-background: hsl(220 70% 36% / 0.14);
 
+        /* Cube Graph Colors */
+        --clr-cube-background: hsl(0 0% 0% / 0.44);
+        --clr-cube-overlay: hsl(121 82% 41%);
+
+        /* Tooltip Colors */
+        --clr-tooltip-background: hsl(240 10% 10%);
+        --clr-tooltip-border: hsl(240 10% 20%);
+
     /* Spacings */
     --main-content-spacing: 0.25em;
     --nav-spacing: 1.45em;
     --footer-spacing: 1.25em;
     --side-nav-spacing: 1.45em;
+    --form-spacing: 1.25em;
     --button-spacing: 0.75em;
     --input-spacing: 0.65em;
     --list-link-spacing: 1em;
@@ -80,6 +90,7 @@
     --tag-spacing: 0.45em;
     --popup-spacing: 0.5em;
     --tag-detail-spacing: 0.65em;
+    --tooltip-spacing: 0.45em;
         /* Question Spacings */
         --question-spacing: 0.5em;
         --question-stat-spacing: 0.65em;

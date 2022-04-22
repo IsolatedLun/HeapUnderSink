@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom'
 import { TIMES_ICON } from '../../../consts'
+import { useAuth } from '../../../hooks/useAuth'
 import { toggleElement } from '../../../utilFuncs/utils'
 import IconButton from '../../Modules/Buttons/IconButton'
 import LinkButton from '../../Modules/Buttons/LinkButton'
 import AuthNavButtons from './AuthNavButtons'
 
 const SideNavbar = () => {
+  const [user, isLogged] = useAuth();
+
   return (
     <nav role='Side mobile navigation' id='side-nav' 
         className="[ side-nav ] [ flex-items flex-col flex-align-center ]" 
@@ -23,7 +26,11 @@ const SideNavbar = () => {
             <li className="list__item"><Link to="/news">News</Link></li>
         </ul>
 
-        <AuthNavButtons isDesktop={false} />
+        {
+          isLogged
+          ? <Link to='/me'>me</Link>
+          : <AuthNavButtons isDesktop={false} />
+        }
     </nav>
   )
 }

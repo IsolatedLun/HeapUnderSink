@@ -7,7 +7,7 @@ import { INF_Question } from '../types';
 test('Display questions with no data', () => {
     render(
         <BrowserRouter>
-            <Questions questions={[]} sortBy='' />
+            <Questions questions={[]} />
         </BrowserRouter>
     );
 
@@ -21,8 +21,8 @@ test('Display questions with data', () => {
         views: 0,
         votes: 1000,
         answered: false,
-        created_at: new Date(),
-        modified_at: new Date(),
+        created_at: '',
+        modified_at: '',
         title: 'A question',
         tags: [],
         body: '',
@@ -31,12 +31,13 @@ test('Display questions with data', () => {
             profile: '',
             reputation: 250,
             username: 'A user'
-        }
+        },
+        rate_type: 'neutral'
     }
 
     render(
         <BrowserRouter>
-            <Questions questions={[question]} sortBy='' />
+            <Questions questions={[question]} />
         </BrowserRouter>
     );
 

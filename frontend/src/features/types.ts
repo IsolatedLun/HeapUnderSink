@@ -16,3 +16,8 @@ export interface INF_UserState {
     isLogged: boolean;
     user: INF_User;
 }
+
+export interface INF_QuestionState {
+    questions: INF_Question[];
+    currQuestion: INF_Question | undefined;
+}

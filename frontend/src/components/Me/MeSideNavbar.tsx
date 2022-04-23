@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MeSideNavbar = () => {
   return (
@@ -6,8 +7,8 @@ const MeSideNavbar = () => {
         <div className="list-container">
             <h3 className="[ text-muted ]">Public</h3>
             <ul className="[ list ]" data-list-type='block'>
-                <li className="list__item"><a href="/">Questions</a></li>
-                <li className="list__item"><a href="/news">Answers</a></li>
+              <li className="list__item"><Link to="">Main</Link></li>
+              <li className="list__item"><Link to="questions">Questions</Link></li>
             </ul>
         </div>
     </nav>

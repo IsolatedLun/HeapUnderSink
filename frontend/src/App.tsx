@@ -16,7 +16,6 @@ import TagsView from "./components/Layouts/TagsView";
 import Me from "./components/Me/Me";
 
 function App() {
-  const dispatch = useAppDispatch();
   const isLogged = useAuth()[1];
   const [authenticate] = useAuthenticateMutation();
 
@@ -25,7 +24,7 @@ function App() {
   useEffect(() => {
     if(!isLogged)
       authenticate()
-  }, [])
+  }, [localStorage.getItem('access')])
 
   useEffect(() => {
     if(isLogged)
@@ -56,7 +55,7 @@ function App() {
           </MainContainer>
         } />
 
-        <Route path="/me" element={
+        <Route path="/me/:id/*" element={
           <MainContainer containMisc={false}>
             <Me />
           </MainContainer>
@@ -94,6 +93,12 @@ function App() {
         <Route path="/auth/signup" element={
           <MainContainer containMisc={false}>
             <SignUp />
+          </MainContainer>
+        } />
+
+        <Route path="/me/:id/*" element={
+          <MainContainer containMisc={false}>
+            <Me />
           </MainContainer>
         } />
       </>

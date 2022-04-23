@@ -66,7 +66,7 @@ function processRate(currType: string, actionType: string, setModel: Function): 
  * @summary Handles the state of the votes of the model
  * @returns [rateControllerProps, rateObject, modelType, hasVoted].
 */
-export function useRate(model: INF_Question | INF_Answer, setModel: Function, 
+export function useRate(model: INF_Question | INF_Answer, dispatch: Function, 
     modelType: string): [INF_RatingController, INF_RateObject, string, boolean] {
 
     const [currType, setCurrType] = useState('none');
@@ -75,7 +75,7 @@ export function useRate(model: INF_Question | INF_Answer, setModel: Function,
 
     useEffect(() => {
         if(model && actionType !== 'neutral') {
-            setCurrType(processRate(currType, actionType, setModel))
+            setCurrType(processRate(currType, actionType, dispatch))
             setActionType('neutral')
             sethasVoted(true);
         }

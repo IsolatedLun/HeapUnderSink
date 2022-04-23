@@ -80,6 +80,21 @@ class RateObject(APIView):
 
         return Response(data='Rated object', status=OK)
 
+class AcceptAnswerView(APIView):
+    def post(self, req, question_id):
+        answer_id = req.data['answer_id']
+
+        question = models.Answer.objects.get(id=question_id)
+        answer = models.Answer.objects.get(id=answer_id)
+
+        question.answered = True
+        answer.is_answer = True
+
+        question.save()
+        answer.save()
+
+        return Response(data='Accepted answer', status=OK)
+
 # ================
 # Answer Views
 class PostAnswerView(APIView):

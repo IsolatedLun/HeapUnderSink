@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FILTER_ICON } from '../../../consts';
 import Button from '../../Modules/Buttons/Button';
 import IconButton from '../../Modules/Buttons/IconButton';
+import DropDownContainer from '../../Modules/Dropdowns/DropDownContainer';
+import DropDownItem from '../../Modules/Dropdowns/DropDownItem';
+import SortBy from './SortBy';
 import { INF_FilterHeader } from './types';
 
 const FilterHeader = (props: INF_FilterHeader) => {
+  const [inputVal, setInputVal] = useState('');
+
   return (
     <header aria-label='Questions header' data-flex-column-mobile
         className="[ questions__header ] [ flex flex-between margin-bottom-1 ]">
@@ -14,27 +20,23 @@ const FilterHeader = (props: INF_FilterHeader) => {
           <Link to='/ask' className="[ button ]" data-variant='full-blue'>Ask question</Link>
         </div>
         <div className="[ flex-items ]" data-flex-column-mobile>
-          <ul aria-label="Questions filter buttons" className="[ bordered-list flex ]">
-            <li className="[ item-hoverable ]" data-hover='light'>
-              <Button onClick={() => props.setSort('popular')} variant='empty'>
-                Most popular
-              </Button>
-            </li>
-            <li className="[ item-hoverable ]" data-hover='light'>
-              <Button onClick={() => props.setSort('bountied')} variant='empty'>
-                Bountied
-              </Button>
-            </li>
-            <li className="[ item-hoverable ]" data-hover='light'>
-              <Button onClick={() => props.setSort('date')} variant='empty'>
-                New
-              </Button>
-            </li>
-          </ul>
+
+          <DropDownContainer item={<SortBy />}>
+            {
+              props.filters.map(item => (
+                <DropDownItem onClick={() => props.setSort(item.field)}>
+                  { item.name }
+                </DropDownItem>
+              ))
+            }
+          </DropDownContainer>
 
           <div className="[ flex-items margin-inline-auto ]">
-            <input type="text" className="[ input ] [ width-8rem ]" placeholder={props.sortPlaceholder} />
-            <IconButton ariaLabel='Filter button'onClick={() => null }>
+            <input type="text" className="[ input ] [ width-8rem ]" 
+              placeholder={props.sortPlaceholder} onInput={(e) => setInputVal(e.currentTarget.value)} />
+
+            <IconButton ariaLabel='Filter button'onClick={() =>
+               props.setSort(`key_${props.sortTextKey}_${inputVal}`) }>
               { FILTER_ICON }
             </IconButton>
           </div>

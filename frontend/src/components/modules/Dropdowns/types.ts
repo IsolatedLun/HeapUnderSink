@@ -7,3 +7,10 @@ export interface INF_DropDownItem {
     to?: string;
     onClick?: Function;
 }
+
+export interface INF_DropDownContainer {
+    item: any;
+    children: any;
+    to?: string;
+    alignment?: string;
+}

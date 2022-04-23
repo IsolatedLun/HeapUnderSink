@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { humanizeNumber } from '../../utilFuncs/utils';
 import Profile from '../Modules/Profiles/Profile';
 import { INF_QuestionUserPreview } from './types';
@@ -9,12 +10,12 @@ const QuestionUserPreview = (props: INF_QuestionUserPreview) => {
 
         <Profile url={props.profile} data-size='large' alt={`${props.username}'s profile`} />
 
-        <a 
+        <Link 
           className="[ question__username single-ellipsis max-width-15ch ]" 
-          href={`/users/${props.id}/${props.username}`}
+          to={`/me/${props.id}`}
           data-default>
               { props.username }
-        </a>
+        </Link>
         <p className="[ text-muted ]">{ humanizeNumber(props.reputation) }</p>
     </div>
   )

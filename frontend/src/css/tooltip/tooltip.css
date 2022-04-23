@@ -17,7 +17,7 @@
     z-index: 999;
 }
 
-.tooltip-parent:hover .tooltip {
+.tooltip-parent:is(:hover, :focus) .tooltip {
     opacity: 1;
     transform: translate(-50%, -80%);
 } 

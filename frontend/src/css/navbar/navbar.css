@@ -4,17 +4,6 @@
     background-color: var(--clr-background-400);
 }
 
-nav .nav__item .nav__link {
-    display: inline-block;
-    padding: calc(var(--nav-item-spacing) * 0.5) var(--nav-item-spacing);
-    background-color: var(--clr-hover-light);
-    border-radius: var(--nav-item-border, 5px);
-}
-
-nav .nav__item:is(:hover, :focus) {
-    background-color: var(--clr-hover);
-}
-
 /* Side Navbar */
 .side-nav {
     --element-display: flex;

@@ -8,5 +8,7 @@ urlpatterns = [
     path('token/refresh', TokenRefreshView.as_view(), name='refresh-token'),
     path('authenticate', views.JWTAuthenticateView.as_view(), name='post-authenticate'),
     path('login', views.JWTLoginView.as_view(), name='post-login'),
-    path('register', views.RegisterView.as_view(), name='post-register')
+    path('register', views.RegisterView.as_view(), name='post-register'),
+
+    path('user/<int:user_id>', views.GetUserById.as_view(), name='get-user')
 ]

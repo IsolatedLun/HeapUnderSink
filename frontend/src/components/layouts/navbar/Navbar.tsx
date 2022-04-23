@@ -4,13 +4,13 @@ import { toggleElement } from '../../../utilFuncs/utils';
 import IconButton from '../../Modules/Buttons/IconButton';
 import DropDownItem from '../../Modules/Dropdowns/DropDownItem';
 import AuthNavButtons from './AuthNavButtons';
-import NavItem from './NavItem';
 import NavUser from './NavUser';
 import SideNavbar from './SideNavbar';
 import { useAppDispatch } from '../../../../hooks';
 import { useAuth } from '../../../hooks/useAuth';
 import { loggedOutAction } from '../../../features/user-slice';
 import { useEffect, useState } from 'react';
+import DropDownContainer from '../../Modules/Dropdowns/DropDownContainer';
 
 const Navbar = () => {
   const [user, isLogged] = useAuth();
@@ -49,15 +49,15 @@ const Navbar = () => {
               {
                 isLogged
                 ? (
-                    <NavItem item={<NavUser />}>
-                      <DropDownItem leftIcon={PROFILE_ICON} to='/me'>
+                    <DropDownContainer item={<NavUser />} alignment='navbar'>
+                      <DropDownItem leftIcon={PROFILE_ICON} to={`/me/${user.id}`}>
                         Your profile
                       </DropDownItem>
                       <DropDownItem leftIcon={LOGOUT_ICON} variant='red' 
                         onClick={() => dispatch(loggedOutAction())}>
                         Log out
                       </DropDownItem>
-                    </NavItem>
+                    </DropDownContainer>
                   )
                 : <AuthNavButtons isDesktop={true} />
               }

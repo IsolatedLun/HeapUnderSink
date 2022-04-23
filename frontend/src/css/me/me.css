@@ -1,3 +1,9 @@
 .me-grid {
     --grid-gap: 0.5em;
 }
+
+@media screen and (max-width: 768px) {
+    .me-main {
+        align-items: center;
+    }
+}

@@ -61,3 +61,13 @@ class JWTAuthenticateView(APIView):
             models.cUser.objects.get(id=decode_user_id(req.headers))).data
 
         return Response(data=user, status=OK)
+
+class GetUserById(APIView):
+    def get(self, req, user_id):
+        try:
+            user = models.cUser.objects.get(id=user_id)
+            serializer = serializers.cUserSerializer(user).data
+
+            return Response(data=serializer, status=OK)
+        except:
+            return Response({ 'detail': 'User does not exist.' }, status=OK)

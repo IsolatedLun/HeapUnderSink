@@ -18,6 +18,7 @@ const ViewQuestion = () => {
     const [user] = useAuth();
     const [question, setQuestion] = useState<INF_Question | undefined>(undefined);
     const [showForm, setShowForm] = useState(false);
+    
     const [controllerProps, object, type, hasVoted] = useRate(question!, setQuestion, 'question');
     const [ratingCb] = useLoggedActions(handleRating);
 

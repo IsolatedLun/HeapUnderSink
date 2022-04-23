@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { INF_DropDownItem } from './interfaces'
+import { INF_DropDownItem } from './types'
 
 const DropDownItem = (props: INF_DropDownItem) => {
   const rest = props.onClick ? { 

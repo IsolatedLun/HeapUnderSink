@@ -27,9 +27,7 @@ const SideNavbar = () => {
         </ul>
 
         {
-          isLogged
-          ? <Link to='/me'>me</Link>
-          : <AuthNavButtons isDesktop={false} />
+          !isLogged && <AuthNavButtons isDesktop={false} />
         }
     </nav>
   )

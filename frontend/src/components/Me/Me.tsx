@@ -1,37 +1,41 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import { INF_User } from "../../features/types";
 import { useAuth } from "../../hooks/useAuth";
-import CubeGraph from "../Graphs/CubeGraph/CubeGraph";
-import MeAbout from "./MeAbout";
+import { useGetUserQuery } from "../../services/userService";
 import MeHeader from "./MeHeader";
 import MeSideNavbar from "./MeSideNavbar";
+import MeMain from "./Pages/MeMain";
+import MeQuestions from "./Pages/MeQuestions";
 
 const Me = () => {
     const { id } = useParams();
     const [loggedUser, isLogged] = useAuth();
     const [user, setUser] = useState<INF_User>();
+    const { data, isSuccess } = useGetUserQuery(Number(id));
 
     useEffect(() => {
-        if(isLogged)
+        if(isLogged && loggedUser.id === Number(id))
             setUser(loggedUser);
         else {
-            // ... fetch user
+            if(isSuccess)
+                setUser(data);
         }
-    }, [])
+    }, [isSuccess, id])
 
     if(user)
         return (
             <div className="[ me ]">
                 <MeHeader { ...user }  />
 
-                <section data-reset-grid-colums-mobile aria-label="User section" className="[ me-grid ] [ grid-05fr-2fr ]">
+                <section data-reset-grid-colums-mobile aria-label="User section" 
+                    className="[ me-grid ] [ grid-05fr-2fr ]">
                     <MeSideNavbar />
 
-                    <div className="[ flex-between flex-align-start ]" data-flex-column-mobile>
-                        <MeAbout />
-                        <CubeGraph data={user.questions} dateKey={'created_at'} />
-                    </div>
+                    <Routes>
+                        <Route path="" element={<MeMain user={user} />} />
+                        <Route path="/questions" element={<MeQuestions user={user} />} />
+                    </Routes>
                 </section>
             </div>
         )

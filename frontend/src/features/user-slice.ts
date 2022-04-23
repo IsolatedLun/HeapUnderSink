@@ -10,7 +10,10 @@ const initialState: INF_UserState = {
         id: -1,
         username: '',
         profile: '',
-        reputation: -1
+        reputation: -1,
+        questions: [],
+        is_staff: false,
+        is_superuser: false,
      }
 }
 
@@ -36,6 +39,12 @@ export const userSlice = createSlice({
         builder.addMatcher(authApi.endpoints.authenticate.matchFulfilled, (state, action) => {
             state.isLogged = true;
             state.user = action.payload;
+        })
+
+        builder.addMatcher(authApi.endpoints.authenticate.matchRejected, (state, action) => {
+            renewTokens()
+                .then(() => authApi.endpoints.authenticate.useMutation());
+
         })
     }
 })

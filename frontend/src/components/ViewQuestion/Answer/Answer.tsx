@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { CHECK_ICON } from '../../../consts'
 import { useRate } from '../../../hooks/useRate'
 import { usePostRateObjectMutation } from '../../../services/questionsService'
+import IconButton from '../../Modules/Buttons/IconButton'
 import QuestionUserPreview from '../../Questions/QuestionUserPreview'
 import RatingController from '../RatingController'
 import { INF_Answer } from '../types'
@@ -26,7 +28,12 @@ const Answer = (props: INF_Answer) => {
               { ...props.user } isVertical={true} 
                 />
 
-              <p>{ props.showControls ? 'ACCEPT AS ANSWER' : '' }</p>
+              { props.showControls && 
+                <IconButton ariaLabel='Accept answer button' onClick={() => null} 
+                  variant={props.is_answer ? 'action' : ''}>
+                  { CHECK_ICON }
+                  </IconButton> 
+              }
         </div>
 
         <p>{ props.body }</p>

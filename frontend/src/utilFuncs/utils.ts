@@ -1,4 +1,5 @@
 import { kNums } from "../consts";
+import { INF_User } from "../features/types";
 
 /**
  * @param id
@@ -46,4 +47,8 @@ export function humanizeNumber(num: number): string {
 */
 export function doubleDeci(num: number): number {
   return Number(String(num)[0]) + (Number(String(num)[1]) / 10);
+}
+
+export function isSameUser(x: INF_User, y: INF_User) {
+  return x.id === y.id;
 }

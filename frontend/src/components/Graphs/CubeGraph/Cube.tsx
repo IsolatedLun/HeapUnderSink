@@ -10,7 +10,7 @@ const Cube = (props: INF_Cube) => {
     <div className='[ cube ] [ overlay tooltip-parent ] [ pos-relative cursor-pointer ]' style={style}>
       <Tooltip>
         <p className='[ white-space-nowrap ]'>
-          { props.amt } questions on { monthNames[props.month] } { props.day }
+          <span className='[ fw-bold ]'>{ props.amt } questions</span> on { monthNames[props.month] } { props.day }
         </p>
       </Tooltip>
     </div>

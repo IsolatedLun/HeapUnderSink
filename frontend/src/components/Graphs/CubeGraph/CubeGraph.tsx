@@ -15,7 +15,7 @@ const CubeGraph = (props: INF_CubeGraph) => {
         <div className="[ cubes ]">
           {
               Object.entries(daysObj).map(([key, val]) => 
-                <Cube amt={val} day={Number(key)} month={month} />)
+                <Cube key={`${val}-${key}`} amt={val} day={Number(key)} month={month} />)
           }
         </div>
       </div>

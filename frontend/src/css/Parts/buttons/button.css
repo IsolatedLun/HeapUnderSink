@@ -20,7 +20,7 @@
 /* Variant => action */
 .button[data-variant='action'] {
     background-color: var(--clr-button-action);
-    border: 0;
+    border-color: var(--clr-button-action);
 }
 
 .button[data-variant='action']:is(:hover, :focus) {
@@ -29,7 +29,7 @@
 
 .button[data-variant='full-blue'] {
     background-color: var(--clr-button-full-blue);
-    border: 0;
+    border-color: var(--clr-button-full-blue);
 }
 
 .button[data-variant='full-blue']:is(:hover, :focus) {

@@ -39,6 +39,16 @@ export const questionsApi = createApi({
       }),
     }),
 
+    postAcceptAnswer: builder.mutation<INF_Question, any>({
+      query: ({ answerId, questionId }) => ({
+          url: `answer/${questionId}/accept`,
+          method: 'POST',
+          body: {
+            'answer_id': answerId
+          },
+      }),
+    }),
+
     postRateObject: builder.mutation<void, INF_RateObject>({
       query: (data) => ({
           url: `rate/${data.id}`,
@@ -70,4 +80,5 @@ export const questionsApi = createApi({
 
 
 export const { useGetQuestionsQuery, useGetQuestionQuery, usePostAskQuestionMutation,
-  useGetTopTagsQuery, useGetTagsQuery, usePostAnswerMutation, usePostRateObjectMutation } = questionsApi;
+  useGetTopTagsQuery, useGetTagsQuery, usePostAnswerMutation, usePostRateObjectMutation,
+  usePostAcceptAnswerMutation } = questionsApi;

@@ -3,6 +3,7 @@ import { INF_Question } from '../Questions/types';
 
 export interface INF_Answer {
     id: number;
+    question: number;
     questionUserId: number;
     votes: number;
 

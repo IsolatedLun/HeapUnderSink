@@ -11,9 +11,9 @@ export const Question = ({ props } : { props: INF_Question }) => {
     return (
         <div className="[ question ] [ flex flex-items flex-grow item-hoverable width-1fr bottom-border ]" data-hover-variant='light'>
             <div className="[ question__stats ] [ text-center ]"> 
-                <Stat stat={{ name: 'votes', num: props.votes }} />
-                <Stat stat={{ name: 'answers', num: props.answers as number }} />
-                <Stat stat={{ name: 'views', num: props.views }} />
+                <Stat name="votes" num={props.votes} bool={undefined} />
+                <Stat name="answers" num={props.answers as number} bool={props.answered}  />
+                <Stat name='views' num={props.views} bool={undefined} />
             </div>
 
             <div className="[ question__info ] [ flex flex-col flex-justify-between flex-grow ]">

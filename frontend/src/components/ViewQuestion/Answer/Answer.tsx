@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CHECK_ICON } from '../../../consts'
 import { useRate } from '../../../hooks/useRate'
-import { usePostRateObjectMutation } from '../../../services/questionsService'
+import { usePostAcceptAnswerMutation, usePostRateObjectMutation } from '../../../services/questionsService'
 import IconButton from '../../Modules/Buttons/IconButton'
 import QuestionUserPreview from '../../Questions/QuestionUserPreview'
 import RatingController from '../RatingController'
@@ -9,8 +9,10 @@ import { INF_Answer } from '../types'
 
 const Answer = (props: INF_Answer) => {
   const [answer, setAnswer] = useState(props);
+  const [isAnswer, setIsAnswer] = useState(props.is_answer)
   const [controllerProps, object, type, hasVoted] = useRate(answer, setAnswer, 'answer');
   const [rateObject] = usePostRateObjectMutation();
+  const [postAcceptAnswer] = usePostAcceptAnswerMutation();
 
   useEffect(() => {
     if(type === 'neutral' && hasVoted)
@@ -18,6 +20,10 @@ const Answer = (props: INF_Answer) => {
             .unwrap()
             .then(res => console.log(res))
   }, [type])
+
+  function handleAcceptingAnswer() {
+    postAcceptAnswer({ answerId: answer.id, questionId: answer.question })
+  }
 
   return (
     <div className="[ answer ] [ flex flex-items fs-200 bottom-border padding-block-1 ]">
@@ -29,8 +35,11 @@ const Answer = (props: INF_Answer) => {
                 />
 
               { props.showControls && 
-                <IconButton ariaLabel='Accept answer button' onClick={() => null} 
-                  variant={props.is_answer ? 'action' : ''}>
+                <IconButton ariaLabel='Accept answer button' onClick={() => { 
+                  handleAcceptingAnswer();
+                  setIsAnswer(!isAnswer);
+                }} 
+                  variant={isAnswer ? 'action' : ''}>
                   { CHECK_ICON }
                   </IconButton> 
               }

@@ -40,12 +40,6 @@ export const userSlice = createSlice({
             state.isLogged = true;
             state.user = action.payload;
         })
-
-        builder.addMatcher(authApi.endpoints.authenticate.matchRejected, (state, action) => {
-            renewTokens()
-                .then(() => authApi.endpoints.authenticate.useMutation());
-
-        })
     }
 })
 

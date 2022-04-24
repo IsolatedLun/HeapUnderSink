@@ -10,7 +10,8 @@ const Profile = (props: INF_Profile) => {
         data-profile-variant={props.variant}
         data-variant={props.variant}
         data-size={props.size}
-        alt={props.alt} />
+        alt={props.alt}
+        loading='lazy' />
   )
 }
 

@@ -24,6 +24,7 @@ export type INF_Question = {
 export interface INF_Stat {
     name: string;
     num: number;
+    bool?: boolean;
 }
 
 export interface INF_QuestionUserPreview extends INF_UserPreview {

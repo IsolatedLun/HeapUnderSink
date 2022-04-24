@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FILTER_ICON } from '../../../consts';
-import Button from '../../Modules/Buttons/Button';
+import { SEARCH_ICON } from '../../../consts';
 import IconButton from '../../Modules/Buttons/IconButton';
 import DropDownContainer from '../../Modules/Dropdowns/DropDownContainer';
 import DropDownItem from '../../Modules/Dropdowns/DropDownItem';
@@ -37,7 +36,7 @@ const FilterHeader = (props: INF_FilterHeader) => {
 
             <IconButton ariaLabel='Filter button'onClick={() =>
                props.setSort(`key_${props.sortTextKey}_${inputVal}`) }>
-              { FILTER_ICON }
+              { SEARCH_ICON }
             </IconButton>
           </div>
         </div>

@@ -84,16 +84,16 @@ class AcceptAnswerView(APIView):
     def post(self, req, question_id):
         answer_id = req.data['answer_id']
 
-        question = models.Answer.objects.get(id=question_id)
+        question = models.Question.objects.get(id=question_id)
         answer = models.Answer.objects.get(id=answer_id)
 
-        question.answered = True
-        answer.is_answer = True
+        question.answered = not question.answered
+        answer.is_answer = not answer.is_answer
 
         question.save()
         answer.save()
 
-        return Response(data='Accepted answer', status=OK)
+        return Response(data='Updated answer', status=OK)
 
 # ================
 # Answer Views

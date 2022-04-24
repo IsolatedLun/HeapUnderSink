@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { useAppDispatch } from '../../../hooks';
+import { setCurrQuestion } from '../../features/questions-slice';
 import { useAuth } from '../../hooks/useAuth';
 import { useLoggedActions } from '../../hooks/useLoggedActions';
 import { useRate } from '../../hooks/useRate';

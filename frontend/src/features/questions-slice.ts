@@ -16,6 +16,9 @@ export const questionsSlice = createSlice({
 
         setCurrQuestion(state, action) {
             state.currQuestion = action.payload;
+            const arr = [...state.questions].concat(action.payload);
+
+            state.questions = arr;
         }
     },
 

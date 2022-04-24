@@ -13,6 +13,7 @@ export const questionsApi = createApi({
       query: () => ({
           url: '',
           method: 'GET',
+          keepUnusedDataFor: 10,
       }),
     }),
 
@@ -21,6 +22,7 @@ export const questionsApi = createApi({
           url: `${id}`,
           method: 'GET',
       }),
+      keepUnusedDataFor: 5,
     }),
 
     postAskQuestion: builder.mutation<INF_Question, INF_Ask>({

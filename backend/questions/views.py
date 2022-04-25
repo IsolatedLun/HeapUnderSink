@@ -4,14 +4,14 @@ from . import models
 from . import serializers
 from rest_framework.views import APIView, Response
 from rest_framework.permissions import IsAuthenticated
+from django.core.paginator import Paginator
+from rest_framework import generics
 
 # ================
 # Question Views
-class QuestionsView(APIView):
-    def get(self, req):
-        questions = serializers.QuestionPreviewSerializer(
-            models.Question.objects.all().order_by('-created_at'), many=True).data
-        return Response(data=questions, status=OK)
+class QuestionsView(generics.ListAPIView):
+    queryset = models.Question.objects.all()
+    serializer_class = serializers.QuestionPreviewSerializer
 
 class TagsView(APIView):
     def get(self, req):
@@ -67,8 +67,16 @@ class RateObject(APIView):
         elif req.data['model'] == 'answer':
             obj = models.Answer.objects.get(id=object_id)
         
+        prev_votes = obj.votes
         obj.votes = req.data['votes']
+
+        if prev_votes < obj.votes:
+            obj.user.reputation += 10
+        else:
+            obj.user.reputation -= 5
+
         obj.save()
+        obj.user.save()
 
         rated_object, created = models.RatedObject.objects.get_or_create(
             object_id=object_id,

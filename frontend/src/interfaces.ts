@@ -4,3 +4,7 @@ export interface INF_UserPreview {
     profile: string;
     reputation: number;
 }
+
+export interface INF_ChildrenProps {
+    children: any;
+}

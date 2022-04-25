@@ -5,3 +5,8 @@ export interface INF_FilterConfig {
     controversial: string;
     top: string;
 }
+
+export interface INF_PaginationRound {
+    next: number | null;
+    previous: number | null;
+}

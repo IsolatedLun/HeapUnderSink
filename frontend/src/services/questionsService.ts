@@ -4,14 +4,15 @@ import { INF_Tag } from '../components/Modules/Tags/types';
 import { INF_Question } from '../components/Questions/types';
 import { INF_RateObject } from '../components/ViewQuestion/types';
 import { createBaseQuery } from './baseQueryReAuth';
+import { INF_PaginatedResponse } from './types';
 
 export const questionsApi = createApi({
   reducerPath: 'questionsApi',
   baseQuery: createBaseQuery('/questions/'),
   endpoints: (builder) => ({
-    getQuestions: builder.query<INF_Question[], void>({
-      query: () => ({
-          url: '',
+    getQuestions: builder.query<INF_PaginatedResponse<INF_Question>, number>({
+      query: (offset) => ({
+          url: `?offset=${offset ? Number(offset) : 0}`,
           method: 'GET',
           keepUnusedDataFor: 10,
       }),

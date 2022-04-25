@@ -10,6 +10,8 @@ export interface INF_User {
 
     is_superuser: boolean;
     is_staff: boolean;
+
+    joined_at: string;
 }
 
 export interface INF_UserState {

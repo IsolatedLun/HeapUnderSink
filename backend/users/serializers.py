@@ -3,6 +3,7 @@ from . import models
 
 class cUserSerializer(serializers.ModelSerializer):
     questions = serializers.SerializerMethodField()
+    joined_at = serializers.DateTimeField(format="%b %d, %Y")
 
     def get_questions(self, obj):
         from questions.models import Question
@@ -10,11 +11,6 @@ class cUserSerializer(serializers.ModelSerializer):
 
         questions = Question.objects.filter(user_id=obj.id)
         return QuestionBaseSerializer(questions, many=True).data
-
-    class Meta:
-        model = models.cUser
-        fields = ['id', 'profile', 'username', 'reputation', 'questions',
-        'is_staff', 'is_superuser']
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
@@ -29,7 +25,7 @@ class cUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.cUser
         fields = ['id', 'profile', 'username', 'reputation', 'questions',
-        'is_staff', 'is_superuser']
+        'is_staff', 'is_superuser', 'joined_at']
         
 
 class cUserSerializerPreview(serializers.ModelSerializer):

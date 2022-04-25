@@ -8,7 +8,7 @@ const DropDownContainer = (props: INF_DropDownContainer) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div className='[ dropdown-container ] [ cursor-pointer ]' data-alignment={props.alignment}>
+    <div tabIndex={0} className='[ dropdown-container ] [ cursor-pointer ]' data-alignment={props.alignment}>
         {
           props.to
           ? (

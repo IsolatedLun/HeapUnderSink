@@ -14,6 +14,8 @@ export const CHECK_ICON = `\uf00c`;
 export const SORT_ICON = `\uf160`;
 export const SEARCH_ICON = `\uf002`;
 
+export const CALENDAR_ICON = `\uf073`;
+
 export const monthNames = [
     'Jan.', 'Feb.', 'Mar.', 'Apr.', 'Jun.', 'Jul.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'
 ]

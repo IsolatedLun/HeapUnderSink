@@ -6,7 +6,7 @@ import { INF_MeMain } from '../types'
 const MeMain = (props: INF_MeMain) => {
   return (
     <div className="[ me-main ] [ flex-between flex-align-start flex-grow ]" data-flex-column-mobile>
-        <MeAbout />
+        <MeAbout { ...props.user } />
         <CubeGraph data={props.user.questions} dateKey={'created_at'} />
     </div>
   )

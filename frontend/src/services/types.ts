@@ -6,6 +6,13 @@ export interface INF_Response {
     status: number;
 }
 
+export interface INF_PaginatedResponse<T> {
+    results: T[];
+    next: string;
+    previous: string;
+    count: number;
+}
+
 export interface INF_ResponseActions {
     redirectTo?: string;
     popup?: {

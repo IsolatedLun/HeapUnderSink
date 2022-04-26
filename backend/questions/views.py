@@ -103,6 +103,17 @@ class AcceptAnswerView(APIView):
 
         return Response(data='Updated answer', status=OK)
 
+class ReportQuestion(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, req, question_id):
+        question = models.Question.objects.get(id=question_id)
+        
+        question.reports += 1
+        question.save()
+
+        return Response(data='Reported question.', status=OK)
+
 # ================
 # Answer Views
 class PostAnswerView(APIView):

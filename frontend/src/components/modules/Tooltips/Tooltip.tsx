@@ -3,7 +3,7 @@ import { INF_Tooltip } from './types'
 
 const Tooltip = (props: INF_Tooltip) => {
   return (
-    <div className='[ tooltip ] [ fs-200 ]'>
+    <div className='[ tooltip card ] [ fs-300 ]' data-card-variant='red'>
         { props.children }
     </div>
   )

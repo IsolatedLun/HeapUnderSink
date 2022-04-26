@@ -64,6 +64,13 @@ export const questionsApi = createApi({
       }),
     }),
 
+    postReportQuestion: builder.mutation<void, number>({
+      query: (questionId) => ({
+          url: `report/${questionId}`,
+          method: 'POST',
+      }),
+    }),
+
     getTopTags: builder.query<INF_Tag[], void>({
       query: () => ({
           url: 'tags/top',
@@ -84,4 +91,4 @@ export const questionsApi = createApi({
 
 export const { useGetQuestionsQuery, useGetQuestionQuery, usePostAskQuestionMutation,
   useGetTopTagsQuery, useGetTagsQuery, usePostAnswerMutation, usePostRateObjectMutation,
-  usePostAcceptAnswerMutation } = questionsApi;
+  usePostAcceptAnswerMutation, usePostReportQuestionMutation } = questionsApi;

@@ -4,7 +4,6 @@ import { INF_User } from '../../features/types'
 import AboutList, { AboutListItem } from '../Modules/Lists/AboutList'
 
 const MeAbout = (props: INF_User) => {
-  console.log(props)
   return (
     <div className='[ me-about ] [ width-100 ]'>
         <h2 className='[ bottom-border ] [ fs-500 ]' data-border-variant='heading' 
@@ -24,4 +23,4 @@ const MeAbout = (props: INF_User) => {
   )
 }
 
-export default MeAbout
+export default MeAbout;

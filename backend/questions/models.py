@@ -11,6 +11,8 @@ class Question(models.Model):
 
     votes = models.BigIntegerField(default=0)
     views = models.PositiveBigIntegerField(default=0)
+    reports = models.BigIntegerField(default=0)
+
     answers = models.PositiveBigIntegerField(default=0)
     answered = models.BooleanField(default=False);
 

@@ -1,34 +1,42 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { useAppDispatch } from '../../../hooks';
-import { setCurrQuestion } from '../../features/questions-slice';
 import { useAuth } from '../../hooks/useAuth';
 import { useLoggedActions } from '../../hooks/useLoggedActions';
 import { useRate } from '../../hooks/useRate';
-import { useGetQuestionQuery, usePostRateObjectMutation } from '../../services/questionsService';
-import { humanizeNumber } from '../../utilFuncs/utils';
+import { useGetQuestionQuery, usePostRateObjectMutation, usePostReportQuestionMutation } from '../../services/questionsService';
 import Button from '../Modules/Buttons/Button';
 import QuestionUserPreview from '../Questions/QuestionUserPreview';
 import { INF_Question } from '../Questions/types';
-import Answer from './Answer/Answer';
 import Answers from './Answer/Answers';
 import AnswerForm from './AnswerForm';
 import RatingController from './RatingController';
+import ViewQuestionHeader from './ViewQuestionHeader';
 
 const ViewQuestion = () => {
     const { id } = useParams();
     const [user] = useAuth();
     const [question, setQuestion] = useState<INF_Question | undefined>(undefined);
     const [showForm, setShowForm] = useState(false);
+    const [hasReported, setHasReported] = useState(false);
     
     const [controllerProps, object, type, hasVoted] = useRate(question!, setQuestion, 'question');
     const [ratingCb] = useLoggedActions(handleRating);
 
     const { data, isSuccess } = useGetQuestionQuery(Number(id));
     const [rateObject] = usePostRateObjectMutation();
+    const [reportQuestion] = usePostReportQuestionMutation();
 
     function handleRating() {
         rateObject(object)
+    }
+
+    function handleReport() {
+        if(question)
+            reportQuestion(question.id)
+                .then(res => setQuestion(prevState => ({
+                    ...question, reports: prevState!.reports + 1
+                })));
+        setHasReported(true);
     }
 
     useEffect(() => {
@@ -48,14 +56,7 @@ const ViewQuestion = () => {
     if(question)
         return (
         <div className='question-view'>
-            <header className='[ question__header ] [ flow text-center bottom-border margin-bottom-1 ]'>
-                <h1 className='[ text-center multi-ellipsis fw-normal ]'>{ question.title }</h1>
-                <div className="[ question__info ] [ flex flex-justify-center flex-items ]">
-                    <p><span className="[ text-muted ]">Created</span> { question.created_at }</p>
-                    <p><span className="[ text-muted ]">Modified</span> { question.modified_at }</p>
-                    <p><span className="[ text-muted ]">Viewed</span> { humanizeNumber(question.views) } times</p>
-                </div>
-            </header>
+            <ViewQuestionHeader { ...question } />
 
             <div className='[ view__question ] [ flex flex-items text-center bottom-border ]'>
                 <div className="[ question__controls ] [ flex-items flex-col fs-500 ]">
@@ -75,7 +76,9 @@ const ViewQuestion = () => {
                     <Button onClick={() => setShowForm(!showForm)}>Answer</Button>
                 </li>
                 <li>
-                    <Button onClick={() => null} variant='red'>Report</Button>
+                    <Button rest={{ 'data-dead': hasReported }} onClick={handleReport} variant='red'>
+                        Report
+                    </Button>
                 </li>
             </ul>
             

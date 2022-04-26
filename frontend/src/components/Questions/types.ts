@@ -14,6 +14,7 @@ export type INF_Question = {
 
     votes: number;
     views: number;
+    reports: number;
 
     answered: boolean;
 

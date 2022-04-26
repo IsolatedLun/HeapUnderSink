@@ -13,6 +13,7 @@ export const LOGOUT_ICON = '\uf2f5';
 export const CHECK_ICON = `\uf00c`;
 export const SORT_ICON = `\uf160`;
 export const SEARCH_ICON = `\uf002`;
+export const WARNING_ICON = `\uf071`;
 
 export const CALENDAR_ICON = `\uf073`;
 

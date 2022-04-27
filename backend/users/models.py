@@ -32,3 +32,12 @@ class cUser(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = cUserManager()
+
+class Notification(models.Model):
+    sender = models.ForeignKey(cUser, on_delete=models.CASCADE, related_name='sender')
+    receiver = models.ForeignKey(cUser, on_delete=models.CASCADE, related_name='receiver')
+
+    text = models.CharField(max_length=128)
+    to = models.TextField()
+
+    read = models.BooleanField(default=False)

@@ -100,6 +100,10 @@
         --dropdown-item-spacing: 0.85em;
         --nav-item-spacing: 0.55em;
 
+        /* Notification Spacings */
+        --notification-spacing: 0.45em;
+        --notification-counter-spacing: 0.25em;
+
     /* Misc */
     --main-container-width: 1250px;
 }

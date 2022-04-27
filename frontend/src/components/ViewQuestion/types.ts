@@ -15,17 +15,21 @@ export interface INF_Answer {
 
     is_answer: boolean;
     showControls: boolean;
+
+    setReplyingTo: Function;
 }
 
 export interface INF_Answers {
     user: INF_User;
     question: INF_Question;
+    setReplyingTo: Function;
 }
 
 export interface INF_RatingController extends INF_RateType {
     model: INF_Question | INF_Answer;
     modelType: string | 'question' | 'answer';
     setRateType: Function;
+    replyingTo: string | null;
 }
 
 export interface INF_RateType {
@@ -39,6 +43,8 @@ export interface INF_AnswerForm {
 export interface INF_AnswerFormProps {
     setQuestion: Function;
     question: INF_Question;
+    replyingTo: string | null;
+    setReplyingTo: Function;
 }
 
 export interface INF_RateObject extends INF_RateType {

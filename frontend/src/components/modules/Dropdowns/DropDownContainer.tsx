@@ -12,12 +12,14 @@ const DropDownContainer = (props: INF_DropDownContainer) => {
         {
           props.to
           ? (
-            <Link className='[ button ]' to={props.to} onClick={() => setIsOpen(!isOpen)}>
+            <Link aria-label='Dropdown button' aria-hidden
+              className='[ button ]' to={props.to} onClick={() => setIsOpen(!isOpen)}>
               { props.item }
             </Link>
             )
           : (
-              <div className="[ button ]" data-variant='default' onClick={() => setIsOpen(!isOpen)}>
+              <div aria-label='Dropdown button'  aria-hidden
+                className="[ button ]" data-variant='default' onClick={() => setIsOpen(!isOpen)}>
                 { props.item }
               </div>
             )

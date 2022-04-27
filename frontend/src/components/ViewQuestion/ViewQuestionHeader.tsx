@@ -17,7 +17,7 @@ const ViewQuestionHeader = (question: INF_Question) => {
             {
                 question?.reports > 10 && (
                     <IconTooltip icon={WARNING_ICON} color='clr-error'>
-                        <Tooltip>
+                        <Tooltip variant='red'>
                             <p className='[ width-8rem ]'>
                                 This question has an unusual amount of reports!
                             </p>

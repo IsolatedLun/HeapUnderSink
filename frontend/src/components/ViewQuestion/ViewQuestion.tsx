@@ -18,6 +18,7 @@ const ViewQuestion = () => {
     const [question, setQuestion] = useState<INF_Question | undefined>(undefined);
     const [showForm, setShowForm] = useState(false);
     const [hasReported, setHasReported] = useState(false);
+    const [replyingTo, setReplyingTo] = useState<string | null>(null);
     
     const [controllerProps, object, type, hasVoted] = useRate(question!, setQuestion, 'question');
     const [ratingCb] = useLoggedActions(handleRating);
@@ -49,6 +50,17 @@ const ViewQuestion = () => {
     }, [question?.answers])
 
     useEffect(() => {
+        if(!showForm)
+            setReplyingTo(null);
+    }, [showForm])
+
+    useEffect(() => {
+        if(replyingTo && replyingTo.length > 0) {
+            setShowForm(true);
+        }
+    }, [replyingTo])
+
+    useEffect(() => {
         if(type === 'neutral' && hasVoted)
             ratingCb();
     }, [type])
@@ -73,7 +85,9 @@ const ViewQuestion = () => {
             
             <ul className="[ button-group ] [ margin-top-1 ]">
                 <li>
-                    <Button onClick={() => setShowForm(!showForm)}>Answer</Button>
+                    <Button onClick={() => { setReplyingTo(question.user.username) }}>
+                        Answer
+                    </Button>
                 </li>
                 <li>
                     <Button rest={{ 'data-dead': hasReported }} onClick={handleReport} variant='red'>
@@ -82,9 +96,10 @@ const ViewQuestion = () => {
                 </li>
             </ul>
             
-            { showForm && <AnswerForm question={question} setQuestion={setQuestion} /> }
+            { showForm && <AnswerForm question={question} setQuestion={setQuestion} 
+                replyingTo={replyingTo} setReplyingTo={setReplyingTo} /> }
 
-            <Answers question={question} user={user} />
+            <Answers question={question} user={user} setReplyingTo={setReplyingTo} />
         </div>
         )
     else

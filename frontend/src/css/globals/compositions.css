@@ -186,8 +186,17 @@ a[data-link-variant='dotted'] {
     overflow: hidden;
 }
 
-.line-break[data-length='long'] {
+.line-break[data-line-variant='horizontal'] {
+    width: 0.85rem;
+    height: 2px;
+}
+
+.line-break:not([data-line-variant='horizontal'])[data-length='long'] {
     height: 2rem;
+}
+
+.line-break[data-length='long'] {
+    width: 2rem;
 }
 
 .overlay::after {

@@ -43,6 +43,10 @@ const Answer = (props: INF_Answer) => {
                   { CHECK_ICON }
                   </IconButton> 
               }
+
+          <IconButton ariaLabel='Reply to user' onClick={() => props.setReplyingTo(props.user.username)}>
+            &#xf3e5;
+          </IconButton>
         </div>
 
         <p>{ props.body }</p>

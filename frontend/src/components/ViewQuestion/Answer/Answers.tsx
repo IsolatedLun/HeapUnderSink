@@ -9,7 +9,8 @@ const Answers = (props: INF_Answers) => {
     {
         (props.question.answers as INF_Answer[]).map(answer => {
             const showAnswerControls = shouldShowControls(props.question, props.user, answer);
-            return <Answer key={answer.id} { ...answer } showControls={showAnswerControls} />
+            return <Answer key={answer.id} { ...answer } 
+              showControls={showAnswerControls} setReplyingTo={props.setReplyingTo} />
         }
     )}
     </div>

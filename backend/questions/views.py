@@ -4,13 +4,12 @@ from . import models
 from . import serializers
 from rest_framework.views import APIView, Response
 from rest_framework.permissions import IsAuthenticated
-from django.core.paginator import Paginator
 from rest_framework import generics
 
 # ================
 # Question Views
 class QuestionsView(generics.ListAPIView):
-    queryset = models.Question.objects.all()
+    queryset = models.Question.objects.all().order_by('-created_at')
     serializer_class = serializers.QuestionPreviewSerializer
 
 class TagsView(APIView):

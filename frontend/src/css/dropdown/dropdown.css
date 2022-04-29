@@ -9,11 +9,17 @@
     display: flex;
     top: calc(100% + 0.5rem);
     right: 30%;
+    max-height: var(--max-height, none);
     padding: var(--dropdown-spacing);
     background-color: var(--clr-background-400);
     border: 1px solid var(--clr-neutral-400);
     border-radius: var(--dropdown-border, 4px);
     z-index: 999999999999999999999999999999;
+    overflow-y: auto;
+}
+
+.dropdown-container .dropdown > * {
+    width: 100%;
 }
 
 .dropdown-container  .dropdown__item {

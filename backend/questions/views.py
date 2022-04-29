@@ -98,10 +98,18 @@ class AcceptAnswerView(APIView):
         question.answered = not question.answered
         answer.is_answer = not answer.is_answer
 
+        notification = Notification.objects.create(
+            sender_id=question.user.id, 
+            receiver_id=answer.user.id, 
+            text='has accepted your answer',
+            to=f'{question_id}/{answer.question.title}',
+            question_id=question_id
+        )
+
         question.save()
         answer.save()
 
-        return Response(data='Updated answer', status=OK)
+        return Response(data='Toggled answer answer', status=OK)
 
 class ReportQuestion(APIView):
     permission_classes = [IsAuthenticated]

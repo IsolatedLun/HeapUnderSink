@@ -22,8 +22,8 @@ const FilterHeader = (props: INF_FilterHeader) => {
 
           <DropDownContainer item={<SortBy />}>
             {
-              props.filters.map(item => (
-                <DropDownItem onClick={() => props.setSort(item.field)}>
+              props.filters.map((item, idx) => (
+                <DropDownItem key={idx} onClick={() => props.setSort(item.field)}>
                   { item.name }
                 </DropDownItem>
               ))

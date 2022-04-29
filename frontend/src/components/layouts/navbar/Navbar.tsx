@@ -26,7 +26,7 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
   
   const location = useLocation();
-  const socket = createSocket('notifications/');
+  let socket = createSocket('notifications/');
 
   useEffect(() => {
     if(urlIndex === 0) {
@@ -44,6 +44,12 @@ const Navbar = () => {
     socket.onmessage = (e) => { 
       const data: INF_Notification[] = JSON.parse(e.data);
       setNotifications(data);
+    }
+
+    socket.onclose = () => {
+      setTimeout(() => {
+        socket = createSocket('notifications/');
+      }, 5000);
     }
 
     return () => clearInterval(notificationInterval);

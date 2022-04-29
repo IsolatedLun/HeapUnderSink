@@ -4,8 +4,6 @@ import Questions from '../Questions/Questions';
 import FilterHeader from './FilterHeader/FilterHeader';
 import { useFilter } from '../../hooks/useFilter';
 import { INF_Question } from '../Questions/types';
-import Button from '../Modules/Buttons/Button';
-import { usePagination } from '../../hooks/usePagination';
 import UnderPagination from '../Pagination/UnderPagination';
 
 const Home = () => {

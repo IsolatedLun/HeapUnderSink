@@ -26,7 +26,9 @@ const Answer = (props: INF_Answer) => {
   }
 
   return (
-    <div className="[ answer ] [ flex flex-items fs-200 bottom-border padding-block-1 ]">
+    <div 
+      id={`user-answer-${props.user.id}`}
+      className="[ answer ] [ flex flex-items fs-200 bottom-border padding-block-1 ]">
         <div className='[ flex flex-col gap-075 ]'>
             <RatingController { ...controllerProps } />
 

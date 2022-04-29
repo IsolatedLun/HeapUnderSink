@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'questions',
     'users',
-    'corsheaders'
+    'corsheaders',
+    'channels'
 ]
 
 # Custom changes
@@ -93,6 +94,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
+ASGI_APPLICATION = 'backend.asgi.application'
 
 
 # Database

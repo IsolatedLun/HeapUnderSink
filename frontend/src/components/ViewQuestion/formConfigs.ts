@@ -17,6 +17,7 @@ export const answerConfig: INF_Config = {
     },
 
     formObj: {
-        answer: ''
+        answer: '',
+        replyingTo: ''
     }
 }

@@ -12,12 +12,21 @@ import { loggedOutAction } from '../../../features/user-slice';
 import { useEffect, useState } from 'react';
 import DropDownContainer from '../../Modules/Dropdowns/DropDownContainer';
 import UserNotifications from '../../Notifications/UserNotifications';
+import { createSocket } from '../../../hooks/useSocket';
+import { INF_Notification } from '../../Notifications/types';
 
+let notificationInterval: any = -1;
 const Navbar = () => {
   const [user, isLogged] = useAuth();
-  const dispatch = useAppDispatch();
+
+  const [notifications, setNotifications] = useState<INF_Notification[]>([]);
+  const [hasRead, setHasRead] = useState<boolean>(false);
   const [urlIndex, setUrlIndex] = useState(0);
+
+  const dispatch = useAppDispatch();
+  
   const location = useLocation();
+  const socket = createSocket('notifications/');
 
   useEffect(() => {
     if(urlIndex === 0) {
@@ -30,6 +39,23 @@ const Navbar = () => {
     }
       
   }, [location])
+
+  useEffect(() => {
+    socket.onmessage = (e) => { 
+      const data: INF_Notification[] = JSON.parse(e.data);
+      setNotifications(data);
+    }
+
+    return () => clearInterval(notificationInterval);
+  }, [socket, user])
+
+  useEffect(() => {
+    if(user)
+      notificationInterval = setInterval(() => {
+        if(socket.readyState === 1)
+          socket.send(JSON.stringify({ user_id: user.id, read: hasRead }))
+      }, 1000)
+  }, [socket, user])
 
   return (
     <>
@@ -61,7 +87,8 @@ const Navbar = () => {
                         </DropDownItem>
                       </DropDownContainer>
 
-                      <UserNotifications />
+                      <UserNotifications notifications={notifications} 
+                        setHasRead={setHasRead} />
                     </div>
                   )
                 : <AuthNavButtons isDesktop={true} />

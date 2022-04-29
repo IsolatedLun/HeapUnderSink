@@ -1,4 +1,5 @@
 from users.views import decode_user_id
+from users.models import Notification
 from responses import OK
 from . import models
 from . import serializers
@@ -121,6 +122,14 @@ class PostAnswerView(APIView):
 
         answer = models.Answer.objects.create(body=req.data['answer'], user_id=user_id,
             question_id=question_id)
+
+        notification = Notification.objects.create(
+            sender_id=user_id, 
+            receiver_id=answer.question.user.id, 
+            text='has replied to you',
+            to=f'{question_id}/{answer.question.title}',
+            question_id=question_id
+        )
 
         return Response(data='Created answer.', status=OK)
 

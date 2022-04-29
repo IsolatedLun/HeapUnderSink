@@ -23,6 +23,8 @@ const AnswerForm = (props: INF_AnswerFormProps) => {
   }, [props.replyingTo])
 
   function handleSubmitAnswer() {
+    setAnswer(prevState => ({ ...prevState, replyingTo: props.replyingTo! }));
+
     postAnswer({ answerData: answer, questionId: props.question.id })
       .unwrap()
       .then(res => {
@@ -43,7 +45,7 @@ const AnswerForm = (props: INF_AnswerFormProps) => {
           return { ...prevState, answers: [ ...prevState.answers as INF_Answer[], newAnswer ] };
         })
     
-        setAnswer({ answer: '' });
+        setAnswer({ answer: '', replyingTo: '' });
       })
       .catch(res => errorResponse('Someting went wrong, try answering later.'))
   }

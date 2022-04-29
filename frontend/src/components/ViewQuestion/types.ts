@@ -38,6 +38,7 @@ export interface INF_RateType {
 
 export interface INF_AnswerForm {
     answer: string;
+    replyingTo: string;
 }
 
 export interface INF_AnswerFormProps {

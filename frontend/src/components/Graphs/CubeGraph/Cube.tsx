@@ -7,10 +7,12 @@ const Cube = (props: INF_Cube) => {
     const style = { "--opacity": props.amt / 6 } as CSSProperties;
 
   return (
-    <div className='[ cube ] [ overlay tooltip-parent ] [ pos-relative cursor-pointer ]' style={style}>
+    <div 
+      id={`cube-${props.day}-${props.month}`}
+      className='[ cube ] [ overlay tooltip-parent ] [ pos-relative cursor-pointer ]' style={style}>
       <Tooltip>
         <p className='[ white-space-nowrap ]'>
-          <span className='[ fw-bold ]'>{ props.amt } questions</span> on { monthNames[props.month] } { props.day }
+          <span className='[ fw-bold ]'>{ props.amt } queries</span> on { monthNames[props.month] } { props.day }
         </p>
       </Tooltip>
     </div>

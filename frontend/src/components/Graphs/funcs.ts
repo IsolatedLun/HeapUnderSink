@@ -24,3 +24,14 @@ export function createCubeGraphData(data: any[], dateKey: string): [object, numb
 
     return [days, currMonth];
 }
+
+const arr: any[] = [
+    { 
+        quasar_radius: '10^^^^^^1002',
+        quasar_name: 'EXT-90',
+        created_at: new Date() 
+    }
+]
+
+const [cubeGraphData, month] = createCubeGraphData(arr, 'created_at');
+console.log(cubeGraphData)

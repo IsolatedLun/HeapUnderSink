@@ -32,7 +32,8 @@ test('Display questions with data', () => {
             reputation: 250,
             username: 'A user'
         },
-        rate_type: 'neutral'
+        rate_type: 'neutral',
+        reports: 0,
     }
 
     render(

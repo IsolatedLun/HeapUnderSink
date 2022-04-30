@@ -14,8 +14,8 @@ const UserNotifications = (props: INF_UserNotificatons) => {
       data-notifications={notificationAmt}>
         <DropDownContainer item={<p className='[ fa ]'>{ `\uf0f3` }</p>} alignment='navbar'>
             {
-              props.notifications && props.notifications.map(notification => (
-                <DropDownItem to={`/questions/${notification.to}/#user-answer-${notification.sender.id}`}>
+              props.notifications && props.notifications.map((notification, idx) => (
+                <DropDownItem key={idx} to={`/questions/${notification.to}/#user-answer-${notification.sender.id}`}>
                   <Notification { ...notification } />
                 </DropDownItem>
               ))

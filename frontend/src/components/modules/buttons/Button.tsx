@@ -10,6 +10,7 @@ const Button = (props: ActionButtonProps) => {
     <button 
         className="[ button ]" 
         data-variant={variant ? variant : 'default'}
+        type='button'
         onClick={(e) => onClick()}
         { ...rest }
         >

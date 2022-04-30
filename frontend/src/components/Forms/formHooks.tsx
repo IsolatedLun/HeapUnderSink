@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ImageInput from "../Inputs/ImageInput";
+import MarkDownInput from "../Inputs/MarkdownInput/MarkDownInput";
 import PasswordInput from "../Inputs/PasswordInput";
 import TextArea from "../Inputs/TextArea";
 import TextArrayInput from "../Inputs/TextArrayInput";
@@ -53,6 +54,8 @@ function createFormField(input: INF_Input, value: any, setter: Function): [JSX.E
         inputEl = <TextArea { ...input } onInput={setter} value={value} />
     else if(input.generalType === 'textArray')
         inputEl = <TextArrayInput { ...input } onInput={setter} value={value} />
+    else if(input.generalType === 'markdown')
+        inputEl = <MarkDownInput { ...input } onInput={setter} value={value} />
 
     const el = (
         <FormPart>

@@ -50,7 +50,7 @@ label.input[data-input-variant='image']:is(:hover, :focus, :focus-within) {
     font-family: sans-serif;
     max-width: calc(var(--main-container-width) - 4rem);
     max-height: 16em;
-    white-space: normal;
+    white-space: pre;
 }
 
 /* Input Container */

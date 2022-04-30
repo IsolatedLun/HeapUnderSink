@@ -5,6 +5,7 @@ import { useLoggedActions } from '../../hooks/useLoggedActions';
 import { useRate } from '../../hooks/useRate';
 import { useGetQuestionQuery, usePostRateObjectMutation, usePostReportQuestionMutation } from '../../services/questionsService';
 import Button from '../Modules/Buttons/Button';
+import MarkDown from '../Modules/MarkDown';
 import QuestionUserPreview from '../Questions/QuestionUserPreview';
 import { INF_Question } from '../Questions/types';
 import Answers from './Answer/Answers';
@@ -70,15 +71,15 @@ const ViewQuestion = () => {
         <div className='question-view'>
             <ViewQuestionHeader { ...question } />
 
-            <div className='[ view__question ] [ flex flex-items text-center bottom-border ]'>
-                <div className="[ question__controls ] [ flex-items flex-col fs-500 ]">
+            <div className='[ view__question ] [ flex flex-items bottom-border ]'>
+                <div className="[ question__controls ] [ flex-items flex-col text-center fs-500 ]">
                     <RatingController { ...controllerProps } />
 
                     <QuestionUserPreview { ...question.user } isVertical={true} />
                 </div>
 
-                <div className="question__body">
-                    { question.body }
+                <div className="[ question__body ] [ width-100 text-start ]">
+                    <MarkDown text={question.body} showBackground={false} />
                 </div>
 
             </div>

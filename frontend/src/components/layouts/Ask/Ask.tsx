@@ -5,11 +5,12 @@ import Form from '../../Forms/Form';
 import { useForm } from '../../Forms/formHooks'
 import SubmitButton from '../../Modules/Buttons/SubmitButton';
 import { askConfig } from './askConfig'
+import { INF_Ask } from './types';
 
 const Ask = () => {
   const navigate = useNavigate();
   const [askQuetion] = usePostAskQuestionMutation();
-  const [question, setQuestion] = useState(askConfig.formObj);
+  const [question, setQuestion] = useState<INF_Ask>(askConfig.formObj);
   const [fields, isValidForm] = useForm(askConfig.inputs, setQuestion, question);
 
   function handleAskQuestion() {
@@ -21,7 +22,6 @@ const Ask = () => {
   return (
     <Form onSubmit={() => handleAskQuestion()}>
       { fields }
-
       <SubmitButton isDead={!isValidForm}>Ask</SubmitButton>
     </Form>
   )

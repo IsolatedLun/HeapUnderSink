@@ -6,7 +6,7 @@ import QuestionUserPreview from "./QuestionUserPreview";
 import { Stat } from "./Stat";
 import { INF_Question } from "./types";
 
-export const Question = ({ props } : { props: INF_Question }) => {
+export const Question = (props: INF_Question) => {
 
     return (
         <div className="[ question ] [ flex flex-items flex-grow item-hoverable width-1fr bottom-border ]" data-hover-variant='light'>

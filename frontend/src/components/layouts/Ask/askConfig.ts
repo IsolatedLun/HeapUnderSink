@@ -20,7 +20,7 @@ export const askConfig: INF_Config = {
         body: <INF_Input>{
             id: 0,
             type: 'textarea',
-            generalType: 'textarea',
+            generalType: 'markdown',
             name: 'body',
             value: '',
             validators: [

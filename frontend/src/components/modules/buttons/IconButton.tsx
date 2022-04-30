@@ -11,6 +11,7 @@ const IconButton = (props: IconButtonProps) => {
         className="[ button fa ]" 
         data-variant={variant ? variant : 'default'}
         aria-label={ariaLabel}
+        type='button'
         aria-hidden
         onClick={(e) => onClick()}
         { ...rest }

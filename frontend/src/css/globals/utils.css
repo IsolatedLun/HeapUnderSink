@@ -153,6 +153,10 @@
     text-align: center;
 }
 
+.text-start {
+    text-align: start;
+}
+
 .text-muted {
     color: var(--clr-neutral-280);
 }
@@ -195,6 +199,17 @@
 
 .resize-vertical {
     resize: vertical;
+}
+
+/* Borders */
+.border-bottom-0 {
+    border-bottom: 0;
+}
+
+.border-radius-0 {
+    --input-border: 0;
+    
+    border-radius: 0;
 }
 
 /* Development */

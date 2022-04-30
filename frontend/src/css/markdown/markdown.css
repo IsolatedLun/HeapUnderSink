@@ -1,0 +1,52 @@
+.markdown-controls {
+    border-bottom: 0;
+    border-radius: 0;
+}
+
+.markdown {
+    padding: 0.25em 0.75em;
+}
+
+.markdown:not([data-show-background='false']) {
+    background-color: var(--clr-background-400);
+}
+
+.markdown hr {
+    margin-block: calc(var(--line-spacing) * 0.5);
+}
+
+.markdown code {
+    display: inline-block;
+    margin-block: calc(var(--code-spacing) * 5);
+    padding: var(--code-spacing) calc(var(--code-spacing) * 3);
+    border-radius: var(--code-border, 6px);
+    background-color: var(--clr-neutral-500);
+}
+
+.markdown a {
+    position: relative;
+    color: var(--clr-tag);
+    border-bottom: 1px solid var(--clr-tag);
+}
+
+.markdown a::after {
+    content: '\f35d';
+    position: absolute;
+    font-family: 'Font Awesome 5 Free';
+    font-size: var(--fs-300);
+    font-weight: 700;
+    right: -18px;
+}
+
+.markdown ul,
+.markdown ol {
+    margin-left: var(--list-spacing);
+}
+
+.markdown ul {
+    list-style-type: disc;
+}
+
+.markdown-input {
+    white-space:initial;
+}

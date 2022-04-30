@@ -6,8 +6,10 @@ const SubmitButton = (props: SubmitButtonProps) => {
 
     return (
     <button 
-        className='[ button ]' type='submit' data-dead={isDead}
-        data-variant={variant ? variant : 'action'} { ...rest }>
+        className='[ button ]' 
+        type='submit' data-dead={isDead}
+        data-variant={variant ? variant : 'action'} 
+        { ...rest }>
         { props.children }
     </button>
     )

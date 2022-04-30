@@ -8,7 +8,7 @@ const Questions = ({ questions } : { questions: INF_Question[] | undefined }) =>
       <div className="[ questions ]">
         {
           questions && questions.length !== 0
-          ? questions.map((question, idx) => <Question key={question.id} props={{ ...question }} />)
+          ? questions.map((question, idx) => <Question key={question.id} { ...question } />)
           : <p><code>No questions found.</code></p>
         }
       </div>

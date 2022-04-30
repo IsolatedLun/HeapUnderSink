@@ -104,6 +104,11 @@
         --notification-spacing: 0.45em;
         --notification-counter-spacing: 0.25em;
 
+        /* Markdown Spacings */
+        --markdown-spacing: 0.5em;
+        --list-spacing: 1em;
+        --code-spacing: 0.1em;
+
     /* Misc */
     --main-container-width: 1250px;
 }

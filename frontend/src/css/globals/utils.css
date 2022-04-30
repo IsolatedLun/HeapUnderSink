@@ -101,6 +101,10 @@
     padding: 1em;
 }
 
+.padding-05 {
+    padding: 0.5em;
+}
+
 /* Gaps */
 .gap-025 {
     gap: 0.25em;
